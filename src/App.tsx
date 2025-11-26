@@ -38,25 +38,36 @@ export default function App() {
   const [pageData, setPageData] = useState(null);
   const [pendingCounts, setPendingCounts] = useState({ students: 3, teachers: 5 });
 
-  // Check if user is logged in
   useEffect(() => {
-    const storedUser = localStorage.getItem('sion_user');
-    if (storedUser) {
-      try {
-        const user = JSON.parse(storedUser);
-        setCurrentUser(user);
-        // Navigate to appropriate dashboard
-        if (user.role === 'student') {
-          setCurrentPage('student-dashboard');
-        } else if (user.role === 'teacher') {
-          setCurrentPage('teacher-dashboard');
-        } else if (user.role === 'admin') {
-          setCurrentPage('admin-dashboard');
-        }
-      } catch (e) {
-        console.error('Failed to parse stored user', e);
+    const params = new URLSearchParams(window.location.search);
+    const previewRole = params.get('preview');
+
+    const hash = window.location.hash.replace('#', '');
+    if (hash) setCurrentPage(hash);
+
+    if (previewRole === 'student' || previewRole === 'teacher' || previewRole === 'admin') {
+      setCurrentUser({ role: previewRole } as any);
+    } else {
+      const storedUser = localStorage.getItem('sion_user');
+      if (storedUser) {
+        try {
+          const user = JSON.parse(storedUser);
+          setCurrentUser(user);
+          if (!hash) {
+            if (user.role === 'student') setCurrentPage('student-dashboard');
+            else if (user.role === 'teacher') setCurrentPage('teacher-dashboard');
+            else if (user.role === 'admin') setCurrentPage('admin-dashboard');
+          }
+        } catch (e) {}
       }
     }
+
+    const onHashChange = () => {
+      const h = window.location.hash.replace('#', '');
+      if (h) setCurrentPage(h);
+    };
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
   const navigate = (page, data = null) => {
@@ -64,6 +75,7 @@ export default function App() {
     if (data) {
       setPageData(data);
     }
+    window.location.hash = page;
     window.scrollTo(0, 0);
   };
 
