@@ -45,12 +45,8 @@ export default function LoginPage({ navigate, onLogin }) {
           totalLessons: 12,
           completedLessons: 8,
           currentLevel: 'Intermediate',
-          hasSchedule: true,
-          selectedSchedules: [
-            { day: 'Tuesday', time: '5:00 PM', subject: 'Chemistry' },
-            { day: 'Wednesday', time: '7:00 PM', subject: 'Physics' },
-            { day: 'Thursday', time: '3:00 PM', subject: 'Mathematics' }
-          ]
+          hasSchedule: false,
+          selectedSchedules: []
         }
       },
       { 

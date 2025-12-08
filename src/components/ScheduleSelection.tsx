@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Calendar, Clock, CheckCircle, XCircle, Trash2 } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, CheckCircle, XCircle, Trash2, BookOpen } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import ConfirmationModal from './ConfirmationModal';
 
-export default function ScheduleSelection({ navigate, currentUser }) {
+export default function ScheduleSelection({ navigate, currentUser, onConfirmSchedules }) {
   const [selectedDay, setSelectedDay] = useState(null);
   const [selectedSchedules, setSelectedSchedules] = useState([]);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [selectedSubject, setSelectedSubject] = useState('Math');
 
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   
@@ -14,6 +15,17 @@ export default function ScheduleSelection({ navigate, currentUser }) {
     '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM',
     '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM',
     '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM'
+  ];
+
+  const subjects = [
+    'Math',
+    'English',
+    'Science',
+    'Physics',
+    'Chemistry',
+    'Biology',
+    'History',
+    'Geography'
   ];
 
   const handleDaySelect = (day) => {
@@ -39,7 +51,7 @@ export default function ScheduleSelection({ navigate, currentUser }) {
     setSelectedSchedules([...selectedSchedules, {
       day: selectedDay,
       time: time,
-      subject: 'Weekly Lesson'
+      subject: selectedSubject
     }]);
 
     setSelectedDay(null);
@@ -58,9 +70,24 @@ export default function ScheduleSelection({ navigate, currentUser }) {
   };
 
   const finalizeSchedules = () => {
-    console.log('Finalizing schedules:', selectedSchedules);
-    // TODO: Save to backend - mark hasSchedule as true
-    // This is ONE-TIME selection - cannot be changed later
+    const schedules = selectedSchedules;
+    const updatedUser = {
+      ...(currentUser || {}),
+      profile: {
+        ...((currentUser && currentUser.profile) || {}),
+        hasSchedule: true,
+        selectedSchedules: schedules
+      }
+    };
+
+    try {
+      localStorage.setItem('sion_user', JSON.stringify(updatedUser));
+    } catch {}
+
+    if (typeof onConfirmSchedules === 'function') {
+      onConfirmSchedules(schedules);
+    }
+
     setShowConfirmModal(false);
     navigate('student-dashboard');
   };
@@ -73,7 +100,7 @@ export default function ScheduleSelection({ navigate, currentUser }) {
         animate={{ y: 0, opacity: 1 }}
         className="bg-white/70 backdrop-blur-2xl shadow-lg sticky top-0 z-50 border-b border-white/20"
       >
-        <div className="max-w-[1800px] mx-auto px-8 py-4">
+        <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center gap-4">
             <motion.button
               onClick={() => navigate('student-dashboard')}
@@ -92,7 +119,7 @@ export default function ScheduleSelection({ navigate, currentUser }) {
         </div>
       </motion.header>
 
-      <div className="max-w-[1800px] mx-auto px-8 py-8">
+      <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         {/* Welcome Banner */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -120,7 +147,7 @@ export default function ScheduleSelection({ navigate, currentUser }) {
         </motion.div>
 
         {/* Selection Grid */}
-        <div className="grid lg:grid-cols-2 gap-6 mb-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {/* Day Selection */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -156,6 +183,41 @@ export default function ScheduleSelection({ navigate, currentUser }) {
             </div>
           </motion.div>
 
+          {/* Subject Selection */}
+          <motion.div
+            initial={{ opacity: 0, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4 }}
+            className="bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden"
+          >
+            <div className="bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200 p-6">
+              <h3 className="font-['Arimo'] text-xl text-gray-900 flex items-center gap-3">
+                <BookOpen className="w-6 h-6 text-[#0891B2]" />
+                Select Subject
+              </h3>
+            </div>
+            <div className="p-6 space-y-3">
+              <p className="font-['Arimo'] text-sm text-gray-600">This subject will be applied to the time you select.</p>
+              <div className="grid sm:grid-cols-2 gap-3">
+                {subjects.map((subject) => (
+                  <motion.button
+                    key={subject}
+                    onClick={() => setSelectedSubject(subject)}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`w-full rounded-2xl p-4 text-left font-['Arimo'] text-lg transition-all shadow-lg hover:shadow-xl border-2 ${
+                      selectedSubject === subject
+                        ? 'bg-gradient-to-r from-[#2563EB] to-[#4F46E5] text-white border-[#2563EB] ring-4 ring-[#2563EB]/20'
+                        : 'bg-white text-gray-900 border-gray-200 hover:border-[#2563EB]'
+                    }`}
+                  >
+                    {subject}
+                  </motion.button>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
           {/* Time Selection */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
@@ -181,8 +243,11 @@ export default function ScheduleSelection({ navigate, currentUser }) {
                 <div>
                   <p className="font-['Arimo'] text-center text-gray-900 mb-4 text-lg">
                     Choose a time for <span className="font-bold text-[#2563EB]">{selectedDay}</span>
+                    {selectedSubject && (
+                      <span className="ml-2 text-sm text-gray-600">• Subject: <span className="font-bold text-[#4F46E5]">{selectedSubject}</span></span>
+                    )}
                   </p>
-                  <div className="grid grid-cols-2 gap-3 max-h-[500px] overflow-y-auto pr-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[500px] overflow-y-auto pr-2">
                     {timeSlots.map((time, index) => {
                       const isSelected = selectedSchedules.some(s => s.day === selectedDay && s.time === time);
                       return (

@@ -46,7 +46,9 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
     school: currentUser?.profile?.schoolName || 'Lincoln High School',
     address: currentUser?.profile?.address || '123 Main St',
     city: currentUser?.profile?.city || 'New York',
-    nextLesson: 'Chemistry - Tuesday 5PM',
+    nextLesson: (currentUser?.profile?.selectedSchedules && currentUser.profile.selectedSchedules[0])
+      ? `${currentUser.profile.selectedSchedules[0].subject} - ${currentUser.profile.selectedSchedules[0].day} ${currentUser.profile.selectedSchedules[0].time}`
+      : 'Chemistry - Tuesday 5PM',
     hasSchedule: currentUser?.profile?.hasSchedule || false,
     selectedSchedules: currentUser?.profile?.selectedSchedules || []
   };
@@ -71,7 +73,7 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
         animate={{ y: 0, opacity: 1 }}
         className="bg-white/70 backdrop-blur-2xl shadow-lg sticky top-0 z-50 border-b border-white/20"
       >
-        <div className="max-w-[1800px] mx-auto px-8 py-4">
+        <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             {/* Logo & Title */}
             <div className="flex items-center gap-4">
@@ -114,7 +116,7 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
         </div>
       </motion.header>
 
-      <div className="max-w-[1800px] mx-auto px-8 py-8">
+      <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         {/* Welcome Banner - Same as Admin */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -126,7 +128,7 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="font-['Arimo'] text-4xl mb-2"
+              className="font-['Arimo'] text-2xl sm:text-3xl lg:text-4xl mb-2"
             >
               Welcome back, {studentData.name.split(' ')[0]}! 👋
             </motion.h2>
@@ -134,7 +136,7 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="font-['Arimo'] text-white/90 text-lg"
+              className="font-['Arimo'] text-white/90 text-base sm:text-lg"
             >
               {studentData.hasSchedule ? `Next Lesson: ${studentData.nextLesson}` : 'Select your schedule to get started!'}
             </motion.p>
@@ -149,8 +151,8 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
           className="bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden"
         >
           {/* Tabs - Same as Admin */}
-          <div className="bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200">
-            <div className="flex">
+          <div className="bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200 overflow-x-auto">
+            <div className="flex min-w-max">
               {tabs.map((tab) => {
                 const Icon = tab.icon;
                 return (
@@ -168,7 +170,7 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
                     {activeTab === tab.id && (
                       <motion.div
                         layoutId="activeTabBg"
-                        className="absolute inset-0 bg-gradient-to-r from-[#2563EB] to-[#7C3AED]"
+                        className="absolute inset-0 bg-gradient-to-r from-[#2563EB] to-[#7C3AED] rounded-t-2xl"
                         initial={false}
                         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                       />
@@ -213,7 +215,7 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
                       onClick={() => navigate('schedule-selection')}
                       whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.98 }}
-                      className="bg-gradient-to-r from-[#2563EB] via-[#4F46E5] to-[#7C3AED] text-white px-12 py-4 rounded-2xl font-['Arimo'] text-lg shadow-2xl hover:shadow-3xl transition-all inline-flex items-center gap-3"
+                      className="w-full sm:w-auto bg-gradient-to-r from-[#2563EB] via-[#4F46E5] to-[#7C3AED] text-white px-10 sm:px-12 py-3 sm:py-4 rounded-2xl font-['Arimo'] text-lg shadow-2xl hover:shadow-3xl transition-all inline-flex items-center justify-center gap-3"
                     >
                       <ArrowRight className="w-6 h-6" />
                       Select Your Schedule

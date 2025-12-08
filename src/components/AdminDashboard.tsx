@@ -448,7 +448,7 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
                   onClick={() => setActiveTab(tab.id)}
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className={`flex items-center gap-2 font-['Arimo'] px-6 py-4 transition-all relative ${
+                  className={`flex items-center gap-2 font-['Arimo'] px-6 py-4 transition-all relative flex-1 justify-center ${
                     activeTab === tab.id
                       ? 'text-white'
                       : 'text-gray-600 hover:text-gray-900'

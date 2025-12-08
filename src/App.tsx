@@ -244,6 +244,20 @@ export default function App() {
         <ScheduleSelection 
           navigate={navigate} 
           currentUser={currentUser}
+          onConfirmSchedules={(schedules) => {
+            const updatedUser = {
+              ...(currentUser || {}),
+              profile: {
+                ...((currentUser && currentUser.profile) || {}),
+                hasSchedule: true,
+                selectedSchedules: schedules
+              }
+            };
+            setCurrentUser(updatedUser);
+            try {
+              localStorage.setItem('sion_user', JSON.stringify(updatedUser));
+            } catch {}
+          }}
         />
       )}
       

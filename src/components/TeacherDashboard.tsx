@@ -171,7 +171,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
         animate={{ y: 0, opacity: 1 }}
         className="bg-white/70 backdrop-blur-2xl shadow-lg sticky top-0 z-50 border-b border-white/20"
       >
-        <div className="max-w-[1800px] mx-auto px-8 py-4">
+        <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             {/* Logo & Title */}
             <div className="flex items-center gap-4">
@@ -214,7 +214,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
         </div>
       </motion.header>
 
-      <div className="max-w-[1800px] mx-auto px-8 py-8">
+      <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         {/* Welcome Banner */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -226,7 +226,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="font-['Arimo'] text-4xl mb-2"
+              className="font-['Arimo'] text-2xl sm:text-3xl lg:text-4xl mb-2"
             >
               Welcome back, {editedProfile.name.split(' ')[0]}! 👋
             </motion.h2>
@@ -234,7 +234,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="font-['Arimo'] text-white/90 text-lg"
+              className="font-['Arimo'] text-white/90 text-base sm:text-lg"
             >
               {todaysLessons.length} lessons today • {stats.pendingLogs} pending logbooks
             </motion.p>
@@ -334,7 +334,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
                     onClick={() => setActiveTab(tab.id)}
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`flex items-center gap-2 font-['Arimo'] px-6 py-4 transition-all relative ${
+                    className={`flex items-center gap-2 font-['Arimo'] px-6 py-4 transition-all relative flex-1 justify-center ${
                       activeTab === tab.id
                         ? 'text-white'
                         : 'text-gray-600 hover:text-gray-900'
@@ -343,7 +343,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
                     {activeTab === tab.id && (
                       <motion.div
                         layoutId="activeTabBg"
-                        className="absolute inset-0 bg-gradient-to-r from-[#2563EB] to-[#7C3AED]"
+                        className="absolute inset-0 bg-gradient-to-r from-[#2563EB] to-[#7C3AED] rounded-t-2xl"
                         initial={false}
                         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                       />
@@ -383,7 +383,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
                   className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 shadow-xl border-2 border-blue-200 relative"
                 >
                   {/* Header with Day Filter and View Calendar Button */}
-                  <div className="flex items-center justify-between gap-4 mb-6">
+                  <div className="flex items-center justify-between gap-4 mb-6 flex-wrap sm:flex-nowrap">
                     <div className="flex items-center gap-4 flex-1">
                       <h4 className="font-['Arimo'] text-xl text-gray-900">This Week's Schedule</h4>
                       
