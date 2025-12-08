@@ -23,7 +23,8 @@ import { motion, useInView } from 'motion/react';
 import ConfirmationModal from './ConfirmationModal';
 import ChatInterface from './ChatInterface';
 import ProfileManager from './ProfileManager';
-import ScheduleCalendar from './ScheduleCalendar';
+// Draft: Schedule Calendar temporarily disabled
+// import ScheduleCalendar from './ScheduleCalendar';
 
 // Counter Animation Component
 function AnimatedCounter({ value, duration = 2 }) {
@@ -410,15 +411,18 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
                       </div>
                     </div>
                     
-                    <motion.button
-                      onClick={() => setShowCalendar(true)}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 bg-gradient-to-r from-[#2563EB] to-[#7C3AED] text-white px-4 py-2 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl transition-all shrink-0"
-                    >
-                      <Calendar className="w-4 h-4" />
-                      View Calendar
-                    </motion.button>
+                    {/* Draft: View Calendar button hidden for now */}
+                    {false && (
+                      <motion.button
+                        onClick={() => setShowCalendar(true)}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="flex items-center gap-2 bg-gradient-to-r from-[#2563EB] to-[#7C3AED] text-white px-4 py-2 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl transition-all shrink-0"
+                      >
+                        <Calendar className="w-4 h-4" />
+                        View Calendar
+                      </motion.button>
+                    )}
                   </div>
 
                   {/* Scrollable Weekly Schedule */}
@@ -906,8 +910,8 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
         />
       )}
 
-      {/* Schedule Calendar */}
-      {showCalendar && (
+      {/* Draft: Schedule Calendar hidden for now */}
+      {false && showCalendar && (
         <ScheduleCalendar
           currentUser={currentUser}
           onClose={() => setShowCalendar(false)}
