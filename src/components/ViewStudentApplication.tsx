@@ -168,50 +168,7 @@ export default function ViewStudentApplication({ navigate, applicationId, onAppr
               </div>
             </motion.div>
 
-            {/* Academic Information */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="bg-white rounded-3xl shadow-xl p-6"
-            >
-              <h3 className="font-['Arimo'] text-lg text-gray-900 mb-4">Academic Information</h3>
-              <div className="space-y-4">
-                <div>
-                  <p className="font-['Arimo'] text-sm text-gray-500 mb-2">Subjects of Interest</p>
-                  <div className="flex flex-wrap gap-2">
-                    {application.subjects.map((subject, index) => (
-                      <span key={index} className="bg-cyan-100 text-cyan-700 px-4 py-2 rounded-xl text-sm font-['Arimo']">
-                        {subject}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <p className="font-['Arimo'] text-sm text-gray-500 mb-1">Preferred Schedule</p>
-                  <p className="font-['Arimo'] text-gray-900">{application.preferredSchedule}</p>
-                </div>
-                <div>
-                  <p className="font-['Arimo'] text-sm text-gray-500 mb-1">Learning Style</p>
-                  <p className="font-['Arimo'] text-gray-900">{application.learningStyle}</p>
-                </div>
-                <div>
-                  <p className="font-['Arimo'] text-sm text-gray-500 mb-1">Academic Goals</p>
-                  <p className="font-['Arimo'] text-gray-900">{application.goals}</p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Motivation Statement */}
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="bg-white rounded-3xl shadow-xl p-6"
-            >
-              <h3 className="font-['Arimo'] text-lg text-gray-900 mb-4">Motivation Statement</h3>
-              <p className="font-['Arimo'] text-gray-700 leading-relaxed">{application.motivation}</p>
-            </motion.div>
+            
           </div>
 
           {/* Sidebar */}

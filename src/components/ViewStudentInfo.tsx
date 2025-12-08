@@ -158,51 +158,17 @@ export default function ViewStudentInfo({ navigate, studentId }) {
                   <p className="font-['Arimo'] text-lg text-gray-900">{student.gradeLevel}</p>
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* School & Address */}
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] rounded-xl flex items-center justify-center shadow-lg">
-                <School className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="font-['Arimo'] text-2xl text-gray-900">School & Address</h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="md:col-span-2">
+              <div>
                 <label className="block font-['Arimo'] text-sm text-gray-500 mb-1">School Name</label>
                 <div className="flex items-center gap-2">
                   <School className="w-5 h-5 text-gray-400" />
                   <p className="font-['Arimo'] text-lg text-gray-900">{student.schoolName}</p>
                 </div>
               </div>
-
-              <div className="md:col-span-2">
-                <label className="block font-['Arimo'] text-sm text-gray-500 mb-1">Street Address</label>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-5 h-5 text-gray-400" />
-                  <p className="font-['Arimo'] text-lg text-gray-900">{student.address}</p>
-                </div>
-              </div>
-
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-500 mb-1">City</label>
-                <p className="font-['Arimo'] text-lg text-gray-900">{student.city}</p>
-              </div>
-
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-500 mb-1">State</label>
-                <p className="font-['Arimo'] text-lg text-gray-900">{student.state}</p>
-              </div>
-
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-500 mb-1">ZIP Code</label>
-                <p className="font-['Arimo'] text-lg text-gray-900">{student.zipCode}</p>
-              </div>
             </div>
           </div>
+
+          
 
           {/* Parent/Guardian Information */}
           <div>
@@ -239,16 +205,16 @@ export default function ViewStudentInfo({ navigate, studentId }) {
               </div>
 
               <div>
-                <label className="block font-['Arimo'] text-sm text-gray-500 mb-1">Emergency Contact</label>
-                <p className="font-['Arimo'] text-lg text-gray-900">{student.emergencyContact}</p>
+                <label className="block font-['Arimo'] text-sm text-gray-500 mb-1">Address</label>
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-5 h-5 text-gray-400" />
+                  <p className="font-['Arimo'] text-lg text-gray-900">{student.address}</p>
+                </div>
               </div>
 
               <div>
-                <label className="block font-['Arimo'] text-sm text-gray-500 mb-1">Emergency Phone</label>
-                <div className="flex items-center gap-2">
-                  <Phone className="w-5 h-5 text-gray-400" />
-                  <p className="font-['Arimo'] text-lg text-gray-900">{student.emergencyPhone}</p>
-                </div>
+                <label className="block font-['Arimo'] text-sm text-gray-500 mb-1">City</label>
+                <p className="font-['Arimo'] text-lg text-gray-900">{student.city}</p>
               </div>
             </div>
           </div>

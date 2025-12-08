@@ -212,7 +212,7 @@ export default function AddNewStudent({ navigate }) {
               <div className="w-12 h-12 bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] rounded-xl flex items-center justify-center shadow-lg">
                 <School className="w-6 h-6 text-white" />
               </div>
-              <h2 className="font-['Arimo'] text-2xl text-gray-900">School & Address</h2>
+              <h2 className="font-['Arimo'] text-2xl text-gray-900">School</h2>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -231,61 +231,7 @@ export default function AddNewStudent({ navigate }) {
                   />
                 </div>
               </div>
-
-              <div className="md:col-span-2">
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Street Address *</label>
-                <div className="relative">
-                  <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="text"
-                    name="address"
-                    value={formData.address}
-                    onChange={handleChange}
-                    className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 pl-12 font-['Arimo'] focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/20 transition-all"
-                    placeholder="123 Main Street"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">City *</label>
-                <input
-                  type="text"
-                  name="city"
-                  value={formData.city}
-                  onChange={handleChange}
-                  className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/20 transition-all"
-                  placeholder="City"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">State *</label>
-                <input
-                  type="text"
-                  name="state"
-                  value={formData.state}
-                  onChange={handleChange}
-                  className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/20 transition-all"
-                  placeholder="State"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">ZIP Code *</label>
-                <input
-                  type="text"
-                  name="zipCode"
-                  value={formData.zipCode}
-                  onChange={handleChange}
-                  className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/20 transition-all"
-                  placeholder="12345"
-                  required
-                />
-              </div>
+              
             </div>
           </div>
 

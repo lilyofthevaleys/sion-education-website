@@ -385,16 +385,7 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
                     <p className="font-['Arimo'] text-xl text-gray-900">{studentData.school}</p>
                   </div>
 
-                  {/* Location Field */}
-                  <div className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center">
-                        <MapPin className="w-5 h-5 text-white" />
-                      </div>
-                      <label className="font-['Arimo'] text-sm text-gray-600">Location</label>
-                    </div>
-                    <p className="font-['Arimo'] text-xl text-gray-900">{studentData.address}, {studentData.city}</p>
-                  </div>
+                  
                 </div>
               </motion.div>
             )}
@@ -489,6 +480,7 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
                   className="w-full border border-gray-300 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
                 />
               </div>
+              
             </div>
             <div className="p-6 flex gap-3 border-t border-gray-200">
               <motion.button

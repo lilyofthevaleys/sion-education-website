@@ -171,7 +171,7 @@ export default function EditStudentInfo({ navigate, studentId }) {
                 </div>
               </div>
 
-              <div>
+              <div className="md:col-span-2">
                 <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Date of Birth *</label>
                 <div className="relative">
                   <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -203,20 +203,7 @@ export default function EditStudentInfo({ navigate, studentId }) {
                   </select>
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* School & Address */}
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] rounded-xl flex items-center justify-center shadow-lg">
-                <School className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="font-['Arimo'] text-2xl text-gray-900">School & Address</h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="md:col-span-2">
+              <div>
                 <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">School Name *</label>
                 <div className="relative">
                   <School className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -230,59 +217,10 @@ export default function EditStudentInfo({ navigate, studentId }) {
                   />
                 </div>
               </div>
-
-              <div className="md:col-span-2">
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Street Address *</label>
-                <div className="relative">
-                  <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="text"
-                    name="address"
-                    value={formData.address}
-                    onChange={handleChange}
-                    className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 pl-12 font-['Arimo'] focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/20 transition-all"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">City *</label>
-                <input
-                  type="text"
-                  name="city"
-                  value={formData.city}
-                  onChange={handleChange}
-                  className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/20 transition-all"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">State *</label>
-                <input
-                  type="text"
-                  name="state"
-                  value={formData.state}
-                  onChange={handleChange}
-                  className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/20 transition-all"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">ZIP Code *</label>
-                <input
-                  type="text"
-                  name="zipCode"
-                  value={formData.zipCode}
-                  onChange={handleChange}
-                  className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/20 transition-all"
-                  required
-                />
-              </div>
             </div>
           </div>
+
+          
 
           {/* Parent/Guardian Information */}
           <div>
@@ -340,28 +278,28 @@ export default function EditStudentInfo({ navigate, studentId }) {
               </div>
 
               <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Emergency Contact Name</label>
-                <input
-                  type="text"
-                  name="emergencyContact"
-                  value={formData.emergencyContact}
-                  onChange={handleChange}
-                  className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/20 transition-all"
-                />
-              </div>
-
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Emergency Phone</label>
+                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Address</label>
                 <div className="relative">
-                  <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                   <input
-                    type="tel"
-                    name="emergencyPhone"
-                    value={formData.emergencyPhone}
+                    type="text"
+                    name="address"
+                    value={formData.address}
                     onChange={handleChange}
                     className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 pl-12 font-['Arimo'] focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/20 transition-all"
                   />
                 </div>
+              </div>
+
+              <div>
+                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">City</label>
+                <input
+                  type="text"
+                  name="city"
+                  value={formData.city}
+                  onChange={handleChange}
+                  className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/20 transition-all"
+                />
               </div>
             </div>
           </div>

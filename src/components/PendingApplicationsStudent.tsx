@@ -57,14 +57,7 @@ export default function PendingApplicationsStudent({ navigate, onApprove, onReje
     onReject?.();
   };
 
-  const handleBulkApprove = () => {
-    const highScoreApps = applications.filter(app => app.testScore >= 90);
-    setApplications(applications.filter(app => app.testScore < 90));
-    if (onApprove) {
-      highScoreApps.forEach(() => onApprove());
-    }
-    setConfirmModal({ isOpen: false, type: '', id: null });
-  };
+  
 
   const handleExport = () => {
     console.log('Exporting applications...');
@@ -99,17 +92,8 @@ export default function PendingApplicationsStudent({ navigate, onApprove, onReje
               </div>
             </div>
 
-            {/* Bulk Actions */}
+            {/* Actions */}
             <div className="flex gap-3">
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setConfirmModal({ isOpen: true, type: 'bulkApprove', id: null })}
-                className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-6 py-3 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl flex items-center gap-2"
-              >
-                <CheckCircle className="w-5 h-5" />
-                Approve All High Scores (90%+)
-              </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
@@ -231,16 +215,7 @@ export default function PendingApplicationsStudent({ navigate, onApprove, onReje
         icon={<Trash2 className="w-6 h-6 text-white" />}
       />
 
-      <ConfirmationModal
-        isOpen={confirmModal.isOpen && confirmModal.type === 'bulkApprove'}
-        onClose={() => setConfirmModal({ isOpen: false, type: '', id: null })}
-        onConfirm={handleBulkApprove}
-        title="Bulk Approve Applications"
-        message={`Are you sure you want to approve all students with test scores of 90% or higher? This will approve ${applications.filter(app => app.testScore >= 90).length} application(s).`}
-        confirmText="Approve All"
-        confirmColor="from-green-500 to-emerald-500"
-        icon={<CheckCircle className="w-6 h-6 text-white" />}
-      />
+      
 
       <ConfirmationModal
         isOpen={confirmModal.isOpen && confirmModal.type === 'delete'}

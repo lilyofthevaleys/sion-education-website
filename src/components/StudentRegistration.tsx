@@ -331,6 +331,21 @@ export default function StudentRegistration({ navigate }) {
                 <div>
                   <label className="flex items-center gap-2 font-['Arimo'] text-sm text-[#101828] mb-2">
                     <BookOpen className="w-4 h-4 text-[#2563EB]" />
+                    School Name *
+                  </label>
+                  <input
+                    type="text"
+                    name="schoolName"
+                    value={formData.schoolName}
+                    onChange={handleChange}
+                    className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] text-sm focus:outline-none focus:ring-2 focus:ring-[#2563EB] focus:border-transparent transition-all"
+                    placeholder="Your School"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="flex items-center gap-2 font-['Arimo'] text-sm text-[#101828] mb-2">
+                    <BookOpen className="w-4 h-4 text-[#2563EB]" />
                     Grade Level *
                   </label>
                   <select
@@ -346,23 +361,9 @@ export default function StudentRegistration({ navigate }) {
                     ))}
                   </select>
                 </div>
-
-                <div>
-                  <label className="flex items-center gap-2 font-['Arimo'] text-sm text-[#101828] mb-2">
-                    <BookOpen className="w-4 h-4 text-[#2563EB]" />
-                    School Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="schoolName"
-                    value={formData.schoolName}
-                    onChange={handleChange}
-                    className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] text-sm focus:outline-none focus:ring-2 focus:ring-[#2563EB] focus:border-transparent transition-all"
-                    placeholder="Your School"
-                    required
-                  />
-                </div>
               </div>
+
+              
             </div>
 
             {/* Parent/Guardian Information */}
@@ -420,46 +421,43 @@ export default function StudentRegistration({ navigate }) {
                   />
                 </div>
               </div>
-            </div>
 
-            {/* Address Information */}
-            <div className="space-y-4">
-              <h3 className="font-['Arimo'] text-lg text-[#101828] pb-2 border-b-2 border-gray-100">
-                Address Information
-              </h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label className="flex items-center gap-2 font-['Arimo'] text-sm text-[#101828] mb-2">
+                    <MapPin className="w-4 h-4 text-[#2563EB]" />
+                    Address *
+                  </label>
+                  <input
+                    type="text"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleChange}
+                    className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] text-sm focus:outline-none focus:ring-2 focus:ring-[#2563EB] focus:border-transparent transition-all"
+                    placeholder="Street Address"
+                    required
+                  />
+                </div>
 
-              <div>
-                <label className="flex items-center gap-2 font-['Arimo'] text-sm text-[#101828] mb-2">
-                  <MapPin className="w-4 h-4 text-[#2563EB]" />
-                  Address *
-                </label>
-                <input
-                  type="text"
-                  name="address"
-                  value={formData.address}
-                  onChange={handleChange}
-                  className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] text-sm focus:outline-none focus:ring-2 focus:ring-[#2563EB] focus:border-transparent transition-all"
-                  placeholder="Street Address"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="flex items-center gap-2 font-['Arimo'] text-sm text-[#101828] mb-2">
-                  <MapPin className="w-4 h-4 text-[#2563EB]" />
-                  City *
-                </label>
-                <input
-                  type="text"
-                  name="city"
-                  value={formData.city}
-                  onChange={handleChange}
-                  className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] text-sm focus:outline-none focus:ring-2 focus:ring-[#2563EB] focus:border-transparent transition-all"
-                  placeholder="City"
-                  required
-                />
+                <div>
+                  <label className="flex items-center gap-2 font-['Arimo'] text-sm text-[#101828] mb-2">
+                    <MapPin className="w-4 h-4 text-[#2563EB]" />
+                    City *
+                  </label>
+                  <input
+                    type="text"
+                    name="city"
+                    value={formData.city}
+                    onChange={handleChange}
+                    className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] text-sm focus:outline-none focus:ring-2 focus:ring-[#2563EB] focus:border-transparent transition-all"
+                    placeholder="City"
+                    required
+                  />
+                </div>
               </div>
             </div>
+
+            {/* Address Information removed per new policy */}
 
             {/* Action Buttons */}
             <div className="flex items-center justify-between pt-6 border-t-2 border-gray-100">
