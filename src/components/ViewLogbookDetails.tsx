@@ -33,6 +33,7 @@ Alex was engaged throughout the session and asked thoughtful questions about rea
     homework: 'Practice Set 5.2, problems 1-20 (due Nov 28)',
     studentBehavior: 'Excellent - Engaged and participated actively',
     nextTopic: 'Graphing Quadratic Functions',
+    photos: [],
     attachmentUrl: null,
     submittedDate: '2024-11-25 at 5:30 PM',
     status: 'pending' // pending, approved, rejected
@@ -191,13 +192,7 @@ Alex was engaged throughout the session and asked thoughtful questions about rea
                 <p className="font-['Arimo'] text-lg text-gray-900">{logbook.duration}</p>
               </div>
 
-              <div className="md:col-span-3">
-                <label className="block font-['Arimo'] text-sm text-gray-500 mb-1">Subject</label>
-                <div className="flex items-center gap-2">
-                  <BookOpen className="w-5 h-5 text-gray-400" />
-                  <p className="font-['Arimo'] text-lg text-gray-900">{logbook.subject}</p>
-                </div>
-              </div>
+              
             </div>
           </div>
 
@@ -234,8 +229,16 @@ Alex was engaged throughout the session and asked thoughtful questions about rea
               </div>
 
               <div>
-                <label className="block font-['Arimo'] text-sm text-gray-500 mb-2">Next Topic</label>
-                <p className="font-['Arimo'] text-lg text-gray-900 bg-blue-50 p-4 rounded-xl border-2 border-blue-200">{logbook.nextTopic}</p>
+                <label className="block font-['Arimo'] text-sm text-gray-500 mb-2">Photo Evidence</label>
+                <div className="grid sm:grid-cols-2 gap-4 bg-gray-50 p-4 rounded-xl">
+                  {(logbook.photos || []).length > 0 ? (
+                    (logbook.photos || []).map((src, i) => (
+                      <img key={i} src={src} alt={`Evidence ${i+1}`} className="rounded-xl border" />
+                    ))
+                  ) : (
+                    <p className="font-['Arimo'] text-sm text-gray-500">No photos attached</p>
+                  )}
+                </div>
               </div>
             </div>
           </div>

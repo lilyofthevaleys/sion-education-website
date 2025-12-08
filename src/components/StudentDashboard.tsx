@@ -77,8 +77,8 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
           <div className="flex items-center justify-between">
             {/* Logo & Title */}
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 bg-gradient-to-br from-[#2563EB] via-[#4F46E5] to-[#7C3AED] rounded-2xl flex items-center justify-center shadow-2xl relative">
-                <GraduationCap className="w-8 h-8 text-white relative z-10" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-[#2563EB] via-[#4F46E5] to-[#7C3AED] rounded-2xl flex items-center justify-center shadow-2xl relative">
+                <GraduationCap className="w-7 h-7 sm:w-8 sm:h-8 text-white relative z-10" />
               </div>
               <div>
                 <h1 className="font-['Arimo'] text-2xl bg-gradient-to-r from-[#2563EB] to-[#7C3AED] bg-clip-text text-transparent">
@@ -98,15 +98,15 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setShowProfileManager(true)}
-                className="w-12 h-12 bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] rounded-full flex items-center justify-center text-white shadow-lg ring-4 ring-purple-100 hover:ring-purple-200 transition-all cursor-pointer"
+                className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] rounded-full flex items-center justify-center text-white shadow-lg ring-4 ring-purple-100 hover:ring-purple-200 transition-all cursor-pointer"
               >
-                <span className="text-lg font-bold">{studentData.name.charAt(0)}</span>
+                <span className="text-base sm:text-lg font-bold">{studentData.name.charAt(0)}</span>
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setShowLogoutModal(true)}
-                className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-3 rounded-xl font-['Arimo'] shadow-lg hover:shadow-2xl transition-all"
+                className="flex items-center gap-2 bg-gradient-to-r from-red-500 to-red-600 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-['Arimo'] shadow-lg hover:shadow-2xl transition-all"
               >
                 <LogOut className="w-4 h-4" />
                 Logout
@@ -121,7 +121,7 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-8 bg-gradient-to-r from-[#2563EB] via-[#4F46E5] to-[#7C3AED] rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden"
+          className="mb-6 sm:mb-8 bg-gradient-to-r from-[#2563EB] via-[#4F46E5] to-[#7C3AED] rounded-3xl p-6 sm:p-8 text-white shadow-2xl relative overflow-hidden"
         >
           <div className="relative z-10">
             <motion.h2 
@@ -184,7 +184,7 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
           </div>
 
           {/* Tab Content */}
-          <div className="p-8">
+          <div className="p-6 sm:p-8">
             {/* SCHEDULE TAB */}
             {activeTab === 'schedule' && (
               <motion.div
@@ -194,20 +194,20 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
               >
                 {!studentData.hasSchedule ? (
                   // Empty State - Schedule Selection Needed
-                  <div className="text-center py-16">
+                  <div className="text-center py-10 sm:py-16">
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{ type: "spring", stiffness: 200 }}
                       className="mb-8"
                     >
-                      <div className="w-32 h-32 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
-                        <Calendar className="w-16 h-16 text-[#2563EB]" />
+                      <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
+                        <Calendar className="w-10 h-10 sm:w-12 sm:h-12 text-[#2563EB]" />
                       </div>
                     </motion.div>
                     
-                    <h3 className="font-['Arimo'] text-3xl text-gray-900 mb-4">No Schedule Selected Yet</h3>
-                    <p className="font-['Arimo'] text-gray-600 mb-8 max-w-md mx-auto text-lg">
+                    <h3 className="font-['Arimo'] text-2xl sm:text-3xl text-gray-900 mb-4">No Schedule Selected Yet</h3>
+                    <p className="font-['Arimo'] text-gray-600 mb-8 max-w-md mx-auto text-base sm:text-lg">
                       Get started by selecting your preferred lesson times. You can choose up to 3 weekly time slots.
                     </p>
 
@@ -215,7 +215,7 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
                       onClick={() => navigate('schedule-selection')}
                       whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full sm:w-auto bg-gradient-to-r from-[#2563EB] via-[#4F46E5] to-[#7C3AED] text-white px-10 sm:px-12 py-3 sm:py-4 rounded-2xl font-['Arimo'] text-lg shadow-2xl hover:shadow-3xl transition-all inline-flex items-center justify-center gap-3"
+                      className="w-full sm:w-auto bg-gradient-to-r from-[#2563EB] via-[#4F46E5] to-[#7C3AED] text-white px-6 sm:px-10 py-3 sm:py-4 rounded-2xl font-['Arimo'] text-base sm:text-lg shadow-2xl hover:shadow-3xl transition-all inline-flex items-center justify-center gap-3"
                     >
                       <ArrowRight className="w-6 h-6" />
                       Select Your Schedule
@@ -232,36 +232,36 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
 
                     <div className="flex items-center justify-between">
                       <h3 className="font-['Arimo'] text-2xl text-gray-900">Your Weekly Schedule</h3>
-                      <div className="flex items-center gap-2 bg-green-100 text-green-600 px-4 py-2 rounded-xl font-['Arimo']">
-                        <CheckCircle className="w-5 h-5" />
-                        Confirmed
-                      </div>
+                    <div className="flex items-center gap-2 bg-green-100 text-green-600 px-3 sm:px-4 py-2 rounded-xl font-['Arimo'] text-sm">
+                      <CheckCircle className="w-5 h-5" />
+                      Confirmed
+                    </div>
                     </div>
 
-                    <div className="grid gap-4">
+                    <div className="grid gap-3 sm:gap-4">
                       {studentData.selectedSchedules.map((schedule, index) => (
                         <motion.div
                           key={index}
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.1 }}
-                          className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all border border-gray-100"
+                          className="bg-white rounded-2xl p-5 sm:p-6 shadow-xl hover:shadow-2xl transition-all border border-gray-100"
                         >
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-6">
-                              <div className="w-16 h-16 bg-gradient-to-br from-[#2563EB] to-[#4F46E5] rounded-2xl flex items-center justify-center shadow-lg">
-                                <BookOpen className="w-8 h-8 text-white" />
+                          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                            <div className="flex items-center gap-4 sm:gap-6">
+                              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#2563EB] to-[#4F46E5] rounded-2xl flex items-center justify-center shadow-lg">
+                                <BookOpen className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                               </div>
                               <div>
-                                <h4 className="font-['Arimo'] text-xl text-gray-900 mb-1">{schedule.subject}</h4>
-                                <p className="font-['Arimo'] text-gray-600 flex items-center gap-2">
+                                <h4 className="font-['Arimo'] text-lg sm:text-xl text-gray-900 mb-1">{schedule.subject}</h4>
+                                <p className="font-['Arimo'] text-gray-600 text-sm sm:text-base flex items-center gap-2">
                                   <Calendar className="w-4 h-4" />
                                   {schedule.day} • {schedule.time}
                                 </p>
                               </div>
                             </div>
                             <div className="flex items-center gap-2">
-                              <span className="bg-green-100 text-green-600 px-4 py-2 rounded-full text-sm font-['Arimo']">
+                              <span className="bg-green-100 text-green-600 px-3 sm:px-4 py-2 rounded-full text-sm font-['Arimo']">
                                 Active
                               </span>
                             </div>
@@ -279,7 +279,7 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-center py-16"
+                className="text-center py-10 sm:py-16"
               >
                 <motion.div
                   initial={{ scale: 0 }}
@@ -287,13 +287,13 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
                   transition={{ type: "spring", stiffness: 200 }}
                   className="mb-8"
                 >
-                  <div className="w-32 h-32 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
-                    <MessageSquare className="w-16 h-16 text-[#4F46E5]" />
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-purple-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
+                    <MessageSquare className="w-10 h-10 sm:w-12 sm:h-12 text-[#4F46E5]" />
                   </div>
                 </motion.div>
 
-                <h3 className="font-['Arimo'] text-3xl text-gray-900 mb-4">Messages</h3>
-                <p className="font-['Arimo'] text-gray-600 mb-8 max-w-md mx-auto text-lg">
+                <h3 className="font-['Arimo'] text-2xl sm:text-3xl text-gray-900 mb-4">Messages</h3>
+                <p className="font-['Arimo'] text-gray-600 mb-8 max-w-md mx-auto text-base sm:text-lg">
                   Chat with your assigned teacher
                 </p>
 
@@ -301,7 +301,7 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
                   onClick={() => setShowChat(true)}
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className="bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white px-12 py-4 rounded-2xl font-['Arimo'] text-lg shadow-2xl hover:shadow-3xl transition-all inline-flex items-center gap-3"
+                  className="bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white px-6 sm:px-10 py-3 sm:py-4 rounded-2xl font-['Arimo'] text-base sm:text-lg shadow-2xl hover:shadow-3xl transition-all inline-flex items-center gap-3"
                 >
                   <MessageSquare className="w-6 h-6" />
                   Open Chat
@@ -329,9 +329,9 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
                   </motion.button>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                   {/* Name Field */}
-                  <div className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
+                  <div className="bg-white rounded-2xl p-5 sm:p-6 shadow-xl border border-gray-100">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
                         <User className="w-5 h-5 text-white" />
@@ -342,7 +342,7 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
                   </div>
 
                   {/* Email Field */}
-                  <div className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
+                  <div className="bg-white rounded-2xl p-5 sm:p-6 shadow-xl border border-gray-100">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">
                         <Mail className="w-5 h-5 text-white" />
@@ -353,7 +353,7 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
                   </div>
 
                   {/* Grade Field */}
-                  <div className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
+                  <div className="bg-white rounded-2xl p-5 sm:p-6 shadow-xl border border-gray-100">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center">
                         <BookOpen className="w-5 h-5 text-white" />
@@ -364,7 +364,7 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
                   </div>
 
                   {/* Phone Field */}
-                  <div className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
+                  <div className="bg-white rounded-2xl p-5 sm:p-6 shadow-xl border border-gray-100">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center">
                         <Phone className="w-5 h-5 text-white" />

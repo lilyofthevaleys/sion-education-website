@@ -241,7 +241,14 @@ export default function OnlineTest({ navigate, userRole = 'student' }) {
     if (userRole === 'teacher') {
       navigate('teacher-registration', { step: 3, testCompleted: true });
     } else {
-      navigate('test-submission', { userRole, answers, applicationId: 'S-301125-001' });
+      const now = new Date();
+      const dd = String(now.getDate()).padStart(2, '0');
+      const mm = String(now.getMonth() + 1).padStart(2, '0');
+      const yy = String(now.getFullYear()).slice(-2);
+      const seq = parseInt(localStorage.getItem('applicationSeq') || '0', 10) + 1;
+      localStorage.setItem('applicationSeq', String(seq).padStart(3, '0'));
+      const applicationId = `S-${dd}${mm}${yy}-${String(seq).padStart(3, '0')}`;
+      navigate('test-submission', { userRole, answers, applicationId });
     }
   };
 
@@ -257,7 +264,7 @@ export default function OnlineTest({ navigate, userRole = 'student' }) {
     <div className="min-h-screen bg-gradient-to-br from-[#EFF6FF] to-[#E0E7FF]">
       {/* Header */}
       <header className="bg-white shadow-lg sticky top-0 z-50 border-b-4 border-[#2563EB]">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-br from-[#2563EB] to-[#4F46E5] rounded-xl flex items-center justify-center shadow-lg">
@@ -295,7 +302,7 @@ export default function OnlineTest({ navigate, userRole = 'student' }) {
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid lg:grid-cols-[300px_1fr] gap-6">
           {/* Question Navigator Sidebar */}
           <motion.div 
@@ -308,7 +315,7 @@ export default function OnlineTest({ navigate, userRole = 'student' }) {
               <h2 className="font-['Arimo'] text-lg text-[#101828]">Questions</h2>
             </div>
 
-            <div className="grid grid-cols-5 gap-2 mb-6">
+            <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-2 mb-6">
               {questions.map((_, index) => {
                 const status = getQuestionStatus(index);
                 return (
@@ -316,14 +323,14 @@ export default function OnlineTest({ navigate, userRole = 'student' }) {
                     key={index}
                     onClick={() => setCurrentQuestion(index)}
                     className={`
-                      w-10 h-10 rounded-lg font-['Arimo'] text-sm transition-all
+                      w-9 h-9 sm:w-10 sm:h-10 rounded-lg font-['Arimo'] text-sm transition-all
                       ${currentQuestion === index 
                         ? 'bg-gradient-to-br from-[#2563EB] to-[#4F46E5] text-white shadow-lg scale-110' 
                         : status === 'answered'
-                        ? 'bg-[#16A34A] text-white'
-                        : status === 'marked'
-                        ? 'bg-[#EAB308] text-white'
-                        : 'bg-gray-100 text-[#4a5565] hover:bg-gray-200'
+                          ? 'bg-[#16A34A] text-white'
+                          : status === 'marked'
+                          ? 'bg-[#EAB308] text-white'
+                          : 'bg-gray-100 text-[#4a5565] hover:bg-gray-200'
                       }
                     `}
                   >
@@ -351,7 +358,7 @@ export default function OnlineTest({ navigate, userRole = 'student' }) {
 
           {/* Question Content */}
           <motion.div 
-            className="bg-white rounded-2xl shadow-xl p-8"
+            className="bg-white rounded-2xl shadow-xl p-6 sm:p-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
@@ -394,7 +401,7 @@ export default function OnlineTest({ navigate, userRole = 'student' }) {
                       key={index}
                       onClick={() => handleAnswerSelect(index)}
                       className={`
-                        w-full text-left p-4 rounded-xl border-2 transition-all font-['Arimo']
+                        w-full text-left p-3 sm:p-4 rounded-xl border-2 transition-all font-['Arimo']
                         ${answers[currentQuestion] === index
                           ? 'border-[#2563EB] bg-blue-50 shadow-lg'
                           : 'border-gray-200 hover:border-[#2563EB] hover:bg-gray-50'
@@ -426,7 +433,7 @@ export default function OnlineTest({ navigate, userRole = 'student' }) {
                   <button
                     onClick={handlePrevious}
                     disabled={currentQuestion === 0}
-                    className="flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-gray-300 text-[#4a5565] hover:border-[#2563EB] hover:text-[#2563EB] disabled:opacity-50 disabled:cursor-not-allowed transition-all font-['Arimo']"
+                    className="flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl border-2 border-gray-300 text-[#4a5565] hover:border-[#2563EB] hover:text-[#2563EB] disabled:opacity-50 disabled:cursor-not-allowed transition-all font-['Arimo']"
                   >
                     <ChevronLeft className="w-5 h-5" />
                     Previous
@@ -435,7 +442,7 @@ export default function OnlineTest({ navigate, userRole = 'student' }) {
                   <button
                     onClick={handleMarkForReview}
                     className={`
-                      px-6 py-3 rounded-xl border-2 transition-all font-['Arimo']
+                      px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl border-2 transition-all font-['Arimo']
                       ${markedForReview.has(currentQuestion)
                         ? 'border-[#EAB308] bg-[#EAB308] text-white'
                         : 'border-[#EAB308] text-[#EAB308] hover:bg-[#EAB308] hover:text-white'
@@ -448,7 +455,7 @@ export default function OnlineTest({ navigate, userRole = 'student' }) {
                   {currentQuestion === questions.length - 1 ? (
                     <button
                       onClick={() => setShowConfirmationModal(true)}
-                      className="flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-[#16A34A] to-[#22C55E] text-white hover:shadow-xl transition-all font-['Arimo']"
+                      className="flex items-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-[#16A34A] to-[#22C55E] text-white hover:shadow-xl transition-all font-['Arimo']"
                     >
                       Submit Test
                       <ChevronRight className="w-5 h-5" />
@@ -456,7 +463,7 @@ export default function OnlineTest({ navigate, userRole = 'student' }) {
                   ) : (
                     <button
                       onClick={handleNext}
-                      className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[#2563EB] to-[#4F46E5] text-white hover:shadow-xl transition-all font-['Arimo']"
+                      className="flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-[#2563EB] to-[#4F46E5] text-white hover:shadow-xl transition-all font-['Arimo']"
                     >
                       Next
                       <ChevronRight className="w-5 h-5" />

@@ -35,14 +35,14 @@ export default function ViewStudentInfo({ navigate, studentId }) {
         animate={{ y: 0, opacity: 1 }}
         className="bg-white/70 backdrop-blur-2xl shadow-lg sticky top-0 z-40 border-b border-white/20"
       >
-        <div className="max-w-[1400px] mx-auto px-8 py-4">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <motion.button
                 whileHover={{ scale: 1.1, x: -4 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => navigate('admin-dashboard')}
-                className="w-12 h-12 bg-white rounded-xl shadow-md hover:shadow-lg flex items-center justify-center"
+                className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl shadow-md hover:shadow-lg flex items-center justify-center"
               >
                 <ArrowLeft className="w-6 h-6 text-gray-700" />
               </motion.button>
@@ -56,7 +56,7 @@ export default function ViewStudentInfo({ navigate, studentId }) {
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => navigate('edit-student-info', { id: student.id })}
-              className="bg-gradient-to-r from-[#2563EB] to-[#4F46E5] text-white px-6 py-3 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl flex items-center gap-2"
+              className="bg-gradient-to-r from-[#2563EB] to-[#4F46E5] text-white px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl flex items-center gap-2"
             >
               <Edit className="w-5 h-5" />
               Edit Information
@@ -66,7 +66,7 @@ export default function ViewStudentInfo({ navigate, studentId }) {
       </motion.header>
 
       {/* Profile Content */}
-      <div className="max-w-[1400px] mx-auto px-8 py-8">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <div className="grid md:grid-cols-3 gap-6 mb-6">
           {/* Status Card */}
           <motion.div
@@ -105,7 +105,7 @@ export default function ViewStudentInfo({ navigate, studentId }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="bg-white rounded-3xl shadow-2xl p-8 space-y-8"
+          className="bg-white rounded-3xl shadow-2xl p-6 sm:p-8 space-y-8"
         >
           {/* Student Information */}
           <div>
@@ -116,7 +116,7 @@ export default function ViewStudentInfo({ navigate, studentId }) {
               <h2 className="font-['Arimo'] text-2xl text-gray-900">Student Information</h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <label className="block font-['Arimo'] text-sm text-gray-500 mb-1">First Name</label>
                 <p className="font-['Arimo'] text-lg text-gray-900">{student.firstName}</p>
@@ -151,13 +151,7 @@ export default function ViewStudentInfo({ navigate, studentId }) {
                 </div>
               </div>
 
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-500 mb-1">Grade Level</label>
-                <div className="flex items-center gap-2">
-                  <GraduationCap className="w-5 h-5 text-gray-400" />
-                  <p className="font-['Arimo'] text-lg text-gray-900">{student.gradeLevel}</p>
-                </div>
-              </div>
+              
               <div>
                 <label className="block font-['Arimo'] text-sm text-gray-500 mb-1">School Name</label>
                 <div className="flex items-center gap-2">
@@ -179,7 +173,7 @@ export default function ViewStudentInfo({ navigate, studentId }) {
               <h2 className="font-['Arimo'] text-2xl text-gray-900">Parent/Guardian Information</h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <label className="block font-['Arimo'] text-sm text-gray-500 mb-1">Parent/Guardian Name</label>
                 <div className="flex items-center gap-2">

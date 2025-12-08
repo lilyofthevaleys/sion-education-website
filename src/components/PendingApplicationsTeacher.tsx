@@ -75,14 +75,14 @@ export default function PendingApplicationsTeacher({ navigate, onApprove, onReje
         animate={{ y: 0, opacity: 1 }}
         className="bg-white/70 backdrop-blur-2xl shadow-lg sticky top-0 z-40 border-b border-white/20"
       >
-        <div className="max-w-[1800px] mx-auto px-8 py-4">
+        <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <motion.button
                 whileHover={{ scale: 1.1, x: -4 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => navigate('admin-dashboard')}
-                className="w-12 h-12 bg-white rounded-xl shadow-md hover:shadow-lg flex items-center justify-center"
+                className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl shadow-md hover:shadow-lg flex items-center justify-center"
               >
                 <ArrowLeft className="w-6 h-6 text-gray-700" />
               </motion.button>
@@ -97,7 +97,7 @@ export default function PendingApplicationsTeacher({ navigate, onApprove, onReje
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleExport}
-              className="bg-white border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-xl font-['Arimo'] shadow-md hover:shadow-lg flex items-center gap-2"
+              className="bg-white border-2 border-gray-300 text-gray-700 px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-['Arimo'] shadow-md hover:shadow-lg flex items-center gap-2"
             >
               <Download className="w-5 h-5" />
               Export List
@@ -107,7 +107,7 @@ export default function PendingApplicationsTeacher({ navigate, onApprove, onReje
       </motion.header>
 
       {/* Applications List */}
-      <div className="max-w-[1800px] mx-auto px-8 py-8">
+      <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <div className="space-y-4">
           {applications.map((app, index) => (
             <motion.div
@@ -120,13 +120,13 @@ export default function PendingApplicationsTeacher({ navigate, onApprove, onReje
               <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-6 border-b-2 border-purple-200">
                 <div className="flex items-start justify-between">
                   <div className="flex items-start gap-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-white text-2xl font-bold shadow-lg">
                       {app.name.charAt(0)}
                     </div>
                     <div>
                       <h3 className="font-['Arimo'] text-2xl text-gray-900 mb-1">{app.name}</h3>
                       <p className="font-['Arimo'] text-lg text-purple-700 mb-2">{app.subject}</p>
-                      <div className="flex items-center gap-2 mb-2">
+                      <div className="flex flex-wrap items-center gap-2 mb-2">
                         <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-['Arimo']">
                           {app.grades}
                         </span>
@@ -166,10 +166,7 @@ export default function PendingApplicationsTeacher({ navigate, onApprove, onReje
                     </div>
                   </div>
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between py-2 border-b border-gray-100">
-                      <span className="font-['Arimo'] text-sm text-gray-500">Availability</span>
-                      <span className="font-['Arimo'] text-sm text-gray-900">{app.availability}</span>
-                    </div>
+                    
                     <div className="bg-green-50 border-2 border-green-200 rounded-xl p-3">
                       <p className="font-['Arimo'] text-sm text-green-900 mb-1 flex items-center gap-2">
                         📅 <strong>Interview Scheduled:</strong>
@@ -190,7 +187,7 @@ export default function PendingApplicationsTeacher({ navigate, onApprove, onReje
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => handleViewResume(app.resumeUrl)}
-                    className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white py-3 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                    className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white py-2 sm:py-3 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                   >
                     <FileText className="w-5 h-5" />
                     View Resume
@@ -199,7 +196,7 @@ export default function PendingApplicationsTeacher({ navigate, onApprove, onReje
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setConfirmModal({ isOpen: true, type: 'approve', id: app.id })}
-                    className="bg-gradient-to-r from-green-500 to-emerald-500 text-white py-3 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                    className="bg-gradient-to-r from-green-500 to-emerald-500 text-white py-2 sm:py-3 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                   >
                     <CheckCircle className="w-5 h-5" />
                     Approve & Hire
@@ -208,7 +205,7 @@ export default function PendingApplicationsTeacher({ navigate, onApprove, onReje
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setConfirmModal({ isOpen: true, type: 'reject', id: app.id })}
-                    className="bg-gradient-to-r from-red-500 to-red-600 text-white py-3 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                    className="bg-gradient-to-r from-red-500 to-red-600 text-white py-2 sm:py-3 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                   >
                     <XCircle className="w-5 h-5" />
                     Reject

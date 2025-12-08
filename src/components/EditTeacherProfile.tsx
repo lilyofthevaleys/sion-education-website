@@ -13,16 +13,11 @@ export default function EditTeacherProfile({ navigate, teacherId }) {
     phone: '+1 (555) 987-6543',
     dateOfBirth: '1985-03-20',
     subject: 'Mathematics',
-    grades: 'Grades 9-12',
     address: '456 Maple Avenue',
-    city: 'Springfield',
-    state: 'IL',
-    zipCode: '62702',
     education: 'Master of Education - University of Illinois',
     certification: 'State Certified Math Teacher',
-    experience: '12',
-    availability: 'Mon-Fri 9AM-5PM',
-    specialties: 'Algebra, Calculus, SAT Prep'
+    experience: '12'
+    
   });
 
   const [showSaveModal, setShowSaveModal] = useState(false);
@@ -52,9 +47,7 @@ export default function EditTeacherProfile({ navigate, teacherId }) {
     'Biology', 'Computer Science', 'Art', 'Music'
   ];
 
-  const gradeOptions = [
-    'Grades 7-8', 'Grades 9-10', 'Grades 11-12', 'Grades 7-12', 'Grades 9-12'
-  ];
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#F0F4FF] via-[#E8F0FE] to-[#F0F9FF]">
@@ -190,6 +183,21 @@ export default function EditTeacherProfile({ navigate, teacherId }) {
                   />
                 </div>
               </div>
+
+              <div>
+                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Address *</label>
+                <div className="relative">
+                  <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <input
+                    type="text"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleChange}
+                    className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 pl-12 font-['Arimo'] focus:outline-none focus:border-[#4F46E5] focus:ring-4 focus:ring-[#4F46E5]/20 transition-all"
+                    required
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
@@ -221,23 +229,7 @@ export default function EditTeacherProfile({ navigate, teacherId }) {
                 </div>
               </div>
 
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Grade Levels *</label>
-                <div className="relative">
-                  <GraduationCap className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <select
-                    name="grades"
-                    value={formData.grades}
-                    onChange={handleChange}
-                    className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 pl-12 font-['Arimo'] focus:outline-none focus:border-[#4F46E5] focus:ring-4 focus:ring-[#4F46E5]/20 transition-all"
-                    required
-                  >
-                    {gradeOptions.map(grade => (
-                      <option key={grade} value={grade}>{grade}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
+              
 
               <div>
                 <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Years of Experience *</label>
@@ -252,30 +244,9 @@ export default function EditTeacherProfile({ navigate, teacherId }) {
                 />
               </div>
 
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Availability *</label>
-                <input
-                  type="text"
-                  name="availability"
-                  value={formData.availability}
-                  onChange={handleChange}
-                  placeholder="e.g., Mon-Fri 9AM-5PM"
-                  className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#4F46E5] focus:ring-4 focus:ring-[#4F46E5]/20 transition-all"
-                  required
-                />
-              </div>
+              
 
-              <div className="md:col-span-2">
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Specialties (comma-separated)</label>
-                <input
-                  type="text"
-                  name="specialties"
-                  value={formData.specialties}
-                  onChange={handleChange}
-                  placeholder="e.g., Algebra, Calculus, SAT Prep"
-                  className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#4F46E5] focus:ring-4 focus:ring-[#4F46E5]/20 transition-all"
-                />
-              </div>
+              
             </div>
           </div>
 
@@ -323,68 +294,7 @@ export default function EditTeacherProfile({ navigate, teacherId }) {
             </div>
           </div>
 
-          {/* Address */}
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#2563EB] to-[#4F46E5] rounded-xl flex items-center justify-center shadow-lg">
-                <MapPin className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="font-['Arimo'] text-2xl text-gray-900">Address</h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="md:col-span-2">
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Street Address *</label>
-                <div className="relative">
-                  <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="text"
-                    name="address"
-                    value={formData.address}
-                    onChange={handleChange}
-                    className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 pl-12 font-['Arimo'] focus:outline-none focus:border-[#4F46E5] focus:ring-4 focus:ring-[#4F46E5]/20 transition-all"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">City *</label>
-                <input
-                  type="text"
-                  name="city"
-                  value={formData.city}
-                  onChange={handleChange}
-                  className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#4F46E5] focus:ring-4 focus:ring-[#4F46E5]/20 transition-all"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">State *</label>
-                <input
-                  type="text"
-                  name="state"
-                  value={formData.state}
-                  onChange={handleChange}
-                  className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#4F46E5] focus:ring-4 focus:ring-[#4F46E5]/20 transition-all"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">ZIP Code *</label>
-                <input
-                  type="text"
-                  name="zipCode"
-                  value={formData.zipCode}
-                  onChange={handleChange}
-                  className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#4F46E5] focus:ring-4 focus:ring-[#4F46E5]/20 transition-all"
-                  required
-                />
-              </div>
-            </div>
-          </div>
+          
         </motion.div>
       </div>
 

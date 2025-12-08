@@ -4,7 +4,13 @@ import { motion } from 'motion/react';
 
 export default function TestSubmission({ navigate, userRole = 'student', applicationId }) {
   const isStudent = userRole === 'student';
-  const generatedId = applicationId || `SION-2024-${Math.floor(Math.random() * 90000) + 10000}`;
+  const now = new Date();
+  const dd = String(now.getDate()).padStart(2, '0');
+  const mm = String(now.getMonth() + 1).padStart(2, '0');
+  const yy = String(now.getFullYear()).slice(-2);
+  const seq = parseInt(localStorage.getItem('applicationSeq') || '0', 10);
+  const defaultId = `S-${dd}${mm}${yy}-${String(seq).padStart(3, '0')}`;
+  const generatedId = applicationId || defaultId;
 
   const nextSteps = isStudent ? [
     {

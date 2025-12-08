@@ -75,14 +75,14 @@ export default function PendingApplicationsStudent({ navigate, onApprove, onReje
         animate={{ y: 0, opacity: 1 }}
         className="bg-white/70 backdrop-blur-2xl shadow-lg sticky top-0 z-40 border-b border-white/20"
       >
-        <div className="max-w-[1800px] mx-auto px-8 py-4">
+        <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <motion.button
                 whileHover={{ scale: 1.1, x: -4 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => navigate('admin-dashboard')}
-                className="w-12 h-12 bg-white rounded-xl shadow-md hover:shadow-lg flex items-center justify-center"
+                className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl shadow-md hover:shadow-lg flex items-center justify-center"
               >
                 <ArrowLeft className="w-6 h-6 text-gray-700" />
               </motion.button>
@@ -98,7 +98,7 @@ export default function PendingApplicationsStudent({ navigate, onApprove, onReje
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleExport}
-                className="bg-white border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-xl font-['Arimo'] shadow-md hover:shadow-lg flex items-center gap-2"
+                className="bg-white border-2 border-gray-300 text-gray-700 px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-['Arimo'] shadow-md hover:shadow-lg flex items-center gap-2"
               >
                 <Download className="w-5 h-5" />
                 Export List
@@ -109,7 +109,7 @@ export default function PendingApplicationsStudent({ navigate, onApprove, onReje
       </motion.header>
 
       {/* Applications List */}
-      <div className="max-w-[1800px] mx-auto px-8 py-8">
+      <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <div className="space-y-4">
           {applications.map((app, index) => (
             <motion.div
@@ -122,12 +122,12 @@ export default function PendingApplicationsStudent({ navigate, onApprove, onReje
               <div className="p-6">
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-start gap-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center text-white text-2xl font-bold shadow-lg">
                       {app.name.charAt(0)}
                     </div>
                     <div>
                       <h3 className="font-['Arimo'] text-xl text-gray-900 mb-1">{app.name}</h3>
-                      <div className="flex items-center gap-3 mb-2">
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-2">
                         <span className="font-['Arimo'] text-sm text-gray-600">{app.email}</span>
                         <span className="text-gray-300">•</span>
                         <span className="font-['Arimo'] text-sm text-gray-600">{app.phone}</span>
@@ -144,7 +144,7 @@ export default function PendingApplicationsStudent({ navigate, onApprove, onReje
                   </div>
                   <div className="text-right">
                     <div className="mb-2">
-                      <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl font-['Arimo'] text-lg shadow-md ${
+                      <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl font-['Arimo'] text-base sm:text-lg shadow-md ${
                         app.testScore >= 90
                           ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white'
                           : app.testScore >= 80
@@ -165,7 +165,7 @@ export default function PendingApplicationsStudent({ navigate, onApprove, onReje
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => navigate('view-student-application', { id: app.id })}
-                    className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                    className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-2 sm:py-3 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                     title="View full application details"
                   >
                     <Eye className="w-5 h-5" />

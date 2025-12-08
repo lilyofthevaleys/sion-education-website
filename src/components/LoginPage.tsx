@@ -133,7 +133,7 @@ export default function LoginPage({ navigate, onLogin }) {
     <div className="min-h-screen bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE]">
       {/* Header */}
       <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-br from-[#2563EB] to-[#3B82F6] rounded-lg flex items-center justify-center">
@@ -154,8 +154,8 @@ export default function LoginPage({ navigate, onLogin }) {
       </header>
 
       {/* Login Form */}
-      <div className="max-w-md mx-auto px-4 py-16">
-        <div className="bg-white rounded-2xl shadow-2xl p-8">
+      <div className="max-w-md mx-auto px-4 py-10 sm:py-14 lg:py-16">
+        <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8">
           <div className="text-center mb-8">
             <div className="w-16 h-16 bg-gradient-to-br from-[#2563EB] to-[#3B82F6] rounded-xl flex items-center justify-center mx-auto mb-4">
               <GraduationCap className="w-8 h-8 text-white" />
@@ -206,7 +206,7 @@ export default function LoginPage({ navigate, onLogin }) {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white py-4 rounded-lg font-['Arimo'] transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed shadow-lg"
+              className="w-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white py-3 sm:py-4 rounded-lg font-['Arimo'] transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed shadow-lg"
             >
               {loading ? 'Logging in...' : 'Login'}
             </button>

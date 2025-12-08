@@ -56,7 +56,7 @@ export default function ViewStudentApplication({ navigate, applicationId, onAppr
         animate={{ y: 0, opacity: 1 }}
         className="bg-white/70 backdrop-blur-2xl shadow-lg sticky top-0 z-40 border-b border-white/20"
       >
-        <div className="max-w-[1400px] mx-auto px-8 py-4">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <motion.button
@@ -88,8 +88,8 @@ export default function ViewStudentApplication({ navigate, applicationId, onAppr
       </motion.header>
 
       {/* Content */}
-      <div className="max-w-[1400px] mx-auto px-8 py-8">
-        <div className="grid lg:grid-cols-3 gap-8">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <div className="grid lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
             {/* Personal Information */}
@@ -136,10 +136,6 @@ export default function ViewStudentApplication({ navigate, applicationId, onAppr
                     <p className="font-['Arimo'] text-sm text-gray-500 mb-1">Current School</p>
                     <p className="font-['Arimo'] text-gray-900">{application.school}</p>
                   </div>
-                  <div className="md:col-span-2">
-                    <p className="font-['Arimo'] text-sm text-gray-500 mb-1">Home Address</p>
-                    <p className="font-['Arimo'] text-gray-900">{application.address}</p>
-                  </div>
                 </div>
               </div>
             </motion.div>
@@ -165,6 +161,10 @@ export default function ViewStudentApplication({ navigate, applicationId, onAppr
                   <p className="font-['Arimo'] text-sm text-gray-500 mb-1">Parent Phone</p>
                   <p className="font-['Arimo'] text-gray-900">{application.parentPhone}</p>
                 </div>
+                <div className="md:col-span-2">
+                  <p className="font-['Arimo'] text-sm text-gray-500 mb-1">Home Address</p>
+                  <p className="font-['Arimo'] text-gray-900">{application.address}</p>
+                </div>
               </div>
             </motion.div>
 
@@ -177,7 +177,7 @@ export default function ViewStudentApplication({ navigate, applicationId, onAppr
             <motion.div
               initial={{ x: 50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              className="bg-white rounded-3xl shadow-xl overflow-hidden sticky top-24"
+              className="bg-white rounded-3xl shadow-xl overflow-hidden sticky top-20 sm:top-24"
             >
               <div className={`p-6 ${
                 application.testScore >= 90
@@ -187,16 +187,15 @@ export default function ViewStudentApplication({ navigate, applicationId, onAppr
                   : 'bg-gradient-to-br from-orange-500 to-amber-500'
               }`}>
                 <div className="flex items-center justify-center mb-4">
-                  <div className="w-32 h-32 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                  <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
                     <div className="text-center">
-                      <p className="text-6xl font-bold text-white">{application.testScore}</p>
-                      <p className="text-white/90 font-['Arimo'] text-lg">%</p>
+                      <p className="text-4xl sm:text-5xl md:text-6xl font-bold text-white">{application.testScore}</p>
+                      <p className="text-white/90 font-['Arimo'] text-base sm:text-lg">%</p>
                     </div>
                   </div>
                 </div>
                 <div className="text-center text-white">
                   <p className="font-['Arimo'] text-lg mb-1">Entrance Test Score</p>
-                  <p className="font-['Arimo'] text-sm text-white/80">Completed: {application.testDate}</p>
                   <p className="font-['Arimo'] text-sm text-white/80">Duration: {application.testDuration}</p>
                 </div>
               </div>

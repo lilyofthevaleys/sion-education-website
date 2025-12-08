@@ -21,7 +21,7 @@ export default function LandingPage({ navigate }) {
         animate={{ y: 0 }}
         className="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-blue-100"
       >
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <motion.div 
@@ -133,16 +133,16 @@ export default function LandingPage({ navigate }) {
                 delay: i * 0.5,
               }}
             >
-              {i % 3 === 0 ? <BookOpen className="w-12 h-12" /> : i % 3 === 1 ? <GraduationCap className="w-12 h-12" /> : <Sparkles className="w-12 h-12" />}
+              {i % 3 === 0 ? <BookOpen className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" /> : i % 3 === 1 ? <GraduationCap className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" /> : <Sparkles className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" />}
             </motion.div>
           ))}
         </div>
 
         <motion.div 
-          className="max-w-7xl mx-auto px-6 relative z-10"
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
           style={{ y: heroY, opacity: heroOpacity }}
         >
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
             <div>
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
@@ -155,7 +155,7 @@ export default function LandingPage({ navigate }) {
               </motion.div>
 
               <motion.h1 
-                className="font-['Arimo'] text-5xl md:text-6xl text-[#101828] mb-6 leading-tight"
+                className="font-['Arimo'] text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#101828] mb-6 leading-tight"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
@@ -167,7 +167,7 @@ export default function LandingPage({ navigate }) {
               </motion.h1>
 
               <motion.p 
-                className="font-['Arimo'] text-lg text-[#4a5565] mb-8 leading-relaxed"
+                className="font-['Arimo'] text-base sm:text-lg text-[#4a5565] mb-8 leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
@@ -184,7 +184,7 @@ export default function LandingPage({ navigate }) {
               >
                 <motion.button 
                   onClick={() => navigate('signup')}
-                  className="bg-gradient-to-r from-[#2563EB] to-[#4F46E5] hover:from-[#1D4ED8] hover:to-[#4338CA] text-white px-8 py-4 rounded-xl font-['Arimo'] flex items-center gap-2 shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/50 transition-all relative overflow-hidden group"
+                  className="bg-gradient-to-r from-[#2563EB] to-[#4F46E5] hover:from-[#1D4ED8] hover:to-[#4338CA] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-xl font-['Arimo'] flex items-center gap-2 shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/50 transition-all relative overflow-hidden group"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -195,7 +195,7 @@ export default function LandingPage({ navigate }) {
 
                 <motion.button 
                   onClick={() => navigate('teacher-registration')}
-                  className="bg-white hover:bg-gray-50 text-[#2563EB] border-2 border-[#2563EB] px-8 py-4 rounded-xl font-['Arimo'] transition-all shadow-lg hover:shadow-xl group"
+                  className="bg-white hover:bg-gray-50 text-[#2563EB] border-2 border-[#2563EB] px-6 py-3 sm:px-8 sm:py-4 rounded-xl font-['Arimo'] transition-all shadow-lg hover:shadow-xl group"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -205,7 +205,7 @@ export default function LandingPage({ navigate }) {
 
               {/* Trust Indicators */}
               <motion.div 
-                className="flex items-center gap-8 mt-10"
+                className="flex items-center gap-4 sm:gap-6 mt-10"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8 }}
@@ -261,7 +261,7 @@ export default function LandingPage({ navigate }) {
 
                 {/* Floating Badge */}
                 <motion.div
-                  className="absolute top-1/2 -left-8 bg-white rounded-2xl shadow-xl p-4 border border-blue-100"
+                  className="absolute top-1/2 left-2 sm:-left-8 bg-white rounded-2xl shadow-xl p-4 border border-blue-100"
                   animate={{ x: [0, 10, 0], y: [-5, 5, -5] }}
                   transition={{ duration: 4, repeat: Infinity }}
                 >
@@ -283,11 +283,11 @@ export default function LandingPage({ navigate }) {
 
       {/* Platform Info Banner */}
       <AnimatedSection>
-        <div className="py-12 bg-white relative overflow-hidden">
+        <div className="py-8 sm:py-12 bg-white relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-[#2563EB]/5 to-[#4F46E5]/5"></div>
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <motion.div 
-              className="bg-gradient-to-r from-[#2563EB] via-[#4F46E5] to-[#7C3AED] rounded-3xl shadow-2xl p-12 text-center text-white relative overflow-hidden"
+              className="bg-gradient-to-r from-[#2563EB] via-[#4F46E5] to-[#7C3AED] rounded-3xl shadow-2xl p-6 sm:p-8 md:p-12 text-center text-white relative overflow-hidden"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
@@ -313,12 +313,12 @@ export default function LandingPage({ navigate }) {
 
       {/* Stats Section */}
       <AnimatedSection>
-        <div className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
+        <div className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
           <div className="absolute inset-0 opacity-5">
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iYmxhY2siIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')]"></div>
           </div>
           
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <motion.div 
               className="text-center mb-16"
               initial={{ opacity: 0, y: 30 }}
@@ -333,7 +333,7 @@ export default function LandingPage({ navigate }) {
               >
                 <Target className="w-12 h-12 text-[#2563EB] mx-auto" />
               </motion.div>
-              <h2 className="font-['Arimo'] text-5xl text-[#101828] mb-4"><span className="font-bold">Our Impact</span> in Numbers</h2>
+              <h2 className="font-['Arimo'] text-3xl sm:text-4xl lg:text-5xl text-[#101828] mb-4"><span className="font-bold">Our Impact</span> in Numbers</h2>
               <p className="font-['Arimo'] text-xl text-[#4a5565]">Trusted by <span className="font-bold text-[#2563EB]">students</span> and <span className="font-bold text-[#4F46E5]">educators</span> worldwide</p>
             </motion.div>
 
@@ -341,8 +341,7 @@ export default function LandingPage({ navigate }) {
               {[
                 { icon: Users, number: '500+', label: 'Active Students', color: 'from-[#2563EB] to-[#3B82F6]', delay: 0 },
                 { icon: GraduationCap, number: '100+', label: 'Qualified Teachers', color: 'from-[#4F46E5] to-[#6366F1]', delay: 0.1 },
-                { icon: BookOpen, number: '50+', label: 'Courses Offered', color: 'from-[#0891B2] to-[#06B6D4]', delay: 0.2 },
-                { icon: TrendingUp, number: '95%', label: 'Success Rate', color: 'from-[#16A34A] to-[#22C55E]', delay: 0.3 },
+                { icon: TrendingUp, number: '95%', label: 'Success Rate', color: 'from-[#16A34A] to-[#22C55E]', delay: 0.2 },
               ].map((stat, index) => (
                 <StatCard key={index} {...stat} />
               ))}
@@ -353,8 +352,8 @@ export default function LandingPage({ navigate }) {
 
       {/* How It Works */}
       <AnimatedSection>
-        <div className="py-20 bg-white relative overflow-hidden">
-          <div className="max-w-7xl mx-auto px-6">
+        <div className="py-12 sm:py-16 lg:py-20 bg-white relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div 
               className="text-center mb-16"
               initial={{ opacity: 0, y: 30 }}
@@ -368,7 +367,7 @@ export default function LandingPage({ navigate }) {
               >
                 <Zap className="w-12 h-12 text-[#EAB308] mx-auto" />
               </motion.div>
-              <h2 className="font-['Arimo'] text-5xl text-[#101828] mb-4"><span className="font-bold">How It Works</span></h2>
+              <h2 className="font-['Arimo'] text-3xl sm:text-4xl lg:text-5xl text-[#101828] mb-4"><span className="font-bold">How It Works</span></h2>
               <p className="font-['Arimo'] text-xl text-[#4a5565]">Get started in <span className="font-bold text-[#101828]">three simple steps</span></p>
             </motion.div>
 
@@ -411,8 +410,8 @@ export default function LandingPage({ navigate }) {
 
       {/* Registration CTA */}
       <AnimatedSection>
-        <div className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-          <div className="max-w-7xl mx-auto px-6">
+        <div className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 gap-8">
               <RegistrationCard
                 title="For Students"
@@ -447,39 +446,14 @@ export default function LandingPage({ navigate }) {
         </div>
       </AnimatedSection>
 
-      {/* Courses Section */}
-      <AnimatedSection>
-        <div id="courses" className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-6">
-            <motion.div 
-              className="text-center mb-16"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="font-['Arimo'] text-5xl text-[#101828] mb-4">Courses We Offer</h2>
-              <p className="font-['Arimo'] text-xl text-[#4a5565]">Specialized education in core science subjects</p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              {[
-                { emoji: '📐', title: 'Mathematics', desc: 'Algebra, Geometry, Calculus & Statistics', color: 'from-[#2563EB] to-[#3B82F6]' },
-                { emoji: '⚛️', title: 'Physics', desc: 'Mechanics, Thermodynamics & Quantum Physics', color: 'from-[#4F46E5] to-[#6366F1]' },
-                { emoji: '🧪', title: 'Chemistry', desc: 'Organic, Inorganic & Physical Chemistry', color: 'from-[#0891B2] to-[#06B6D4]' },
-              ].map((course, index) => (
-                <CourseCard key={index} {...course} delay={index * 0.1} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </AnimatedSection>
+      
 
       {/* Footer */}
-      <footer className="bg-gradient-to-br from-[#101828] to-[#1e293b] text-white py-12 relative overflow-hidden">
+      <footer className="bg-gradient-to-br from-[#101828] to-[#1e293b] text-white py-8 sm:py-12 relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')]"></div>
         </div>
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -615,7 +589,7 @@ function StatCard({ icon: Icon, number, label, color, delay }) {
         </motion.div>
         
         <motion.p 
-          className="font-['Arimo'] text-5xl text-[#101828] mb-2 relative z-10"
+          className="font-['Arimo'] text-3xl sm:text-4xl lg:text-5xl text-[#101828] mb-2 relative z-10"
           initial={{ scale: 0 }}
           animate={isInView ? { scale: 1 } : { scale: 0 }}
           transition={{ delay: delay + 0.2, type: "spring" }}
@@ -692,21 +666,21 @@ function RegistrationCard({ title, subtitle, gradient, image, features, buttonTe
       <div className={`absolute inset-0 bg-gradient-to-br ${gradient} rounded-3xl transform translate-x-1.5 translate-y-1.5 opacity-20 blur-lg`}></div>
       
       <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-white/50">
-        <div className={`bg-gradient-to-br ${gradient} p-8 text-white relative overflow-hidden`}>
+        <div className={`bg-gradient-to-br ${gradient} p-6 sm:p-8 text-white relative overflow-hidden`}>
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')]"></div>
           </div>
           <h3 className="font-['Arimo'] text-3xl mb-2 relative z-10">{title}</h3>
           <p className="font-['Arimo'] opacity-90 relative z-10">{subtitle}</p>
         </div>
-        <div className="p-8">
+        <div className="p-6 sm:p-8">
           <div className="mb-6 overflow-hidden rounded-xl relative">
             {/* Progressive blur frame effect */}
             <div className="absolute inset-0 border-4 border-transparent bg-gradient-to-br from-transparent via-white/30 to-transparent rounded-xl pointer-events-none z-10"></div>
             <ImageWithFallback 
               src={image}
               alt={title}
-              className="w-full h-48 object-cover"
+              className="w-full h-40 sm:h-48 object-cover"
             />
           </div>
           <ul className="space-y-3 mb-6">
@@ -725,7 +699,7 @@ function RegistrationCard({ title, subtitle, gradient, image, features, buttonTe
           </ul>
           <motion.button 
             onClick={onClick}
-            className={`w-full bg-gradient-to-r ${gradient} text-white py-4 rounded-xl font-['Arimo'] transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-xl`}
+            className={`w-full bg-gradient-to-r ${gradient} text-white py-3 sm:py-4 rounded-xl font-['Arimo'] transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-xl`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

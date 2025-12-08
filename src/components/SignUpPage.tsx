@@ -21,7 +21,7 @@ export default function SignUpPage({ navigate }) {
         animate={{ y: 0 }}
         className="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-blue-100"
       >
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-br from-[#2563EB] via-[#3B82F6] to-[#4F46E5] rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/50 relative">
@@ -44,7 +44,7 @@ export default function SignUpPage({ navigate }) {
       </motion.header>
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-6 py-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14 lg:py-16">
         {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -52,11 +52,11 @@ export default function SignUpPage({ navigate }) {
           className="text-center mb-16"
         >
           <div className="inline-block mb-6">
-            <div className="w-20 h-20 bg-gradient-to-br from-[#2563EB] to-[#4F46E5] rounded-2xl flex items-center justify-center shadow-2xl mx-auto">
-              <Users className="w-10 h-10 text-white" />
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#2563EB] to-[#4F46E5] rounded-2xl flex items-center justify-center shadow-2xl mx-auto">
+              <Users className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
             </div>
           </div>
-          <h1 className="font-['Arimo'] text-5xl md:text-6xl mb-4">
+          <h1 className="font-['Arimo'] text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4">
             <span className="font-bold text-[#101828]">Create Your Account</span>
           </h1>
           <p className="font-['Arimo'] text-xl text-[#4a5565]">
@@ -87,7 +87,7 @@ export default function SignUpPage({ navigate }) {
                 selectedType === 'student' ? 'from-[#2563EB] to-[#3B82F6] opacity-30' : 'from-gray-200 to-gray-300 opacity-20'
               }`}></div>
               
-              <div className={`relative bg-white rounded-2xl p-8 border-2 transition-all shadow-xl ${
+              <div className={`relative bg-white rounded-2xl p-6 sm:p-8 border-2 transition-all shadow-xl ${
                 selectedType === 'student' 
                   ? 'border-[#2563EB] ring-4 ring-[#2563EB]/20' 
                   : 'border-gray-200 hover:border-[#2563EB]/50'
@@ -104,8 +104,8 @@ export default function SignUpPage({ navigate }) {
                 </div>
 
                 {/* Icon */}
-                <div className="w-20 h-20 bg-gradient-to-br from-[#2563EB] to-[#3B82F6] rounded-2xl flex items-center justify-center mb-6 shadow-lg mx-auto">
-                  <span className="text-4xl">🎓</span>
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#2563EB] to-[#3B82F6] rounded-2xl flex items-center justify-center mb-6 shadow-lg mx-auto">
+                  <span className="text-3xl sm:text-4xl">🎓</span>
                 </div>
 
                 {/* Title */}
@@ -143,7 +143,7 @@ export default function SignUpPage({ navigate }) {
                 selectedType === 'teacher' ? 'from-[#4F46E5] to-[#6366F1] opacity-30' : 'from-gray-200 to-gray-300 opacity-20'
               }`}></div>
               
-              <div className={`relative bg-white rounded-2xl p-8 border-2 transition-all shadow-xl ${
+              <div className={`relative bg-white rounded-2xl p-6 sm:p-8 border-2 transition-all shadow-xl ${
                 selectedType === 'teacher' 
                   ? 'border-[#4F46E5] ring-4 ring-[#4F46E5]/20' 
                   : 'border-gray-200 hover:border-[#4F46E5]/50'
@@ -160,8 +160,8 @@ export default function SignUpPage({ navigate }) {
                 </div>
 
                 {/* Icon */}
-                <div className="w-20 h-20 bg-gradient-to-br from-[#4F46E5] to-[#6366F1] rounded-2xl flex items-center justify-center mb-6 shadow-lg mx-auto">
-                  <span className="text-4xl">👨‍🏫</span>
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#4F46E5] to-[#6366F1] rounded-2xl flex items-center justify-center mb-6 shadow-lg mx-auto">
+                  <span className="text-3xl sm:text-4xl">👨‍🏫</span>
                 </div>
 
                 {/* Title */}
@@ -226,7 +226,7 @@ export default function SignUpPage({ navigate }) {
             disabled={!selectedType}
             whileHover={selectedType ? { scale: 1.05 } : {}}
             whileTap={selectedType ? { scale: 0.95 } : {}}
-            className={`px-12 py-4 rounded-xl font-['Arimo'] text-lg transition-all shadow-lg relative overflow-hidden ${
+            className={`px-6 sm:px-12 py-3 sm:py-4 rounded-xl font-['Arimo'] text-lg transition-all shadow-lg relative overflow-hidden ${
               selectedType
                 ? 'bg-gradient-to-r from-[#2563EB] to-[#4F46E5] hover:from-[#1D4ED8] hover:to-[#4338CA] text-white shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/50'
                 : 'bg-gray-200 text-gray-400 cursor-not-allowed'

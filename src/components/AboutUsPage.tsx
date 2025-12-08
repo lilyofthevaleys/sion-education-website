@@ -7,12 +7,12 @@ export default function AboutUsPage({ navigate }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   
   const teachers = [
-    { name: 'Teacher 1', subject: 'Mathematics', bio: 'Short bio and qualifications', rating: 5 },
-    { name: 'Teacher 2', subject: 'Science', bio: 'Short bio and qualifications', rating: 5 },
-    { name: 'Teacher 3', subject: 'English', bio: 'Short bio and qualifications', rating: 5 },
-    { name: 'Teacher 4', subject: 'History', bio: 'Short bio and qualifications', rating: 5 },
-    { name: 'Teacher 5', subject: 'Art', bio: 'Short bio and qualifications', rating: 5 },
-    { name: 'Teacher 6', subject: 'Music', bio: 'Short bio and qualifications', rating: 5 },
+    { name: 'Teacher 1', subject: 'Mathematics', bio: 'Short bio and qualifications' },
+    { name: 'Teacher 2', subject: 'Science', bio: 'Short bio and qualifications' },
+    { name: 'Teacher 3', subject: 'English', bio: 'Short bio and qualifications' },
+    { name: 'Teacher 4', subject: 'History', bio: 'Short bio and qualifications' },
+    { name: 'Teacher 5', subject: 'Art', bio: 'Short bio and qualifications' },
+    { name: 'Teacher 6', subject: 'Music', bio: 'Short bio and qualifications' },
   ];
 
   const photos = [
@@ -40,7 +40,7 @@ export default function AboutUsPage({ navigate }) {
         animate={{ y: 0 }}
         className="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-blue-100"
       >
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-br from-[#2563EB] via-[#3B82F6] to-[#4F46E5] rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/50 relative">
@@ -76,12 +76,12 @@ export default function AboutUsPage({ navigate }) {
 
       {/* Hero Section */}
       <AnimatedSection>
-        <div className="bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] py-20 relative overflow-hidden">
+        <div className="bg-gradient-to-br from-[#EFF6FF] to-[#DBEAFE] py-12 sm:py-16 lg:py-20 relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iYmx1ZSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')]"></div>
           </div>
           
-          <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
@@ -93,7 +93,7 @@ export default function AboutUsPage({ navigate }) {
               </div>
             </motion.div>
             
-            <h1 className="font-['Arimo'] text-5xl md:text-6xl mb-6">
+            <h1 className="font-['Arimo'] text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-6">
               <span className="font-bold text-[#101828]">About SION Education</span>
             </h1>
             <p className="font-['Arimo'] text-xl text-[#4a5565] max-w-2xl mx-auto">
@@ -105,8 +105,8 @@ export default function AboutUsPage({ navigate }) {
 
       {/* Mission & Vision */}
       <AnimatedSection>
-        <div className="py-20 bg-white">
-          <div className="max-w-6xl mx-auto px-6">
+        <div className="py-12 sm:py-16 lg:py-20 bg-white">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 gap-8">
               {/* Mission */}
               <motion.div
@@ -152,17 +152,17 @@ export default function AboutUsPage({ navigate }) {
 
       {/* Our Teachers */}
       <AnimatedSection>
-        <div className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-          <div className="max-w-7xl mx-auto px-6">
+        <div className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="font-['Arimo'] text-5xl text-[#101828] mb-4"><span className="font-bold">Our Teachers</span></h2>
+              <h2 className="font-['Arimo'] text-3xl sm:text-4xl lg:text-5xl text-[#101828] mb-4"><span className="font-bold">Our Teachers</span></h2>
               <p className="font-['Arimo'] text-xl text-[#4a5565]">Meet our dedicated and qualified educators</p>
             </div>
 
             {/* Teacher Credentials */}
-            <div className="mb-12 bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
+            <div className="mb-12 bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-gray-100">
               <h3 className="font-['Arimo'] text-2xl text-[#101828] mb-6 text-center"><span className="font-bold">Teacher Qualifications</span></h3>
-              <div className="grid md:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
                 {[
                   { icon: Award, label: 'Verified Credentials', color: 'from-[#2563EB] to-[#3B82F6]' },
                   { icon: BookOpen, label: 'Teaching Experience', color: 'from-[#16A34A] to-[#22C55E]' },
@@ -190,7 +190,7 @@ export default function AboutUsPage({ navigate }) {
             </div>
 
             {/* Teacher Cards */}
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
               {teachers.map((teacher, index) => (
                 <TeacherCard key={index} {...teacher} delay={index * 0.1} />
               ))}
@@ -201,10 +201,10 @@ export default function AboutUsPage({ navigate }) {
 
       {/* Photo Gallery */}
       <AnimatedSection>
-        <div className="py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-6">
+        <div className="py-12 sm:py-16 lg:py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="font-['Arimo'] text-5xl text-[#101828] mb-4"><span className="font-bold">Photo Gallery</span></h2>
+              <h2 className="font-['Arimo'] text-3xl sm:text-4xl lg:text-5xl text-[#101828] mb-4"><span className="font-bold">Photo Gallery</span></h2>
               <p className="font-['Arimo'] text-xl text-[#4a5565]">Glimpses from our education center</p>
             </div>
 
@@ -223,14 +223,14 @@ export default function AboutUsPage({ navigate }) {
                   {/* Navigation Buttons */}
                   <button
                     onClick={prevSlide}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl hover:bg-white transition-all"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl hover:bg-white transition-all"
                   >
                     <ChevronLeft className="w-6 h-6 text-[#2563EB]" />
                   </button>
                   
                   <button
                     onClick={nextSlide}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl hover:bg-white transition-all"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl hover:bg-white transition-all"
                   >
                     <ChevronRight className="w-6 h-6 text-[#2563EB]" />
                   </button>
@@ -252,7 +252,7 @@ export default function AboutUsPage({ navigate }) {
             </div>
 
             {/* Thumbnail Grid */}
-            <div className="grid grid-cols-6 gap-4 mt-8">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4 mt-8">
               {photos.map((photo, i) => (
                 <motion.button
                   key={i}
@@ -315,8 +315,8 @@ function TeacherCard({ name, subject, bio, rating, delay }) {
       
       <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
         <div className="p-6">
-          <div className="w-24 h-24 bg-gradient-to-br from-[#2563EB] to-[#4F46E5] rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg">
-            <GraduationCap className="w-12 h-12 text-white" />
+          <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-[#2563EB] to-[#4F46E5] rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg">
+            <GraduationCap className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
           </div>
           
           <h3 className="font-['Arimo'] text-xl text-[#101828] text-center mb-2 font-bold">{name}</h3>
@@ -335,7 +335,7 @@ function TeacherCard({ name, subject, bio, rating, delay }) {
 function Footer({ navigate }) {
   return (
     <footer className="bg-gradient-to-br from-[#101828] to-[#1e293b] text-white py-12">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="flex items-center gap-3 mb-4">

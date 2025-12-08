@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { GraduationCap, AlertCircle, ArrowLeft, Upload, FileText, CheckCircle, ChevronRight, ChevronLeft, User, Mail, Phone, Lock, BookOpen, Award, Calendar, Eye, EyeOff } from 'lucide-react';
+import { GraduationCap, AlertCircle, ArrowLeft, Upload, FileText, CheckCircle, ChevronRight, ChevronLeft, User, Mail, Phone, Lock, BookOpen, Award, Calendar, Eye, EyeOff, MapPin } from 'lucide-react';
 import { authApi } from '../utils/api';
 import { motion } from 'motion/react';
 import ConfirmationModal from './ConfirmationModal';
@@ -20,6 +20,7 @@ export default function TeacherRegistration({ navigate, pageData }) {
     experienceYears: '',
     education: '',
     certifications: '',
+    dateOfBirth: '',
     address: '',
   });
 
@@ -165,7 +166,7 @@ export default function TeacherRegistration({ navigate, pageData }) {
           initial={{ y: -100 }}
           animate={{ y: 0 }}
         >
-          <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-gradient-to-br from-[#4F46E5] to-[#6366F1] rounded-xl flex items-center justify-center shadow-lg">
@@ -182,7 +183,7 @@ export default function TeacherRegistration({ navigate, pageData }) {
 
         {/* Progress Steps */}
         <div className="bg-white border-b border-gray-200 py-6">
-          <div className="max-w-4xl mx-auto px-6">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between">
               {steps.map((step, index) => (
                 <React.Fragment key={step.number}>
@@ -223,11 +224,11 @@ export default function TeacherRegistration({ navigate, pageData }) {
         </div>
 
         {/* Interview Scheduler Content */}
-        <div className="max-w-[1400px] mx-auto px-8 py-8">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white rounded-3xl shadow-xl p-8 mb-8"
+            className="bg-white rounded-3xl shadow-xl p-6 sm:p-8 mb-8"
           >
             <div className="mb-6">
               <h2 className="font-['Arimo'] text-3xl text-gray-900 mb-2">Schedule Your Interview</h2>
@@ -247,27 +248,27 @@ export default function TeacherRegistration({ navigate, pageData }) {
   // Step 4: Confirmation (Done)
   if (currentStep === 4) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#EFF6FF] via-[#DBEAFE] to-[#E0E7FF] flex items-center justify-center p-6">
+      <div className="min-h-screen bg-gradient-to-br from-[#EFF6FF] via-[#DBEAFE] to-[#E0E7FF] flex items-center justify-center p-5 sm:p-6">
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="bg-white rounded-3xl shadow-2xl p-12 max-w-2xl w-full text-center"
+          className="bg-white rounded-3xl shadow-2xl p-8 sm:p-12 max-w-2xl w-full text-center"
         >
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2, type: 'spring' }}
-            className="w-24 h-24 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6"
+            className="w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6"
           >
             <CheckCircle className="w-12 h-12 text-white" />
           </motion.div>
           
           <h1 className="font-['Arimo'] text-4xl text-gray-900 mb-4">Application Submitted!</h1>
-          <p className="font-['Arimo'] text-lg text-gray-600 mb-8">
+          <p className="font-['Arimo'] text-base sm:text-lg text-gray-600 mb-8">
             Thank you for applying to SION Education. Your application is now under review.
           </p>
 
-          <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl p-6 mb-8">
+          <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl p-5 sm:p-6 mb-8">
             <h3 className="font-['Arimo'] text-lg text-gray-900 mb-4">What's Next?</h3>
             <div className="space-y-3 text-left">
               <div className="flex items-start gap-3">
@@ -295,7 +296,7 @@ export default function TeacherRegistration({ navigate, pageData }) {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => navigate('landing')}
-            className="bg-gradient-to-r from-[#4F46E5] to-[#6366F1] text-white px-12 py-4 rounded-xl font-['Arimo'] text-lg shadow-lg hover:shadow-xl"
+            className="bg-gradient-to-r from-[#4F46E5] to-[#6366F1] text-white px-6 sm:px-10 py-3 sm:py-4 rounded-xl font-['Arimo'] text-base sm:text-lg shadow-lg hover:shadow-xl"
           >
             Return to Home
           </motion.button>
@@ -313,7 +314,7 @@ export default function TeacherRegistration({ navigate, pageData }) {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
       >
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-br from-[#4F46E5] to-[#6366F1] rounded-xl flex items-center justify-center shadow-lg">
@@ -340,7 +341,7 @@ export default function TeacherRegistration({ navigate, pageData }) {
 
       {/* Progress Steps */}
       <div className="bg-white border-b border-gray-200 py-6">
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {steps.map((step, index) => (
               <React.Fragment key={step.number}>
@@ -381,9 +382,9 @@ export default function TeacherRegistration({ navigate, pageData }) {
       </div>
 
       {/* Form */}
-      <div className="max-w-3xl mx-auto px-6 py-12">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
         <motion.div 
-          className="bg-white rounded-3xl shadow-2xl p-8"
+          className="bg-white rounded-3xl shadow-2xl p-6 sm:p-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
@@ -473,6 +474,39 @@ export default function TeacherRegistration({ navigate, pageData }) {
                     onChange={handleChange}
                     className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] text-sm focus:outline-none focus:ring-2 focus:ring-[#4F46E5] focus:border-transparent transition-all"
                     placeholder="+1234567890"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label className="flex items-center gap-2 font-['Arimo'] text-sm text-[#101828] mb-2">
+                    <Calendar className="w-4 h-4 text-[#4F46E5]" />
+                    Date of Birth *
+                  </label>
+                  <input
+                    type="date"
+                    name="dateOfBirth"
+                    value={formData.dateOfBirth}
+                    onChange={handleChange}
+                    className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] text-sm focus:outline-none focus:ring-2 focus:ring-[#4F46E5] focus:border-transparent transition-all"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="flex items-center gap-2 font-['Arimo'] text-sm text-[#101828] mb-2">
+                    <MapPin className="w-4 h-4 text-[#4F46E5]" />
+                    Address *
+                  </label>
+                  <input
+                    type="text"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleChange}
+                    className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] text-sm focus:outline-none focus:ring-2 focus:ring-[#4F46E5] focus:border-transparent transition-all"
+                    placeholder="Street, City, State..."
                     required
                   />
                 </div>
@@ -602,21 +636,7 @@ export default function TeacherRegistration({ navigate, pageData }) {
                 />
               </div>
 
-              <div>
-                <label className="flex items-center gap-2 font-['Arimo'] text-sm text-[#101828] mb-2">
-                  <User className="w-4 h-4 text-[#4F46E5]" />
-                  Address *
-                </label>
-                <textarea
-                  name="address"
-                  value={formData.address}
-                  onChange={handleChange}
-                  className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] text-sm focus:outline-none focus:ring-2 focus:ring-[#4F46E5] focus:border-transparent transition-all resize-none"
-                  placeholder="Street, City, State..."
-                  rows={2}
-                  required
-                />
-              </div>
+              
             </div>
 
             {/* Documents */}

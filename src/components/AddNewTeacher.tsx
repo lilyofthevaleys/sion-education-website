@@ -13,14 +13,10 @@ export default function AddNewTeacher({ navigate }) {
     subject: '',
     grades: '',
     address: '',
-    city: '',
-    state: '',
-    zipCode: '',
     education: '',
     certification: '',
-    experience: '',
-    availability: '',
-    specialties: ''
+    experience: ''
+    
   });
 
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -185,6 +181,19 @@ export default function AddNewTeacher({ navigate }) {
                   required
                 />
               </div>
+
+              <div>
+                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Address *</label>
+                <input
+                  type="text"
+                  name="address"
+                  value={formData.address}
+                  onChange={handleChange}
+                  placeholder="Street, City, State..."
+                  className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#4F46E5] focus:ring-4 focus:ring-[#4F46E5]/20 transition-all"
+                  required
+                />
+              </div>
             </div>
           </div>
 
@@ -250,30 +259,9 @@ export default function AddNewTeacher({ navigate }) {
                 />
               </div>
 
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Availability *</label>
-                <input
-                  type="text"
-                  name="availability"
-                  value={formData.availability}
-                  onChange={handleChange}
-                  placeholder="e.g., Mon-Fri 9AM-5PM"
-                  className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#4F46E5] focus:ring-4 focus:ring-[#4F46E5]/20 transition-all"
-                  required
-                />
-              </div>
+              
 
-              <div className="md:col-span-2">
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Specialties (comma-separated)</label>
-                <input
-                  type="text"
-                  name="specialties"
-                  value={formData.specialties}
-                  onChange={handleChange}
-                  placeholder="e.g., Algebra, Calculus, SAT Prep"
-                  className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#4F46E5] focus:ring-4 focus:ring-[#4F46E5]/20 transition-all"
-                />
-              </div>
+              
             </div>
           </div>
 
@@ -321,68 +309,7 @@ export default function AddNewTeacher({ navigate }) {
             </div>
           </div>
 
-          {/* Address */}
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#2563EB] to-[#4F46E5] rounded-xl flex items-center justify-center shadow-lg">
-                <MapPin className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="font-['Arimo'] text-2xl text-gray-900">Address</h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="md:col-span-2">
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Street Address *</label>
-                <div className="relative">
-                  <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="text"
-                    name="address"
-                    value={formData.address}
-                    onChange={handleChange}
-                    className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 pl-12 font-['Arimo'] focus:outline-none focus:border-[#4F46E5] focus:ring-4 focus:ring-[#4F46E5]/20 transition-all"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">City *</label>
-                <input
-                  type="text"
-                  name="city"
-                  value={formData.city}
-                  onChange={handleChange}
-                  className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#4F46E5] focus:ring-4 focus:ring-[#4F46E5]/20 transition-all"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">State *</label>
-                <input
-                  type="text"
-                  name="state"
-                  value={formData.state}
-                  onChange={handleChange}
-                  className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#4F46E5] focus:ring-4 focus:ring-[#4F46E5]/20 transition-all"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">ZIP Code *</label>
-                <input
-                  type="text"
-                  name="zipCode"
-                  value={formData.zipCode}
-                  onChange={handleChange}
-                  className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#4F46E5] focus:ring-4 focus:ring-[#4F46E5]/20 transition-all"
-                  required
-                />
-              </div>
-            </div>
-          </div>
+          
         </motion.div>
       </div>
 

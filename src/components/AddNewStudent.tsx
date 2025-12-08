@@ -19,8 +19,7 @@ export default function AddNewStudent({ navigate }) {
     parentName: '',
     parentPhone: '',
     parentEmail: '',
-    emergencyContact: '',
-    emergencyPhone: ''
+    
   });
 
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -57,14 +56,14 @@ export default function AddNewStudent({ navigate }) {
         animate={{ y: 0, opacity: 1 }}
         className="bg-white/70 backdrop-blur-2xl shadow-lg sticky top-0 z-40 border-b border-white/20"
       >
-        <div className="max-w-[1400px] mx-auto px-8 py-4">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <motion.button
                 whileHover={{ scale: 1.1, x: -4 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setShowCancelModal(true)}
-                className="w-12 h-12 bg-white rounded-xl shadow-md hover:shadow-lg flex items-center justify-center"
+                className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl shadow-md hover:shadow-lg flex items-center justify-center"
               >
                 <ArrowLeft className="w-6 h-6 text-gray-700" />
               </motion.button>
@@ -79,7 +78,7 @@ export default function AddNewStudent({ navigate }) {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setShowCancelModal(true)}
-                className="bg-white border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-xl font-['Arimo'] shadow-md hover:shadow-lg flex items-center gap-2"
+                className="bg-white border-2 border-gray-300 text-gray-700 px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-['Arimo'] shadow-md hover:shadow-lg flex items-center gap-2"
               >
                 <X className="w-5 h-5" />
                 Cancel
@@ -88,7 +87,7 @@ export default function AddNewStudent({ navigate }) {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setShowConfirmModal(true)}
-                className="bg-gradient-to-r from-[#2563EB] to-[#4F46E5] text-white px-6 py-3 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl flex items-center gap-2"
+                className="bg-gradient-to-r from-[#2563EB] to-[#4F46E5] text-white px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl flex items-center gap-2"
               >
                 <Save className="w-5 h-5" />
                 Save Student
@@ -99,11 +98,11 @@ export default function AddNewStudent({ navigate }) {
       </motion.header>
 
       {/* Form */}
-      <div className="max-w-[1400px] mx-auto px-8 py-8">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-3xl shadow-2xl p-8 space-y-8"
+          className="bg-white rounded-3xl shadow-2xl p-6 sm:p-8 space-y-8"
         >
           {/* Student Information */}
           <div>
@@ -114,7 +113,7 @@ export default function AddNewStudent({ navigate }) {
               <h2 className="font-['Arimo'] text-2xl text-gray-900">Student Information</h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">First Name *</label>
                 <input
@@ -186,37 +185,6 @@ export default function AddNewStudent({ navigate }) {
               </div>
 
               <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Grade Level *</label>
-                <div className="relative">
-                  <GraduationCap className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <select
-                    name="gradeLevel"
-                    value={formData.gradeLevel}
-                    onChange={handleChange}
-                    className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 pl-12 font-['Arimo'] focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/20 transition-all"
-                    required
-                  >
-                    <option value="">Select grade level</option>
-                    {grades.map(grade => (
-                      <option key={grade} value={grade}>{grade}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* School Information */}
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] rounded-xl flex items-center justify-center shadow-lg">
-                <School className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="font-['Arimo'] text-2xl text-gray-900">School</h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="md:col-span-2">
                 <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">School Name *</label>
                 <div className="relative">
                   <School className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -231,9 +199,10 @@ export default function AddNewStudent({ navigate }) {
                   />
                 </div>
               </div>
-              
             </div>
           </div>
+
+          
 
           {/* Parent/Guardian Information */}
           <div>
@@ -244,38 +213,8 @@ export default function AddNewStudent({ navigate }) {
               <h2 className="font-['Arimo'] text-2xl text-gray-900">Parent/Guardian Information</h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Parent/Guardian Name *</label>
-                <div className="relative">
-                  <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="text"
-                    name="parentName"
-                    value={formData.parentName}
-                    onChange={handleChange}
-                    className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 pl-12 font-['Arimo'] focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/20 transition-all"
-                    placeholder="Enter parent/guardian name"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Parent Phone *</label>
-                <div className="relative">
-                  <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="tel"
-                    name="parentPhone"
-                    value={formData.parentPhone}
-                    onChange={handleChange}
-                    className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 pl-12 font-['Arimo'] focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/20 transition-all"
-                    placeholder="+1 (555) 000-0000"
-                    required
-                  />
-                </div>
-              </div>
+            <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
+              
 
               <div>
                 <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Parent Email *</label>
@@ -294,30 +233,32 @@ export default function AddNewStudent({ navigate }) {
               </div>
 
               <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Emergency Contact Name</label>
-                <input
-                  type="text"
-                  name="emergencyContact"
-                  value={formData.emergencyContact}
-                  onChange={handleChange}
-                  className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/20 transition-all"
-                  placeholder="Emergency contact name"
-                />
+                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Address *</label>
+                <div className="relative">
+                  <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <input
+                    type="text"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleChange}
+                    className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 pl-12 font-['Arimo'] focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/20 transition-all"
+                    placeholder="Street Address"
+                    required
+                  />
+                </div>
               </div>
 
               <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Emergency Phone</label>
-                <div className="relative">
-                  <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="tel"
-                    name="emergencyPhone"
-                    value={formData.emergencyPhone}
-                    onChange={handleChange}
-                    className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 pl-12 font-['Arimo'] focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/20 transition-all"
-                    placeholder="+1 (555) 000-0000"
-                  />
-                </div>
+                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">City *</label>
+                <input
+                  type="text"
+                  name="city"
+                  value={formData.city}
+                  onChange={handleChange}
+                  className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/20 transition-all"
+                  placeholder="City"
+                  required
+                />
               </div>
             </div>
           </div>

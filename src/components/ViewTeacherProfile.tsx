@@ -150,6 +150,14 @@ export default function ViewTeacherProfile({ navigate, teacherId }) {
                   <p className="font-['Arimo'] text-lg text-gray-900">{teacher.dateOfBirth}</p>
                 </div>
               </div>
+
+              <div className="md:col-span-2">
+                <label className="block font-['Arimo'] text-sm text-gray-500 mb-1">Address</label>
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-5 h-5 text-gray-400" />
+                  <p className="font-['Arimo'] text-lg text-gray-900">{teacher.address}</p>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -184,24 +192,9 @@ export default function ViewTeacherProfile({ navigate, teacherId }) {
                 <p className="font-['Arimo'] text-lg text-gray-900">{teacher.experience}</p>
               </div>
 
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-500 mb-1">Availability</label>
-                <p className="font-['Arimo'] text-lg text-gray-900">{teacher.availability}</p>
-              </div>
+              
 
-              <div className="md:col-span-2">
-                <label className="block font-['Arimo'] text-sm text-gray-500 mb-2">Specialties</label>
-                <div className="flex flex-wrap gap-2">
-                  {teacher.specialties.map((specialty, index) => (
-                    <span 
-                      key={index}
-                      className="bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-['Arimo']"
-                    >
-                      {specialty}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              
             </div>
           </div>
 
@@ -233,40 +226,7 @@ export default function ViewTeacherProfile({ navigate, teacherId }) {
             </div>
           </div>
 
-          {/* Address */}
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#2563EB] to-[#4F46E5] rounded-xl flex items-center justify-center shadow-lg">
-                <MapPin className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="font-['Arimo'] text-2xl text-gray-900">Address</h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="md:col-span-2">
-                <label className="block font-['Arimo'] text-sm text-gray-500 mb-1">Street Address</label>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-5 h-5 text-gray-400" />
-                  <p className="font-['Arimo'] text-lg text-gray-900">{teacher.address}</p>
-                </div>
-              </div>
-
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-500 mb-1">City</label>
-                <p className="font-['Arimo'] text-lg text-gray-900">{teacher.city}</p>
-              </div>
-
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-500 mb-1">State</label>
-                <p className="font-['Arimo'] text-lg text-gray-900">{teacher.state}</p>
-              </div>
-
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-500 mb-1">ZIP Code</label>
-                <p className="font-['Arimo'] text-lg text-gray-900">{teacher.zipCode}</p>
-              </div>
-            </div>
-          </div>
+          
         </motion.div>
       </div>
     </div>

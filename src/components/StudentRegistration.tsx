@@ -16,7 +16,6 @@ export default function StudentRegistration({ navigate }) {
     phone: '',
     password: '',
     confirmPassword: '',
-    gradeLevel: '',
     schoolName: '',
     parentName: '',
     parentPhone: '',
@@ -112,7 +111,7 @@ export default function StudentRegistration({ navigate }) {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
       >
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-br from-[#2563EB] to-[#3B82F6] rounded-xl flex items-center justify-center shadow-lg">
@@ -137,7 +136,7 @@ export default function StudentRegistration({ navigate }) {
 
       {/* Progress Steps */}
       <div className="bg-white border-b border-gray-200 py-6">
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {steps.map((step, index) => (
               <React.Fragment key={step.number}>
@@ -178,14 +177,14 @@ export default function StudentRegistration({ navigate }) {
       </div>
 
       {/* Form */}
-      <div className="max-w-3xl mx-auto px-6 py-12">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-10 md:py-12">
         <motion.div 
-          className="bg-white rounded-3xl shadow-2xl p-8"
+          className="bg-white rounded-3xl shadow-2xl p-6 sm:p-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
           <div className="mb-8">
-            <h1 className="font-['Arimo'] text-3xl text-[#101828] mb-2">Student Registration Form</h1>
+            <h1 className="font-['Arimo'] text-2xl sm:text-3xl text-[#101828] mb-2">Student Registration Form</h1>
             <p className="font-['Arimo'] text-[#4a5565]">Start your learning journey with us</p>
           </div>
 
@@ -207,7 +206,7 @@ export default function StudentRegistration({ navigate }) {
                 Student Information
               </h3>
               
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="flex items-center gap-2 font-['Arimo'] text-sm text-[#101828] mb-2">
                     <User className="w-4 h-4 text-[#2563EB]" />
@@ -241,7 +240,7 @@ export default function StudentRegistration({ navigate }) {
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="flex items-center gap-2 font-['Arimo'] text-sm text-[#101828] mb-2">
                     <Mail className="w-4 h-4 text-[#2563EB]" />
@@ -275,7 +274,7 @@ export default function StudentRegistration({ navigate }) {
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="flex items-center gap-2 font-['Arimo'] text-sm text-[#101828] mb-2">
                     <Lock className="w-4 h-4 text-[#2563EB]" />
@@ -343,24 +342,7 @@ export default function StudentRegistration({ navigate }) {
                     required
                   />
                 </div>
-                <div>
-                  <label className="flex items-center gap-2 font-['Arimo'] text-sm text-[#101828] mb-2">
-                    <BookOpen className="w-4 h-4 text-[#2563EB]" />
-                    Grade Level *
-                  </label>
-                  <select
-                    name="gradeLevel"
-                    value={formData.gradeLevel}
-                    onChange={handleChange}
-                    className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] text-sm focus:outline-none focus:ring-2 focus:ring-[#2563EB] focus:border-transparent transition-all"
-                    required
-                  >
-                    <option value="">Select Grade</option>
-                    {[...Array(12)].map((_, i) => (
-                      <option key={i} value={`Grade ${i + 1}`}>Grade {i + 1}</option>
-                    ))}
-                  </select>
-                </div>
+                
               </div>
 
               
@@ -464,7 +446,7 @@ export default function StudentRegistration({ navigate }) {
               <button
                 type="button"
                 onClick={() => navigate('signup')}
-                className="px-6 py-3 rounded-xl border-2 border-gray-300 text-[#4a5565] hover:border-[#2563EB] hover:text-[#2563EB] transition-all font-['Arimo']"
+                className="px-4 py-2 sm:px-6 sm:py-3 rounded-xl border-2 border-gray-300 text-[#4a5565] hover:border-[#2563EB] hover:text-[#2563EB] transition-all font-['Arimo']"
               >
                 Cancel
               </button>
@@ -472,7 +454,7 @@ export default function StudentRegistration({ navigate }) {
               <motion.button
                 type="submit"
                 disabled={loading}
-                className="flex items-center gap-2 bg-gradient-to-r from-[#2563EB] to-[#3B82F6] text-white px-8 py-3 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex items-center gap-2 bg-gradient-to-r from-[#2563EB] to-[#3B82F6] text-white px-6 py-3 sm:px-8 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

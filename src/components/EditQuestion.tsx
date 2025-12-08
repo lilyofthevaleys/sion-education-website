@@ -21,7 +21,8 @@ export default function EditQuestion({ navigate, questionId }) {
     optionB: existingQuestion.optionB,
     optionC: existingQuestion.optionC,
     optionD: existingQuestion.optionD,
-    correctAnswer: existingQuestion.correctAnswer
+    correctAnswer: existingQuestion.correctAnswer,
+    gradeLevel: ''
   });
 
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -111,18 +112,36 @@ export default function EditQuestion({ navigate, questionId }) {
               <h2 className="font-['Arimo'] text-2xl text-gray-900">Question</h2>
             </div>
 
+          <div>
+            <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Question Text *</label>
+            <textarea
+              name="question"
+              value={formData.question}
+              onChange={handleChange}
+              placeholder="Enter your question here..."
+              rows="3"
+              className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/20 transition-all resize-none"
+              required
+            />
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 mt-4">
             <div>
-              <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Question Text *</label>
-              <textarea
-                name="question"
-                value={formData.question}
+              <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Grade Level *</label>
+              <select
+                name="gradeLevel"
+                value={formData.gradeLevel}
                 onChange={handleChange}
-                placeholder="Enter your question here..."
-                rows="3"
-                className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/20 transition-all resize-none"
+                className="w-full bg-gray-50 border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:border-[#2563EB] focus:ring-4 focus:ring-[#2563EB]/20 transition-all"
                 required
-              />
+              >
+                <option value="">Select grade</option>
+                {gradeOptions.map((g) => (
+                  <option key={g} value={g}>{g}</option>
+                ))}
+              </select>
             </div>
+          </div>
           </div>
 
           {/* Options */}
@@ -311,3 +330,6 @@ export default function EditQuestion({ navigate, questionId }) {
     </div>
   );
 }
+  const gradeOptions = [
+    'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10', 'Grade 11', 'Grade 12'
+  ];

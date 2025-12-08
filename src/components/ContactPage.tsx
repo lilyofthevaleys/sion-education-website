@@ -52,7 +52,7 @@ export default function ContactPage({ navigate }) {
         animate={{ y: 0 }}
         className="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-blue-100"
       >
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-br from-[#2563EB] via-[#3B82F6] to-[#4F46E5] rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/50 relative">
@@ -88,24 +88,24 @@ export default function ContactPage({ navigate }) {
 
       {/* Hero Section */}
       <AnimatedSection>
-        <div className="bg-gradient-to-br from-[#F0FDF4] to-[#DCFCE7] py-20 relative overflow-hidden">
+        <div className="bg-gradient-to-br from-[#F0FDF4] to-[#DCFCE7] py-12 sm:py-16 lg:py-20 relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iZ3JlZW4iIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')]"></div>
           </div>
           
-          <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 200 }}
               className="inline-block mb-6"
             >
-              <div className="w-20 h-20 bg-gradient-to-br from-[#16A34A] to-[#22C55E] rounded-2xl flex items-center justify-center mx-auto shadow-2xl">
-                <Phone className="w-10 h-10 text-white" />
-              </div>
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#16A34A] to-[#22C55E] rounded-2xl flex items-center justify-center mx-auto shadow-2xl">
+              <Phone className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+            </div>
             </motion.div>
             
-            <h1 className="font-['Arimo'] text-5xl md:text-6xl mb-6">
+            <h1 className="font-['Arimo'] text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-6">
               <span className="font-bold text-[#101828]">Get In Touch With Us</span>
             </h1>
             <p className="font-['Arimo'] text-xl text-[#4a5565] max-w-2xl mx-auto">
@@ -117,16 +117,16 @@ export default function ContactPage({ navigate }) {
 
       {/* Our Location */}
       <AnimatedSection>
-        <div className="py-20 bg-white">
-          <div className="max-w-6xl mx-auto px-6">
+        <div className="py-12 sm:py-16 lg:py-20 bg-white">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="font-['Arimo'] text-5xl text-[#101828] mb-4"><span className="font-bold">Our Location</span></h2>
+              <h2 className="font-['Arimo'] text-3xl sm:text-4xl lg:text-5xl text-[#101828] mb-4"><span className="font-bold">Our Location</span></h2>
             </div>
 
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-100 rounded-3xl transform translate-x-3 translate-y-3 blur-sm"></div>
               
-              <div className="relative bg-white rounded-3xl shadow-2xl p-8 border border-gray-100">
+              <div className="relative bg-white rounded-3xl shadow-2xl p-6 sm:p-8 border border-gray-100">
                 <div className="grid md:grid-cols-3 gap-8">
                   {/* Address */}
                   <motion.div
@@ -193,10 +193,10 @@ export default function ContactPage({ navigate }) {
 
       {/* Send Us a Message */}
       <AnimatedSection>
-        <div className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-          <div className="max-w-3xl mx-auto px-6">
+        <div className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="font-['Arimo'] text-5xl text-[#101828] mb-4"><span className="font-bold">Send Us a Message</span></h2>
+              <h2 className="font-['Arimo'] text-3xl sm:text-4xl lg:text-5xl text-[#101828] mb-4"><span className="font-bold">Send Us a Message</span></h2>
               <p className="font-['Arimo'] text-lg text-[#4a5565]">
                 Fill out the form below and <span className="font-bold text-[#2563EB]">we'll get back to you within 24 hours</span>
               </p>
@@ -205,7 +205,7 @@ export default function ContactPage({ navigate }) {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-[#2563EB] to-[#4F46E5] rounded-3xl transform translate-x-2 translate-y-2 blur-lg opacity-20"></div>
               
-              <div className="relative bg-white rounded-3xl shadow-2xl p-8 border border-gray-100">
+              <div className="relative bg-white rounded-3xl shadow-2xl p-6 sm:p-8 border border-gray-100">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
@@ -291,10 +291,10 @@ export default function ContactPage({ navigate }) {
 
       {/* FAQ */}
       <AnimatedSection>
-        <div className="py-20 bg-white">
-          <div className="max-w-4xl mx-auto px-6">
+        <div className="py-12 sm:py-16 lg:py-20 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="font-['Arimo'] text-5xl text-[#101828] mb-4"><span className="font-bold">Frequently Asked</span></h2>
+              <h2 className="font-['Arimo'] text-3xl sm:text-4xl lg:text-5xl text-[#101828] mb-4"><span className="font-bold">Frequently Asked</span></h2>
             </div>
 
             <div className="space-y-4">
@@ -408,7 +408,7 @@ function FAQItem({ question, answer, isExpanded, onToggle, delay }) {
 function Footer({ navigate }) {
   return (
     <footer className="bg-gradient-to-br from-[#101828] to-[#1e293b] text-white py-12">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="flex items-center gap-3 mb-4">

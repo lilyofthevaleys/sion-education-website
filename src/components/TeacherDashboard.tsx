@@ -219,7 +219,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-8 bg-gradient-to-r from-[#2563EB] via-[#4F46E5] to-[#7C3AED] rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden"
+          className="mb-6 sm:mb-8 bg-gradient-to-r from-[#2563EB] via-[#4F46E5] to-[#7C3AED] rounded-3xl p-6 sm:p-8 text-white shadow-2xl relative overflow-hidden"
         >
           <div className="relative z-10">
             <motion.h2 
@@ -247,7 +247,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.1 }}
-            className="bg-white rounded-3xl p-6 shadow-xl"
+            className="bg-white rounded-3xl p-5 sm:p-6 shadow-xl"
           >
             <div className="flex items-start justify-between mb-4">
               <div className="w-14 h-14 bg-gradient-to-br from-[#2563EB] to-[#3B82F6] rounded-2xl flex items-center justify-center shadow-lg">
@@ -255,7 +255,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
               </div>
               <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-['Arimo']">Active</span>
             </div>
-            <p className="font-['Cousine'] text-5xl text-gray-900 mb-2">
+            <p className="font-['Cousine'] text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-2">
               <AnimatedCounter value={stats.students} />
             </p>
             <p className="font-['Arimo'] text-gray-600 text-lg">Students</p>
@@ -265,7 +265,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="bg-white rounded-3xl p-6 shadow-xl"
+            className="bg-white rounded-3xl p-5 sm:p-6 shadow-xl"
           >
             <div className="flex items-start justify-between mb-4">
               <div className="w-14 h-14 bg-gradient-to-br from-[#4F46E5] to-[#7C3AED] rounded-2xl flex items-center justify-center shadow-lg">
@@ -273,7 +273,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
               </div>
               <span className="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs font-['Arimo']">This week</span>
             </div>
-            <p className="font-['Cousine'] text-5xl text-gray-900 mb-2">
+            <p className="font-['Cousine'] text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-2">
               <AnimatedCounter value={stats.thisWeek} />
             </p>
             <p className="font-['Arimo'] text-gray-600 text-lg">Lessons</p>
@@ -283,7 +283,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="bg-white rounded-3xl p-6 shadow-xl"
+            className="bg-white rounded-3xl p-5 sm:p-6 shadow-xl"
           >
             <div className="flex items-start justify-between mb-4">
               <div className="w-14 h-14 bg-gradient-to-br from-[#F59E0B] to-[#F97316] rounded-2xl flex items-center justify-center shadow-lg">
@@ -291,7 +291,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
               </div>
               <span className="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs font-['Arimo']">Pending</span>
             </div>
-            <p className="font-['Cousine'] text-5xl text-gray-900 mb-2">
+            <p className="font-['Cousine'] text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-2">
               <AnimatedCounter value={stats.pendingLogs} />
             </p>
             <p className="font-['Arimo'] text-gray-600 text-lg">Logbooks</p>
@@ -301,7 +301,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="bg-white rounded-3xl p-6 shadow-xl"
+            className="bg-white rounded-3xl p-5 sm:p-6 shadow-xl"
           >
             <div className="flex items-start justify-between mb-4">
               <div className="w-14 h-14 bg-gradient-to-br from-[#0891B2] to-[#06B6D4] rounded-2xl flex items-center justify-center shadow-lg">
@@ -309,7 +309,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
               </div>
               <span className="bg-cyan-100 text-cyan-600 px-3 py-1 rounded-full text-xs font-['Arimo']">Unread</span>
             </div>
-            <p className="font-['Cousine'] text-5xl text-gray-900 mb-2">
+            <p className="font-['Cousine'] text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-2">
               <AnimatedCounter value={stats.messages} />
             </p>
             <p className="font-['Arimo'] text-gray-600 text-lg">Messages</p>
@@ -357,7 +357,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
           </div>
 
           {/* Tab Content */}
-          <div className="p-8">
+          <div className="p-6 sm:p-8">
             {/* SCHEDULE TAB */}
             {activeTab === 'schedule' && (
               <motion.div
@@ -525,7 +525,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
                 className="space-y-6"
               >
                 <h3 className="font-['Arimo'] text-2xl text-gray-900">Assigned Students</h3>
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                   {students.map((student, index) => (
                     <motion.div
                       key={student.id}
@@ -534,8 +534,8 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
                       transition={{ delay: index * 0.1 }}
                       className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all border border-gray-100"
                     >
-                      <div className="flex items-start gap-4 mb-4">
-                        <div className="w-16 h-16 bg-gradient-to-br from-[#2563EB] to-[#4F46E5] rounded-full flex items-center justify-center text-white shadow-lg text-xl font-bold">
+                      <div className="flex items-start gap-3 sm:gap-4 mb-4">
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#2563EB] to-[#4F46E5] rounded-full flex items-center justify-center text-white shadow-lg text-lg sm:text-xl font-bold">
                           {student.avatar}
                         </div>
                         <div className="flex-1">
@@ -593,9 +593,9 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
                   <h4 className="font-['Arimo'] text-xl text-gray-900">New Entry</h4>
 
                   <div>
-                    <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Date & Time</label>
+                    <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Time</label>
                     <input
-                      type="datetime-local"
+                      type="time"
                       value={logbookDate}
                       onChange={(e) => setLogbookDate(e.target.value)}
                       className="w-full border border-gray-300 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
@@ -727,7 +727,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
                 </div>
                 
                 {/* Student List */}
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                   {students
                     .filter(student => {
                       // Search filter
@@ -762,8 +762,8 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
                           </div>
                         )}
                         
-                        <div className="flex items-center gap-4">
-                          <div className="w-16 h-16 bg-gradient-to-br from-[#2563EB] to-[#4F46E5] rounded-full flex items-center justify-center text-white shadow-lg text-xl font-bold">
+                        <div className="flex items-center gap-3 sm:gap-4">
+                          <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#2563EB] to-[#4F46E5] rounded-full flex items-center justify-center text-white shadow-lg text-lg sm:text-xl font-bold">
                             {student.avatar}
                           </div>
                           <div className="flex-1">
@@ -788,9 +788,9 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
                       (chatFilter === 'UNREAD' && student.unreadMessages > 0);
                     return matchesSearch && matchesFilter;
                   }).length === 0 && (
-                    <div className="col-span-2 text-center py-12">
-                      <MessageSquare className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                      <p className="font-['Arimo'] text-gray-500 text-lg">No students found</p>
+                    <div className="col-span-2 text-center py-10 sm:py-12">
+                      <MessageSquare className="w-12 h-12 sm:w-16 sm:h-16 text-gray-300 mx-auto mb-4" />
+                      <p className="font-['Arimo'] text-gray-500 text-base sm:text-lg">No students found</p>
                       <p className="font-['Arimo'] text-gray-400 text-sm mt-2">
                         {chatFilter === 'UNREAD' ? 'No unread messages' : 'Try adjusting your search'}
                       </p>
@@ -875,6 +875,8 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
                     </div>
                     <p className="font-['Arimo'] text-xl text-gray-900">{editedProfile.address}</p>
                   </div>
+
+                  
                 </div>
               </motion.div>
             )}
@@ -941,53 +943,53 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
             <div className="bg-gradient-to-r from-[#2563EB] to-[#7C3AED] p-6 text-white">
               <h3 className="font-['Arimo'] text-2xl">Edit Profile</h3>
             </div>
-            <div className="p-6 space-y-4">
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Full Name</label>
-                <input
-                  type="text"
-                  value={editedProfile.name}
-                  onChange={(e) => setEditedProfile({ ...editedProfile, name: e.target.value })}
-                  className="w-full border border-gray-300 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
-                />
+              <div className="p-6 space-y-4">
+                <div>
+                  <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Full Name</label>
+                  <input
+                    type="text"
+                    value={editedProfile.name}
+                    onChange={(e) => setEditedProfile({ ...editedProfile, name: e.target.value })}
+                    className="w-full border border-gray-300 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+                  />
+                </div>
+                <div>
+                  <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Email</label>
+                  <input
+                    type="email"
+                    value={editedProfile.email}
+                    onChange={(e) => setEditedProfile({ ...editedProfile, email: e.target.value })}
+                    className="w-full border border-gray-300 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+                  />
+                </div>
+                <div>
+                  <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Phone</label>
+                  <input
+                    type="tel"
+                    value={editedProfile.phone}
+                    onChange={(e) => setEditedProfile({ ...editedProfile, phone: e.target.value })}
+                    className="w-full border border-gray-300 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+                  />
+                </div>
+                <div>
+                  <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Subject</label>
+                  <input
+                    type="text"
+                    value={editedProfile.subject}
+                    onChange={(e) => setEditedProfile({ ...editedProfile, subject: e.target.value })}
+                    className="w-full border border-gray-300 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+                  />
+                </div>
+                <div>
+                  <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Address</label>
+                  <input
+                    type="text"
+                    value={editedProfile.address}
+                    onChange={(e) => setEditedProfile({ ...editedProfile, address: e.target.value })}
+                    className="w-full border border-gray-300 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
+                  />
+                </div>
               </div>
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Email</label>
-                <input
-                  type="email"
-                  value={editedProfile.email}
-                  onChange={(e) => setEditedProfile({ ...editedProfile, email: e.target.value })}
-                  className="w-full border border-gray-300 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
-                />
-              </div>
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Phone</label>
-                <input
-                  type="tel"
-                  value={editedProfile.phone}
-                  onChange={(e) => setEditedProfile({ ...editedProfile, phone: e.target.value })}
-                  className="w-full border border-gray-300 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
-                />
-              </div>
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Subject</label>
-                <input
-                  type="text"
-                  value={editedProfile.subject}
-                  onChange={(e) => setEditedProfile({ ...editedProfile, subject: e.target.value })}
-                  className="w-full border border-gray-300 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
-                />
-              </div>
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Address</label>
-                <input
-                  type="text"
-                  value={editedProfile.address}
-                  onChange={(e) => setEditedProfile({ ...editedProfile, address: e.target.value })}
-                  className="w-full border border-gray-300 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
-                />
-              </div>
-            </div>
             <div className="p-6 flex gap-3 border-t border-gray-200">
               <motion.button
                 onClick={() => setShowEditProfile(false)}

@@ -95,7 +95,7 @@ export default function ForgotPassword({ navigate }) {
     <div className="min-h-screen bg-gradient-to-br from-[#EFF6FF] to-[#E0E7FF]">
       {/* Header */}
       <header className="bg-white shadow-lg">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-br from-[#2563EB] to-[#4F46E5] rounded-xl flex items-center justify-center shadow-lg">
@@ -115,23 +115,23 @@ export default function ForgotPassword({ navigate }) {
         </div>
       </header>
 
-      <div className="flex items-center justify-center px-6 py-16">
+      <div className="flex items-center justify-center px-4 sm:px-6 py-12 sm:py-16">
         <motion.div 
           className="max-w-md w-full"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <div className="bg-white rounded-3xl shadow-2xl p-8">
+          <div className="bg-white rounded-3xl shadow-2xl p-6 sm:p-8">
             {/* Icon and Title */}
             <div className="text-center mb-8">
               <motion.div
-                className="w-20 h-20 bg-gradient-to-br from-[#2563EB] to-[#4F46E5] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-xl"
+                className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#2563EB] to-[#4F46E5] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-xl"
                 animate={{ rotate: [0, -10, 10, -10, 0] }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <Lock className="w-10 h-10 text-white" />
+                <Lock className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
               </motion.div>
-              <h1 className="font-['Arimo'] text-3xl text-[#101828] mb-2">Reset Your Password</h1>
+              <h1 className="font-['Arimo'] text-2xl sm:text-3xl text-[#101828] mb-2">Reset Your Password</h1>
               <p className="font-['Arimo'] text-[#4a5565]">
                 Enter your email address and we'll send you instructions to reset your password.
               </p>
@@ -166,7 +166,7 @@ export default function ForgotPassword({ navigate }) {
               <motion.button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-[#2563EB] to-[#4F46E5] text-white py-4 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full bg-gradient-to-r from-[#2563EB] to-[#4F46E5] text-white py-3 sm:py-4 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -184,7 +184,7 @@ export default function ForgotPassword({ navigate }) {
             <div className="mt-6 pt-6 border-t-2 border-gray-100">
               <button
                 onClick={() => navigate('login')}
-                className="w-full border-2 border-gray-300 text-[#4a5565] py-3 rounded-xl font-['Arimo'] hover:border-[#2563EB] hover:text-[#2563EB] transition-all"
+                className="w-full border-2 border-gray-300 text-[#4a5565] py-2.5 sm:py-3 rounded-xl font-['Arimo'] hover:border-[#2563EB] hover:text-[#2563EB] transition-all"
               >
                 Back to Login
               </button>

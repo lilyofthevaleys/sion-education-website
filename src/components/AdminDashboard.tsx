@@ -67,6 +67,8 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
   const [studentModal, setStudentModal] = useState({ isOpen: false, type: '', student: null });
   const [showDeleteQuestionModal, setShowDeleteQuestionModal] = useState(false);
   const [questionToDelete, setQuestionToDelete] = useState(null);
+  const [showDeleteTeacherModal, setShowDeleteTeacherModal] = useState(false);
+  const [teacherToDelete, setTeacherToDelete] = useState(null);
 
   // Student management handlers
   const handleViewStudent = (student) => {
@@ -102,6 +104,18 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
     // TODO: Remove from database
     setShowDeleteQuestionModal(false);
     setQuestionToDelete(null);
+  };
+
+  const handleDeleteTeacher = (teacher) => {
+    setTeacherToDelete(teacher);
+    setShowDeleteTeacherModal(true);
+  };
+
+  const confirmDeleteTeacher = () => {
+    console.log('Deleting teacher:', teacherToDelete);
+    // TODO: Remove from database
+    setShowDeleteTeacherModal(false);
+    setTeacherToDelete(null);
   };
 
   // Mock data
@@ -232,7 +246,7 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
     window.URL.revokeObjectURL(url);
   };
 
-  const scheduleData = {
+  const initialScheduleData = {
     'Ms. Sarah Johnson': {
       Monday: [
         { student: 'Alex Chen', time: '09:00 AM - 10:30 AM' },
@@ -254,6 +268,17 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
         { student: 'Noah Davis', time: '03:00 PM - 09:30 PM' }
       ]
     }
+  };
+  const [scheduleState, setScheduleState] = useState(initialScheduleData);
+
+  const removeSession = (teacherName, day, index) => {
+    setScheduleState((prev) => {
+      const next = JSON.parse(JSON.stringify(prev));
+      if (next[teacherName] && next[teacherName][day]) {
+        next[teacherName][day].splice(index, 1);
+      }
+      return next;
+    });
   };
 
   const testQuestions = [
@@ -278,7 +303,7 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
         animate={{ y: 0, opacity: 1 }}
         className="bg-white/70 backdrop-blur-2xl shadow-lg sticky top-0 z-50 border-b border-white/20"
       >
-        <div className="max-w-[1800px] mx-auto px-8 py-4">
+        <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             {/* Logo & Title */}
             <div className="flex items-center gap-4">
@@ -321,7 +346,7 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
         </div>
       </motion.header>
 
-      <div className="max-w-[1800px] mx-auto px-8 py-8">
+      <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Welcome Banner */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -362,7 +387,7 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
               </div>
               <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-['Arimo']">+12 this month</span>
             </div>
-            <p className="font-['Cousine'] text-5xl text-gray-900 mb-2">
+            <p className="font-['Cousine'] text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-2">
               <AnimatedCounter value={stats.students} />
             </p>
             <p className="font-['Arimo'] text-gray-600 text-lg">Total Students</p>
@@ -380,7 +405,7 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
               </div>
               <span className="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs font-['Arimo']">+3 this month</span>
             </div>
-            <p className="font-['Cousine'] text-5xl text-gray-900 mb-2">
+            <p className="font-['Cousine'] text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-2">
               <AnimatedCounter value={stats.teachers} />
             </p>
             <p className="font-['Arimo'] text-gray-600 text-lg">Total Teachers</p>
@@ -398,7 +423,7 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
               </div>
               <span className="bg-cyan-100 text-cyan-600 px-3 py-1 rounded-full text-xs font-['Arimo']">Active</span>
             </div>
-            <p className="font-['Cousine'] text-5xl text-gray-900 mb-2">
+            <p className="font-['Cousine'] text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-2">
               <AnimatedCounter value={stats.lessonsPerWeek} />
             </p>
             <p className="font-['Arimo'] text-gray-600 text-lg">Lessons / Week</p>
@@ -416,7 +441,7 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
               </div>
               <span className="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs font-['Arimo']">Needs attention</span>
             </div>
-            <p className="font-['Cousine'] text-5xl text-gray-900 mb-2">
+            <p className="font-['Cousine'] text-3xl sm:text-4xl lg:text-5xl text-gray-900 mb-2">
               <AnimatedCounter value={stats.pending} />
             </p>
             <p className="font-['Arimo'] text-gray-600 text-lg">Pending Actions</p>
@@ -581,14 +606,6 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
               >
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="font-['Arimo'] text-2xl text-gray-900">Student Management</h3>
-                  <motion.button
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => navigate('add-new-student')}
-                    className="bg-gradient-to-r from-[#2563EB] to-[#4F46E5] text-white px-6 py-3 rounded-xl font-['Arimo'] shadow-lg hover:shadow-2xl transition-all"
-                  >
-                    + Add New Student
-                  </motion.button>
                 </div>
 
                 <div className="max-w-md">
@@ -610,17 +627,17 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
                   className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-300 rounded-2xl p-5 shadow-lg"
                 >
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl flex items-center justify-center shadow-lg">
-                        <AlertCircle className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <p className="font-['Arimo'] text-gray-900 font-medium">
-                          {pendingApplications.students} Pending Student Applications
-                        </p>
-                        <p className="font-['Arimo'] text-sm text-gray-600">Review and approve new registrations</p>
-                      </div>
-                    </div>
+                          <div className="flex items-center gap-3">
+                            <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl flex items-center justify-center shadow-lg">
+                              <AlertCircle className="w-6 h-6 text-white" />
+                            </div>
+                            <div>
+                              <p className="font-['Arimo'] text-gray-900 font-medium">
+                              {pendingApplications.students} Pending Student Applications
+                              </p>
+                              <p className="font-['Arimo'] text-sm text-gray-600">Review and approve new registrations</p>
+                            </div>
+                          </div>
                     <motion.button 
                       whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.95 }}
@@ -723,14 +740,6 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
               >
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="font-['Arimo'] text-2xl text-gray-900">Teacher Management</h3>
-                  <motion.button
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => navigate('add-new-teacher')}
-                    className="bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] text-white px-6 py-3 rounded-xl font-['Arimo'] shadow-lg hover:shadow-2xl transition-all"
-                  >
-                    + Add New Teacher
-                  </motion.button>
                 </div>
 
                 <div className="max-w-md">
@@ -752,17 +761,17 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
                   className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-300 rounded-2xl p-5 shadow-lg"
                 >
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl flex items-center justify-center shadow-lg">
-                        <AlertCircle className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <p className="font-['Arimo'] text-gray-900 font-medium">
-                          {pendingApplications.teachers} Pending Teacher Applications
-                        </p>
-                        <p className="font-['Arimo'] text-sm text-gray-600">Review and approve new teacher registrations</p>
-                      </div>
-                    </div>
+                          <div className="flex items-center gap-3">
+                            <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl flex items-center justify-center shadow-lg">
+                              <AlertCircle className="w-6 h-6 text-white" />
+                            </div>
+                            <div>
+                              <p className="font-['Arimo'] text-gray-900 font-medium">
+                              {pendingApplications.teachers} Pending Teacher Applications
+                              </p>
+                              <p className="font-['Arimo'] text-sm text-gray-600">Review and approve new teacher registrations</p>
+                            </div>
+                          </div>
                     <motion.button 
                       whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.95 }}
@@ -790,33 +799,30 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
                           </div>
                           <div className="flex-1">
                             <h3 className="font-['Arimo'] text-xl text-gray-900 mb-1">{teacher.name}</h3>
-                            <p className="font-['Arimo'] text-sm text-gray-600 mb-1">{teacher.subject}</p>
-                            <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs">
-                              {teacher.grades}
-                            </span>
-                          </div>
                         </div>
                       </div>
+                    </div>
 
-                      <div className="p-6 space-y-3">
-                        <div className="flex items-center justify-between py-2 border-b border-gray-100">
-                          <span className="font-['Arimo'] text-sm text-gray-500">Email</span>
-                          <span className="font-['Arimo'] text-sm text-gray-900">{teacher.email}</span>
-                        </div>
-                        <div className="flex items-center justify-between py-2 border-b border-gray-100">
-                          <span className="font-['Arimo'] text-sm text-gray-500">Phone</span>
-                          <span className="font-['Arimo'] text-sm text-gray-900">{teacher.phone}</span>
-                        </div>
-                        <div className="flex items-center justify-between py-2 border-b border-gray-100">
-                          <span className="font-['Arimo'] text-sm text-gray-500">Students</span>
-                          <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium">
-                            {teacher.students} assigned
-                          </span>
-                        </div>
-                        <div className="flex items-center justify-between py-2">
-                          <span className="font-['Arimo'] text-sm text-gray-500">Availability</span>
-                          <span className="font-['Arimo'] text-sm text-gray-900">{teacher.availability}</span>
-                        </div>
+                    <div className="p-6 space-y-3">
+                      <div className="flex items-center justify-between py-2 border-b border-gray-100">
+                        <span className="font-['Arimo'] text-sm text-gray-500">Email</span>
+                        <span className="font-['Arimo'] text-sm text-gray-900">{teacher.email}</span>
+                      </div>
+                      <div className="flex items-center justify-between py-2 border-b border-gray-100">
+                        <span className="font-['Arimo'] text-sm text-gray-500">Phone</span>
+                        <span className="font-['Arimo'] text-sm text-gray-900">{teacher.phone}</span>
+                      </div>
+                      <div className="flex items-center justify-between py-2 border-b border-gray-100">
+                        <span className="font-['Arimo'] text-sm text-gray-500">Subject</span>
+                        <span className="font-['Arimo'] text-sm text-gray-900">{teacher.subject}</span>
+                      </div>
+                      <div className="flex items-center justify-between py-2 border-b border-gray-100">
+                        <span className="font-['Arimo'] text-sm text-gray-500">Students</span>
+                        <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium">
+                          {teacher.students} assigned
+                        </span>
+                      </div>
+                        
                       </div>
 
                       <div className="p-4 bg-gray-50 flex gap-2">
@@ -835,6 +841,15 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
                           className="bg-white border-2 border-gray-200 p-3 rounded-xl hover:bg-gray-50 shadow-md"
                         >
                           <Edit className="w-5 h-5 text-gray-700" />
+                        </motion.button>
+                        <motion.button 
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() => handleDeleteTeacher(teacher)}
+                          className="bg-red-100 text-red-600 p-3 rounded-xl hover:bg-red-200 shadow-md"
+                          title="Delete teacher"
+                        >
+                          <Trash2 className="w-5 h-5" />
                         </motion.button>
                       </div>
                     </motion.div>
@@ -919,7 +934,7 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
                             </div>
                             <div>
                               <h4 className="font-['Cousine'] text-lg text-gray-900">AUTO-SUGGEST FEATURE</h4>
-                              <p className="font-['Arimo'] text-sm text-gray-600">AI matched based on subject, grade & availability</p>
+                        <p className="font-['Arimo'] text-sm text-gray-600">AI matched based on subject & load</p>
                             </div>
                           </div>
 
@@ -994,7 +1009,7 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
                                   <div className="flex-1">
                                     <p className="font-['Cousine'] text-gray-900">{teacher.name}</p>
                                     <p className="font-['Arimo'] text-sm text-gray-600">
-                                      {teacher.subject} · {studentCount} Students
+                                      {studentCount} Students
                                     </p>
                                   </div>
                                 </div>
@@ -1055,7 +1070,17 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
                               <span className="font-['Arimo'] text-gray-900">{pair.teacher.name}</span>
                             </div>
                           </div>
-                          <CheckCircle className="w-5 h-5 text-green-600" />
+                          <div className="flex items-center gap-2">
+                            <CheckCircle className="w-5 h-5 text-green-600" />
+                            <motion.button
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                              onClick={() => setAssignedPairs(prev => prev.filter((_, i) => i !== index))}
+                              className="bg-red-100 text-red-600 px-3 py-1 rounded-lg text-xs font-['Arimo'] shadow-md hover:bg-red-200"
+                            >
+                              Delete
+                            </motion.button>
+                          </div>
                         </motion.div>
                       ))}
                     </div>
@@ -1237,6 +1262,23 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
                 {!selectedTeacher ? (
                   <>
                     <h3 className="font-['Arimo'] text-2xl text-gray-900 mb-6">Teacher Schedules</h3>
+                    <div className="bg-white rounded-2xl shadow-xl p-6 mb-6">
+                      <h4 className="font-['Arimo'] text-lg text-gray-900 mb-4">Create Schedule</h4>
+                      <div className="grid md:grid-cols-4 gap-4">
+                        <select className="border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo']">
+                          <option>Monday</option>
+                          <option>Tuesday</option>
+                          <option>Wednesday</option>
+                          <option>Thursday</option>
+                          <option>Friday</option>
+                          <option>Saturday</option>
+                          <option>Sunday</option>
+                        </select>
+                        <input type="time" className="border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo']" />
+                        <input type="text" placeholder="Subject" className="border-2 border-gray-200 rounded-xl px-4 py-3 font-['Arimo']" />
+                        <button className="bg-gradient-to-r from-[#2563EB] to-[#4F46E5] text-white px-6 py-3 rounded-xl font-['Arimo']">Add</button>
+                      </div>
+                    </div>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                       {teacherData.map((teacher, index) => (
                         <motion.div
@@ -1262,10 +1304,7 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
                               <span className="font-['Arimo'] text-sm text-gray-600">Total Students</span>
                               <span className="font-['Arimo'] text-sm text-gray-900 font-medium">{teacher.students}</span>
                             </div>
-                            <div className="flex items-center justify-between">
-                              <span className="font-['Arimo'] text-sm text-gray-600">Availability</span>
-                              <span className="font-['Arimo'] text-xs text-gray-900">{teacher.availability}</span>
-                            </div>
+                            
                           </div>
                           <motion.button
                             whileHover={{ scale: 1.05 }}
@@ -1294,7 +1333,7 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
                         <div>
                           <h3 className="font-['Arimo'] text-2xl text-gray-900">{selectedTeacher.name}</h3>
                           <p className="font-['Arimo'] text-gray-600">{selectedTeacher.subject}</p>
-                        </div>
+                      </div>
                       </div>
                       <span className="bg-blue-100 text-blue-700 px-4 py-2 rounded-full font-['Arimo'] text-sm">
                         Complete Schedule - November 2025
@@ -1302,7 +1341,7 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
                     </div>
 
                     <div className="space-y-6">
-                      {Object.entries(scheduleData[selectedTeacher.name] || {}).map(([day, sessions]) => (
+                      {Object.entries(scheduleState[selectedTeacher.name] || {}).map(([day, sessions]) => (
                         <div key={day} className="bg-white rounded-2xl shadow-lg overflow-hidden">
                           <div className="bg-gradient-to-r from-blue-500 to-cyan-500 px-6 py-4">
                             <h4 className="font-['Arimo'] text-xl text-white">{day}</h4>
@@ -1315,13 +1354,23 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
                                   <div>
                                     <p className="font-['Arimo'] text-gray-900">{session.student}</p>
                                     <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-['Arimo']">
-                                      EXAM II
+                                      {session.subject || 'Subject'}
                                     </span>
                                   </div>
                                 </div>
-                                <span className="bg-gray-900 text-white px-4 py-2 rounded-lg font-['Arimo'] text-sm">
-                                  {session.time}
-                                </span>
+                                <div className="flex items-center gap-3">
+                                  <span className="bg-gray-900 text-white px-4 py-2 rounded-lg font-['Arimo'] text-sm">
+                                    {session.time}
+                                  </span>
+                                  <motion.button
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    onClick={() => removeSession(selectedTeacher.name, day, idx)}
+                                    className="bg-red-100 text-red-600 px-3 py-2 rounded-lg font-['Arimo'] text-xs shadow-md hover:bg-red-200"
+                                  >
+                                    Delete
+                                  </motion.button>
+                                </div>
                               </div>
                             ))}
                             <p className="font-['Arimo'] text-sm text-gray-600 pt-3">
@@ -1489,6 +1538,21 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
         onConfirm={() => handleDeleteStudent(studentModal.student)}
         title="Delete Student"
         message={`Are you sure you want to delete ${studentModal.student?.name} from the system? This action cannot be undone and will remove all their data, including progress, assignments, and history.`}
+        confirmText="Delete"
+        confirmColor="from-red-500 to-red-600"
+        icon={<Trash2 className="w-6 h-6 text-white" />}
+      />
+
+      {/* Delete Teacher Confirmation Modal */}
+      <ConfirmationModal
+        isOpen={showDeleteTeacherModal}
+        onClose={() => {
+          setShowDeleteTeacherModal(false);
+          setTeacherToDelete(null);
+        }}
+        onConfirm={confirmDeleteTeacher}
+        title="Delete Teacher"
+        message={`Are you sure you want to delete ${teacherToDelete?.name}? This action cannot be undone.`}
         confirmText="Delete"
         confirmColor="from-red-500 to-red-600"
         icon={<Trash2 className="w-6 h-6 text-white" />}

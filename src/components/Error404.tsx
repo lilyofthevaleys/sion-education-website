@@ -12,7 +12,7 @@ export default function Error404({ navigate }) {
       >
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
           {/* Error Number Section */}
-          <div className="bg-gradient-to-r from-[#2563EB] via-[#4F46E5] to-[#7C3AED] p-12 text-center relative overflow-hidden">
+          <div className="bg-gradient-to-r from-[#2563EB] via-[#4F46E5] to-[#7C3AED] p-8 sm:p-12 text-center relative overflow-hidden">
             <motion.div
               className="absolute inset-0 bg-white/10"
               animate={{
@@ -33,7 +33,7 @@ export default function Error404({ navigate }) {
               className="relative z-10"
             >
               <motion.h1 
-                className="font-['Cousine'] text-9xl text-white mb-4"
+                className="font-['Cousine'] text-6xl sm:text-8xl md:text-9xl text-white mb-4"
                 animate={{ 
                   textShadow: [
                     "0 0 20px rgba(255,255,255,0.5)",
@@ -45,7 +45,7 @@ export default function Error404({ navigate }) {
               >
                 404
               </motion.h1>
-              <div className="bg-white/20 backdrop-blur-sm rounded-xl px-8 py-4 inline-block">
+              <div className="bg-white/20 backdrop-blur-sm rounded-xl px-6 sm:px-8 py-3 sm:py-4 inline-block">
                 <p className="font-['Arimo'] text-2xl text-white">PAGE NOT FOUND</p>
               </div>
             </motion.div>
@@ -146,7 +146,7 @@ export default function Error404({ navigate }) {
             >
               <motion.button
                 onClick={() => navigate('landing')}
-                className="flex-1 min-w-[200px] bg-gradient-to-r from-[#2563EB] to-[#4F46E5] text-white px-6 py-4 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
+                className="flex-1 min-w-[200px] bg-gradient-to-r from-[#2563EB] to-[#4F46E5] text-white px-4 sm:px-6 py-3 sm:py-4 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -156,7 +156,7 @@ export default function Error404({ navigate }) {
 
               <motion.button
                 onClick={() => window.history.back()}
-                className="flex-1 min-w-[200px] border-2 border-[#2563EB] text-[#2563EB] px-6 py-4 rounded-xl font-['Arimo'] hover:bg-blue-50 transition-all flex items-center justify-center gap-2"
+                className="flex-1 min-w-[200px] border-2 border-[#2563EB] text-[#2563EB] px-4 sm:px-6 py-3 sm:py-4 rounded-xl font-['Arimo'] hover:bg-blue-50 transition-all flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
