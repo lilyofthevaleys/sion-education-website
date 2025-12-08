@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import ConfirmationModal from './ConfirmationModal';
 
 const questions = [
-  // Math Questions (8)
   {
     id: 1,
     subject: 'Math',
@@ -61,128 +60,124 @@ const questions = [
     options: ['1', '2', '3', '4'],
     correctAnswer: 1
   },
-
-  // Physics Questions (9)
   {
     id: 9,
-    subject: 'Physics',
-    question: 'What is the SI unit of force?',
-    options: ['Joule', 'Newton', 'Watt', 'Pascal'],
+    subject: 'Math',
+    question: 'Evaluate 3² + 4².',
+    options: ['12', '25', '7', '5'],
     correctAnswer: 1
   },
   {
     id: 10,
-    subject: 'Physics',
-    question: 'The speed of light in vacuum is approximately:',
-    options: ['3 × 10⁸ m/s', '3 × 10⁶ m/s', '3 × 10⁹ m/s', '3 × 10⁷ m/s'],
+    subject: 'Math',
+    question: 'Solve for x: x / 5 = 7.',
+    options: ['35', '12', '25', '30'],
     correctAnswer: 0
   },
   {
     id: 11,
-    subject: 'Physics',
-    question: 'According to Newton\'s second law, F = ma. What does "a" represent?',
-    options: ['Area', 'Acceleration', 'Amplitude', 'Angle'],
+    subject: 'Math',
+    question: 'What is the derivative of f(x) = x²?',
+    options: ['x', '2x', 'x²', '1'],
     correctAnswer: 1
   },
   {
     id: 12,
-    subject: 'Physics',
-    question: 'What type of energy does a moving object possess?',
-    options: ['Potential Energy', 'Kinetic Energy', 'Thermal Energy', 'Chemical Energy'],
-    correctAnswer: 1
-  },
-  {
-    id: 13,
-    subject: 'Physics',
-    question: 'The resistance of a conductor depends on:',
-    options: ['Length only', 'Area only', 'Length, area, and material', 'Temperature only'],
+    subject: 'Math',
+    question: 'What is the median of the set [3, 7, 9, 10, 11]?',
+    options: ['7', '8', '9', '10'],
     correctAnswer: 2
   },
   {
+    id: 13,
+    subject: 'Math',
+    question: 'Solve for x: 2x − 3 = 11.',
+    options: ['4', '7', '8', '10'],
+    correctAnswer: 1
+  },
+  {
     id: 14,
-    subject: 'Physics',
-    question: 'What is the frequency of a wave with a period of 0.02 seconds?',
-    options: ['50 Hz', '25 Hz', '100 Hz', '20 Hz'],
+    subject: 'Math',
+    question: 'Simplify the fraction 6/8.',
+    options: ['3/4', '6/8', '1/2', '2/3'],
     correctAnswer: 0
   },
   {
     id: 15,
-    subject: 'Physics',
-    question: 'Which law states that energy cannot be created or destroyed?',
-    options: ['Newton\'s First Law', 'Law of Conservation of Energy', 'Ohm\'s Law', 'Hooke\'s Law'],
-    correctAnswer: 1
+    subject: 'Math',
+    question: 'What is the value of 5! (factorial)?',
+    options: ['24', '60', '120', '720'],
+    correctAnswer: 2
   },
   {
     id: 16,
-    subject: 'Physics',
-    question: 'What is the acceleration due to gravity on Earth?',
-    options: ['8.8 m/s²', '9.8 m/s²', '10.8 m/s²', '11.8 m/s²'],
+    subject: 'Math',
+    question: 'In a triangle, if angles A = 30° and B = 60°, what is angle C?',
+    options: ['60°', '90°', '120°', '45°'],
     correctAnswer: 1
   },
   {
     id: 17,
-    subject: 'Physics',
-    question: 'A concave lens is used to correct which vision problem?',
-    options: ['Hyperopia', 'Myopia', 'Astigmatism', 'Presbyopia'],
+    subject: 'Math',
+    question: 'Solve the system: x + y = 10 and x − y = 2. What is x?',
+    options: ['4', '6', '8', '12'],
     correctAnswer: 1
   },
-
-  // Chemistry Questions (8)
   {
     id: 18,
-    subject: 'Chemistry',
-    question: 'What is the chemical symbol for Gold?',
-    options: ['Go', 'Gd', 'Au', 'Ag'],
-    correctAnswer: 2
+    subject: 'Math',
+    question: 'Evaluate √81.',
+    options: ['8', '9', '10', '81'],
+    correctAnswer: 1
   },
   {
     id: 19,
-    subject: 'Chemistry',
-    question: 'What is the pH of pure water at 25°C?',
+    subject: 'Math',
+    question: 'What is the mean (average) of [5, 7, 9]?',
     options: ['5', '6', '7', '8'],
     correctAnswer: 2
   },
   {
     id: 20,
-    subject: 'Chemistry',
-    question: 'Which gas is most abundant in Earth\'s atmosphere?',
-    options: ['Oxygen', 'Carbon Dioxide', 'Nitrogen', 'Argon'],
-    correctAnswer: 2
+    subject: 'Math',
+    question: 'Find the perimeter of a rectangle with length 12 and width 5.',
+    options: ['34', '30', '24', '17'],
+    correctAnswer: 0
   },
   {
     id: 21,
-    subject: 'Chemistry',
-    question: 'What is the molecular formula of water?',
-    options: ['HO', 'H₂O', 'H₃O', 'HO₂'],
-    correctAnswer: 1
-  },
-  {
-    id: 22,
-    subject: 'Chemistry',
-    question: 'Which element has the atomic number 6?',
-    options: ['Oxygen', 'Nitrogen', 'Carbon', 'Helium'],
+    subject: 'Math',
+    question: 'Solve for x: 3(x − 4) = 15.',
+    options: ['5', '7', '9', '12'],
     correctAnswer: 2
   },
   {
+    id: 22,
+    subject: 'Math',
+    question: 'For the sequence 2, 5, 8, 11, what is the 6th term?',
+    options: ['16', '17', '18', '19'],
+    correctAnswer: 1
+  },
+  {
     id: 23,
-    subject: 'Chemistry',
-    question: 'What type of bond involves the sharing of electrons?',
-    options: ['Ionic Bond', 'Covalent Bond', 'Metallic Bond', 'Hydrogen Bond'],
+    subject: 'Math',
+    question: 'Find the hypotenuse of a right triangle with legs 6 and 8.',
+    options: ['7', '10', '12', '14'],
     correctAnswer: 1
   },
   {
     id: 24,
-    subject: 'Chemistry',
-    question: 'What is the process of a solid turning directly into a gas called?',
-    options: ['Evaporation', 'Sublimation', 'Condensation', 'Deposition'],
+    subject: 'Math',
+    question: 'Evaluate (−3)².',
+    options: ['−9', '9', '6', '3'],
     correctAnswer: 1
   },
   {
     id: 25,
-    subject: 'Chemistry',
-    question: 'Which acid is found in vinegar?',
-    options: ['Citric Acid', 'Sulfuric Acid', 'Acetic Acid', 'Nitric Acid'],
-    correctAnswer: 2
+    subject: 'Math',
+    question: 'If f(x) = 2x + 1, find f⁻¹(5).',
+    options: ['1', '2', '3', '4'],
+    correctAnswer: 1
   }
 ];
 
@@ -246,7 +241,7 @@ export default function OnlineTest({ navigate, userRole = 'student' }) {
     if (userRole === 'teacher') {
       navigate('teacher-registration', { step: 3, testCompleted: true });
     } else {
-      navigate('test-submission', { userRole, answers });
+      navigate('test-submission', { userRole, answers, applicationId: 'S-301125-001' });
     }
   };
 
