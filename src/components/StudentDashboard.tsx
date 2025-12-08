@@ -14,7 +14,8 @@ import {
   Edit,
   MapPin,
   School,
-  Users
+  Users,
+  X
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import ConfirmationModal from './ConfirmationModal';
@@ -27,6 +28,7 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
   const [showChat, setShowChat] = useState(false);
   const [showProfileManager, setShowProfileManager] = useState(false);
   const [showEditProfile, setShowEditProfile] = useState(false);
+  const [showBanner, setShowBanner] = useState(true);
   const [editedProfile, setEditedProfile] = useState({
     name: currentUser?.fullName || 'Alex Chen',
     email: currentUser?.email || 'alex@email.com',
@@ -117,31 +119,43 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
       </motion.header>
 
       <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        {/* Welcome Banner - Same as Admin */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-6 sm:mb-8 bg-gradient-to-r from-[#2563EB] via-[#4F46E5] to-[#7C3AED] rounded-3xl p-6 sm:p-8 text-white shadow-2xl relative overflow-hidden"
-        >
-          <div className="relative z-10">
-            <motion.h2 
-              initial={{ x: -50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="font-['Arimo'] text-2xl sm:text-3xl lg:text-4xl mb-2"
+        {showBanner ? (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6 sm:mb-8 bg-gradient-to-r from-[#2563EB] via-[#4F46E5] to-[#7C3AED] rounded-3xl p-6 sm:p-8 text-white shadow-2xl relative overflow-hidden"
+          >
+            <motion.button
+              onClick={() => setShowBanner(false)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="absolute right-4 top-4 w-7 h-7 sm:w-8 sm:h-8 bg-white/20 text-white rounded-lg flex items-center justify-center shadow-md backdrop-blur-sm"
+              aria-label="Dismiss banner"
             >
-              Welcome back, {studentData.name.split(' ')[0]}! 👋
-            </motion.h2>
-            <motion.p 
-              initial={{ x: -50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="font-['Arimo'] text-white/90 text-base sm:text-lg"
-            >
-              {studentData.hasSchedule ? `Next Lesson: ${studentData.nextLesson}` : 'Select your schedule to get started!'}
-            </motion.p>
-          </div>
-        </motion.div>
+              <X className="w-4 h-4" />
+            </motion.button>
+            <div className="relative z-10">
+              <motion.h2 
+                initial={{ x: -50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="font-['Arimo'] text-2xl sm:text-3xl lg:text-4xl mb-2"
+              >
+                Welcome back, {studentData.name.split(' ')[0]}! 👋
+              </motion.h2>
+              <motion.p 
+                initial={{ x: -50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="font-['Arimo'] text-white/90 text-base sm:text-lg"
+              >
+                {studentData.hasSchedule ? `Next Lesson: ${studentData.nextLesson}` : 'Select your schedule to get started!'}
+              </motion.p>
+            </div>
+          </motion.div>
+        ) : (
+          <div className="mb-6 sm:mb-8" />
+        )}
 
         {/* Main Dashboard Card */}
         <motion.div 

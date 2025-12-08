@@ -125,7 +125,7 @@ export default function LoginPage({ navigate, onLogin }) {
         onLogin(user);
       }
     } else {
-      setError('Invalid credentials. Try: student / blackdragons14 or admin / whiteleopard20');
+      setError('Invalid username or password.');
     }
   };
 
@@ -180,6 +180,8 @@ export default function LoginPage({ navigate, onLogin }) {
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full border border-gray-300 rounded-lg px-4 py-3 font-['Arimo'] text-sm focus:outline-none focus:ring-2 focus:ring-[#2563EB] focus:border-transparent transition-all"
                 placeholder="your.email@example.com or username"
+                autoComplete="off"
+                autoCapitalize="none"
               />
             </div>
 
@@ -192,6 +194,8 @@ export default function LoginPage({ navigate, onLogin }) {
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full border border-gray-300 rounded-lg px-4 py-3 font-['Arimo'] text-sm focus:outline-none focus:ring-2 focus:ring-[#2563EB] focus:border-transparent transition-all"
                   placeholder="Enter your password"
+                  autoComplete="off"
+                  autoCapitalize="none"
                 />
                 <button
                   type="button"

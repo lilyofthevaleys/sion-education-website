@@ -17,7 +17,8 @@ import {
   School,
   MapPin,
   Edit,
-  Search
+  Search,
+  X
 } from 'lucide-react';
 import { motion, useInView } from 'motion/react';
 import ConfirmationModal from './ConfirmationModal';
@@ -67,7 +68,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
   const [showCalendar, setShowCalendar] = useState(false);
   const [dayFilter, setDayFilter] = useState('All Days'); // New state for day filter
   const [showSaveProfileModal, setShowSaveProfileModal] = useState(false);
-  
+  const [showBanner, setShowBanner] = useState(true);
   // Logbook state
   const [selectedStudent, setSelectedStudent] = useState([]);
   const [logbookDate, setLogbookDate] = useState('');
@@ -215,31 +216,43 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
       </motion.header>
 
       <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        {/* Welcome Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-6 sm:mb-8 bg-gradient-to-r from-[#2563EB] via-[#4F46E5] to-[#7C3AED] rounded-3xl p-6 sm:p-8 text-white shadow-2xl relative overflow-hidden"
-        >
-          <div className="relative z-10">
-            <motion.h2 
-              initial={{ x: -50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="font-['Arimo'] text-2xl sm:text-3xl lg:text-4xl mb-2"
+        {showBanner ? (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6 sm:mb-8 bg-gradient-to-r from-[#2563EB] via-[#4F46E5] to-[#7C3AED] rounded-3xl p-6 sm:p-8 text-white shadow-2xl relative overflow-hidden"
+          >
+            <motion.button
+              onClick={() => setShowBanner(false)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="absolute right-4 top-4 z-20 w-7 h-7 sm:w-8 sm:h-8 bg-white/20 text-white rounded-lg flex items-center justify-center shadow-md backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white/50 hover:bg-white/30"
+              aria-label="Dismiss banner"
             >
-              Welcome back, {editedProfile.name.split(' ')[0]}! 👋
-            </motion.h2>
-            <motion.p 
-              initial={{ x: -50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="font-['Arimo'] text-white/90 text-base sm:text-lg"
-            >
-              {todaysLessons.length} lessons today • {stats.pendingLogs} pending logbooks
-            </motion.p>
-          </div>
-        </motion.div>
+              <X className="w-4 h-4" />
+            </motion.button>
+            <div className="relative z-10">
+              <motion.h2 
+                initial={{ x: -50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="font-['Arimo'] text-2xl sm:text-3xl lg:text-4xl mb-2"
+              >
+                Welcome back, {editedProfile.name.split(' ')[0]}! 👋
+              </motion.h2>
+              <motion.p 
+                initial={{ x: -50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="font-['Arimo'] text-white/90 text-base sm:text-lg"
+              >
+                {todaysLessons.length} lessons today • {stats.pendingLogs} pending logbooks
+              </motion.p>
+            </div>
+          </motion.div>
+        ) : (
+          <div className="mb-6 sm:mb-8" />
+        )}
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">

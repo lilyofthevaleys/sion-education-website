@@ -337,7 +337,7 @@ export default function LandingPage({ navigate }) {
               <p className="font-['Arimo'] text-xl text-[#4a5565]">Trusted by <span className="font-bold text-[#2563EB]">students</span> and <span className="font-bold text-[#4F46E5]">educators</span> worldwide</p>
             </motion.div>
 
-            <div className="grid md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center max-w-5xl mx-auto">
               {[
                 { icon: Users, number: '500+', label: 'Active Students', color: 'from-[#2563EB] to-[#3B82F6]', delay: 0 },
                 { icon: GraduationCap, number: '100+', label: 'Qualified Teachers', color: 'from-[#4F46E5] to-[#6366F1]', delay: 0.1 },
