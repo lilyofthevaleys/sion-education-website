@@ -83,8 +83,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
     email: currentUser?.email || 'teacher@sion.edu',
     phone: currentUser?.phone || '+1 555 1001',
     subject: currentUser?.profile?.subject || 'Mathematics',
-    grades: currentUser?.profile?.grades || 'Grades 9-11',
-    availability: currentUser?.profile?.availability || 'Mon-Fri, 3PM-8PM'
+    address: currentUser?.profile?.address || '123 Main Street, Springfield'
   });
 
   const stats = {
@@ -862,26 +861,15 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
                     <p className="font-['Arimo'] text-xl text-gray-900">{editedProfile.phone}</p>
                   </div>
 
-                  {/* Grades */}
+                  {/* Address */}
                   <div className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center">
-                        <School className="w-5 h-5 text-white" />
+                      <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                        <MapPin className="w-5 h-5 text-white" />
                       </div>
-                      <label className="font-['Arimo'] text-sm text-gray-600">Grade Levels</label>
+                      <label className="font-['Arimo'] text-sm text-gray-600">Address</label>
                     </div>
-                    <p className="font-['Arimo'] text-xl text-gray-900">{editedProfile.grades}</p>
-                  </div>
-
-                  {/* Availability */}
-                  <div className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center">
-                        <Clock className="w-5 h-5 text-white" />
-                      </div>
-                      <label className="font-['Arimo'] text-sm text-gray-600">Availability</label>
-                    </div>
-                    <p className="font-['Arimo'] text-xl text-gray-900">{editedProfile.availability}</p>
+                    <p className="font-['Arimo'] text-xl text-gray-900">{editedProfile.address}</p>
                   </div>
                 </div>
               </motion.div>
@@ -987,21 +975,11 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
                 />
               </div>
               <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Grade Levels</label>
+                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Address</label>
                 <input
                   type="text"
-                  value={editedProfile.grades}
-                  onChange={(e) => setEditedProfile({ ...editedProfile, grades: e.target.value })}
-                  className="w-full border border-gray-300 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
-                />
-              </div>
-              <div>
-                <label className="block font-['Arimo'] text-sm text-gray-700 mb-2">Availability</label>
-                <input
-                  type="text"
-                  value={editedProfile.availability}
-                  onChange={(e) => setEditedProfile({ ...editedProfile, availability: e.target.value })}
-                  placeholder="e.g. Mon-Fri, 3PM-8PM"
+                  value={editedProfile.address}
+                  onChange={(e) => setEditedProfile({ ...editedProfile, address: e.target.value })}
                   className="w-full border border-gray-300 rounded-xl px-4 py-3 font-['Arimo'] focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
                 />
               </div>
