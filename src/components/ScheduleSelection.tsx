@@ -324,8 +324,18 @@ export default function ScheduleSelection({ navigate, currentUser, onConfirmSche
                       transition={{ delay: index * 0.1 }}
                       className="bg-white rounded-2xl p-5 sm:p-6 shadow-xl hover:shadow-2xl transition-all border border-gray-100"
                     >
-                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                        <div className="flex items-center gap-4 sm:gap-6">
+                      <div className="flex items-center justify-between gap-4">
+                        <div className="flex items-center gap-3 sm:gap-4">
+                          <motion.button
+                            onClick={() => removeSchedule(index)}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="w-10 h-10 sm:w-11 sm:h-11 bg-gradient-to-r from-red-500 to-red-600 rounded-xl flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all"
+                            aria-label="Remove schedule"
+                            title="Remove schedule"
+                          >
+                            <XCircle className="w-5 h-5 sm:w-6 sm:h-6" />
+                          </motion.button>
                           <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#2563EB] to-[#4F46E5] rounded-2xl flex items-center justify-center shadow-lg">
                             <Clock className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                           </div>
@@ -334,14 +344,9 @@ export default function ScheduleSelection({ navigate, currentUser, onConfirmSche
                             <p className="font-['Arimo'] text-gray-600 text-sm sm:text-base">{schedule.time} • {schedule.subject}</p>
                           </div>
                         </div>
-                        <motion.button
-                          onClick={() => removeSchedule(index)}
-                          whileHover={{ scale: 1.1, rotate: 90 }}
-                          whileTap={{ scale: 0.9 }}
-                          className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-red-500 to-red-600 rounded-xl flex items-center justify-center text-white shadow-lg hover:shadow-xl transition-all"
-                        >
-                          <XCircle className="w-5 h-5 sm:w-6 sm:h-6" />
-                        </motion.button>
+                        <div className="flex items-center gap-2">
+                          <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-['Arimo']">Selected</span>
+                        </div>
                       </div>
                     </motion.div>
                   ))}

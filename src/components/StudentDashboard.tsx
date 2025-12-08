@@ -247,8 +247,8 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
                           transition={{ delay: index * 0.1 }}
                           className="bg-white rounded-2xl p-5 sm:p-6 shadow-xl hover:shadow-2xl transition-all border border-gray-100"
                         >
-                          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                            <div className="flex items-center gap-4 sm:gap-6">
+                          <div className="flex items-center justify-between gap-4">
+                            <div className="flex items-center gap-4 sm:gap-6 min-w-0">
                               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#2563EB] to-[#4F46E5] rounded-2xl flex items-center justify-center shadow-lg">
                                 <BookOpen className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                               </div>
