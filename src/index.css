@@ -520,6 +520,12 @@
   }
 }
 
+/* Override default font variables to our global families */
+:root {
+  --font-sans: "Arimo", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: "Cousine", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
 @layer utilities {
   .pointer-events-none {
     pointer-events: none;
