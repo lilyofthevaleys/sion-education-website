@@ -411,7 +411,6 @@ function Container30() {
     <div className="absolute content-stretch flex flex-col gap-[8px] h-[102.667px] items-start left-[28px] top-[140px] w-[269.333px]" data-name="Container">
       <Container27 />
       <Container28 />
-      <Container29 />
     </div>
   );
 }
@@ -518,7 +517,6 @@ function Container37() {
     <div className="absolute content-stretch flex flex-col gap-[8px] h-[102.667px] items-start left-[28px] top-[140px] w-[269.333px]" data-name="Container">
       <Container34 />
       <Container35 />
-      <Container36 />
     </div>
   );
 }
@@ -625,7 +623,6 @@ function Container44() {
     <div className="absolute content-stretch flex flex-col gap-[8px] h-[102.667px] items-start left-[28px] top-[140px] w-[269.333px]" data-name="Container">
       <Container41 />
       <Container42 />
-      <Container43 />
     </div>
   );
 }
@@ -732,7 +729,6 @@ function Container51() {
     <div className="absolute content-stretch flex flex-col gap-[8px] h-[102.667px] items-start left-[28px] top-[140px] w-[269.333px]" data-name="Container">
       <Container48 />
       <Container49 />
-      <Container50 />
     </div>
   );
 }
@@ -839,7 +835,6 @@ function Container58() {
     <div className="absolute content-stretch flex flex-col gap-[8px] h-[102.667px] items-start left-[28px] top-[140px] w-[269.333px]" data-name="Container">
       <Container55 />
       <Container56 />
-      <Container57 />
     </div>
   );
 }
@@ -946,7 +941,6 @@ function Container65() {
     <div className="absolute content-stretch flex flex-col gap-[8px] h-[102.667px] items-start left-[28px] top-[140px] w-[269.333px]" data-name="Container">
       <Container62 />
       <Container63 />
-      <Container64 />
     </div>
   );
 }

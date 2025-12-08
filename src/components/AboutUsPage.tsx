@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { GraduationCap, ArrowLeft, Quote, Star, ChevronLeft, ChevronRight, Award, CheckCircle, BookOpen, Shield } from 'lucide-react';
+import { GraduationCap, ArrowLeft, Quote, ChevronLeft, ChevronRight, Award, CheckCircle, BookOpen, Shield } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { motion, useInView } from 'motion/react';
 
@@ -322,11 +322,7 @@ function TeacherCard({ name, subject, bio, rating, delay }) {
           <h3 className="font-['Arimo'] text-xl text-[#101828] text-center mb-2 font-bold">{name}</h3>
           <p className="font-['Arimo'] text-sm text-[#2563EB] text-center mb-3 font-bold">{subject}</p>
           
-          <div className="flex justify-center gap-1 mb-4">
-            {[...Array(rating)].map((_, i) => (
-              <Star key={i} className="w-4 h-4 fill-[#EAB308] text-[#EAB308]" />
-            ))}
-          </div>
+          
           
           <p className="font-['Arimo'] text-sm text-[#4a5565] text-center">{bio}</p>
         </div>

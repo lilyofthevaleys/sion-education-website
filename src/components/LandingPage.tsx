@@ -220,19 +220,6 @@ export default function LandingPage({ navigate }) {
                   </div>
                   <span className="font-['Arimo'] text-sm text-[#4a5565]">500+ Active Students</span>
                 </div>
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 1 + i * 0.1 }}
-                    >
-                      ⭐
-                    </motion.div>
-                  ))}
-                  <span className="font-['Arimo'] text-sm text-[#4a5565] ml-2">4.9/5.0</span>
-                </div>
               </motion.div>
             </div>
 
