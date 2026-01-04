@@ -69,6 +69,9 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
   const [dayFilter, setDayFilter] = useState('All Days'); // New state for day filter
   const [showSaveProfileModal, setShowSaveProfileModal] = useState(false);
   const [showBanner, setShowBanner] = useState(true);
+  const [showLessonDetailsModal, setShowLessonDetailsModal] = useState(false);
+  const [selectedLessonDetails, setSelectedLessonDetails] = useState(null);
+  const [editedNotes, setEditedNotes] = useState('');
   // Logbook state
   const [selectedStudent, setSelectedStudent] = useState([]);
   const [logbookDate, setLogbookDate] = useState('');
@@ -103,9 +106,36 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
   ];
 
   const todaysLessons = [
-    { id: 1, student: 'Alex Chen', subject: 'Math', time: '5PM - 6PM', avatar: 'A' },
-    { id: 2, student: 'Alex Chun', subject: 'Physics', time: '5PM - 7PM', avatar: 'A' },
-    { id: 3, student: 'Alex Chan', subject: 'Chemistry', time: '5PM - 6:30PM', avatar: 'A' }
+    { 
+      id: 1, 
+      student: 'Alex Chen', 
+      subject: 'Math', 
+      time: '5PM - 6PM', 
+      avatar: 'A',
+      grade: 'Grade 10',
+      objectives: ['Understand the quadratic formula', 'Solve quadratic equations', 'Apply to real-world problems'],
+      notes: 'Student struggling with factoring, needs extra practice'
+    },
+    { 
+      id: 2, 
+      student: 'Alex Chun', 
+      subject: 'Physics', 
+      time: '5PM - 7PM', 
+      avatar: 'A',
+      grade: 'Grade 11',
+      objectives: ['Understand Newton\'s three laws', 'Calculate force and acceleration', 'Analyze motion diagrams'],
+      notes: 'Excellent progress, ready for advanced problems'
+    },
+    { 
+      id: 3, 
+      student: 'Alex Chan', 
+      subject: 'Chemistry', 
+      time: '5PM - 6:30PM', 
+      avatar: 'A',
+      grade: 'Grade 10',
+      objectives: ['Identify ionic and covalent bonds', 'Draw Lewis structures', 'Predict molecular shapes'],
+      notes: 'Good understanding of concepts, encourage more practice'
+    }
   ];
 
   // Weekly schedule data
@@ -162,6 +192,12 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
     // TODO: Save to backend
     setShowSaveProfileModal(false);
     setShowEditProfile(false);
+  };
+
+  const handleSaveNotes = () => {
+    console.log('Saving lesson notes:', editedNotes);
+    // TODO: Save to backend
+    setShowLessonDetailsModal(false);
   };
 
   return (
@@ -518,6 +554,11 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
                           <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
+                            onClick={() => {
+                              setSelectedLessonDetails(lesson);
+                              setEditedNotes(lesson.notes || '');
+                              setShowLessonDetailsModal(true);
+                            }}
                             className="bg-gradient-to-r from-[#2563EB] to-[#4F46E5] text-white px-4 py-2 rounded-xl font-['Arimo'] shadow-lg"
                           >
                             Details
@@ -1036,6 +1077,110 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
         confirmColor="from-green-500 to-green-600"
         icon={<CheckCircle className="w-6 h-6 text-white" />}
       />
+
+      {/* Lesson Details Modal */}
+      {showLessonDetailsModal && selectedLessonDetails && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+          >
+            {/* Modal Header */}
+            <div className="sticky top-0 bg-gradient-to-r from-[#2563EB] to-[#4F46E5] text-white p-6 rounded-t-3xl flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white shadow-lg text-xl font-bold">
+                  {selectedLessonDetails.avatar}
+                </div>
+                <div>
+                  <h3 className="font-['Arimo'] text-2xl font-bold">Lesson Details</h3>
+                  <p className="font-['Arimo'] text-sm text-white/80">{selectedLessonDetails.student} - {selectedLessonDetails.subject}</p>
+                </div>
+              </div>
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 90 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={() => setShowLessonDetailsModal(false)}
+                className="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all"
+              >
+                <X className="w-5 h-5" />
+              </motion.button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-6 space-y-6">
+              {/* Time and Grade */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-blue-50 rounded-xl p-4">
+                  <div className="flex items-center gap-2 text-blue-600 mb-2">
+                    <Clock className="w-5 h-5" />
+                    <span className="font-['Arimo'] text-sm font-semibold">Time</span>
+                  </div>
+                  <p className="font-['Arimo'] text-lg text-gray-900">{selectedLessonDetails.time}</p>
+                </div>
+                <div className="bg-purple-50 rounded-xl p-4">
+                  <div className="flex items-center gap-2 text-purple-600 mb-2">
+                    <School className="w-5 h-5" />
+                    <span className="font-['Arimo'] text-sm font-semibold">Grade</span>
+                  </div>
+                  <p className="font-['Arimo'] text-lg text-gray-900">{selectedLessonDetails.grade}</p>
+                </div>
+              </div>
+
+              {/* Learning Objectives */}
+              <div className="bg-green-50 rounded-xl p-5">
+                <div className="flex items-center gap-2 text-green-600 mb-3">
+                  <CheckCircle className="w-5 h-5" />
+                  <span className="font-['Arimo'] text-sm font-semibold">Learning Objectives</span>
+                </div>
+                <ul className="space-y-2">
+                  {selectedLessonDetails.objectives.map((objective, index) => (
+                    <li key={index} className="font-['Arimo'] text-gray-700 flex items-start gap-2">
+                      <span className="text-green-600 mt-1">•</span>
+                      <span>{objective}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Editable Teacher Notes */}
+              <div className="bg-yellow-50 rounded-xl p-5">
+                <div className="flex items-center gap-2 text-yellow-600 mb-3">
+                  <FileText className="w-5 h-5" />
+                  <span className="font-['Arimo'] text-sm font-semibold">Teacher Notes</span>
+                </div>
+                <textarea
+                  value={editedNotes}
+                  onChange={(e) => setEditedNotes(e.target.value)}
+                  className="w-full h-32 border border-yellow-200 rounded-xl px-4 py-3 font-['Arimo'] text-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400 resize-none bg-white"
+                  placeholder="Add notes about this lesson..."
+                />
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-6 border-t border-gray-200 bg-gray-50 rounded-b-3xl flex gap-3">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => setShowLessonDetailsModal(false)}
+                className="flex-1 bg-gray-200 text-gray-700 px-6 py-3 rounded-xl font-['Arimo'] font-semibold hover:bg-gray-300 transition-all"
+              >
+                Close
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={handleSaveNotes}
+                className="flex-1 bg-gradient-to-r from-[#2563EB] to-[#4F46E5] text-white px-6 py-3 rounded-xl font-['Arimo'] font-semibold shadow-lg hover:shadow-xl transition-all"
+              >
+                Save Notes
+              </motion.button>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 }
