@@ -527,12 +527,19 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
       )}
 
       {/* Profile Manager (Avatar change) */}
-      {showProfileManager && (
-        <ProfileManager
-          currentUser={currentUser}
-          onClose={() => setShowProfileManager(false)}
-        />
-      )}
+      <AnimatePresence>
+        {showProfileManager && (
+          <ProfileManager
+            currentUser={currentUser}
+            onClose={() => setShowProfileManager(false)}
+            onSave={(profileData) => {
+              console.log('Profile saved:', profileData);
+              // Here you would save to backend
+              setCurrentUser({ ...currentUser, ...profileData });
+            }}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

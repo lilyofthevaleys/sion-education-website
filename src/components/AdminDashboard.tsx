@@ -1581,6 +1581,7 @@ export default function AdminDashboard({ navigate, currentUser, onLogout, pendin
             onSave={(profileData) => {
               console.log('Profile saved:', profileData);
               // Here you would save to backend
+              setCurrentUser({ ...currentUser, ...profileData });
             }}
           />
         )}

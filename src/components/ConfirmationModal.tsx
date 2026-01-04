@@ -33,16 +33,16 @@ export default function ConfirmationModal({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100]"
           />
 
           {/* Modal */}
-          <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
+          <div className="fixed inset-0 flex items-center justify-center z-[100] p-4 pointer-events-none">
             <motion.div
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden"
+              className="bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden pointer-events-auto"
             >
               {/* Header */}
               <div className="bg-gradient-to-r from-gray-50 to-gray-100 p-6 border-b border-gray-200">
@@ -82,10 +82,7 @@ export default function ConfirmationModal({
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={() => {
-                    onConfirm();
-                    onClose();
-                  }}
+                  onClick={onConfirm}
                   className={`flex-1 bg-gradient-to-r ${confirmColor} text-white py-3 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl`}
                 >
                   {confirmText}

@@ -959,12 +959,19 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
       )}
 
       {/* Profile Manager */}
-      {showProfileManager && (
-        <ProfileManager
-          currentUser={currentUser}
-          onClose={() => setShowProfileManager(false)}
-        />
-      )}
+      <AnimatePresence>
+        {showProfileManager && (
+          <ProfileManager
+            currentUser={currentUser}
+            onClose={() => setShowProfileManager(false)}
+            onSave={(profileData) => {
+              console.log('Profile saved:', profileData);
+              // Here you would save to backend
+              setCurrentUser({ ...currentUser, ...profileData });
+            }}
+          />
+        )}
+      </AnimatePresence>
 
       {/* Draft: Schedule Calendar hidden for now */}
       {false && showCalendar && (

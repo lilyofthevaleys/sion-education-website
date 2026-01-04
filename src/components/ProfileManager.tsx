@@ -4,6 +4,10 @@ import { User, Upload, X, Check, Camera, ArrowLeft } from 'lucide-react';
 import ConfirmationModal from './ConfirmationModal';
 
 export default function ProfileManager({ currentUser, onClose, onSave }) {
+  // Store original values to restore on cancel
+  const [originalAvatar] = useState(currentUser?.avatar || null);
+  const [originalColor] = useState(currentUser?.avatarColor || '#2563EB');
+  
   const [selectedAvatar, setSelectedAvatar] = useState(currentUser?.avatar || null);
   const [selectedColor, setSelectedColor] = useState(currentUser?.avatarColor || '#2563EB');
   const [uploadedImage, setUploadedImage] = useState(null);
@@ -42,13 +46,24 @@ export default function ProfileManager({ currentUser, onClose, onSave }) {
   };
 
   const handleSave = () => {
+    console.log('handleSave called - saving changes');
     const profileData = {
       avatar: selectedAvatar,
       avatarColor: selectedColor,
       uploadedImage: uploadedImage
     };
-    onSave(profileData);
     setShowSaveModal(false);
+    onSave(profileData);
+    onClose();
+  };
+
+  const handleCancel = () => {
+    console.log('handleCancel called - discarding changes');
+    // Restore original values when canceling
+    setSelectedAvatar(originalAvatar);
+    setSelectedColor(originalColor);
+    setUploadedImage(null);
+    // Do NOT call onSave - just close
     onClose();
   };
 
@@ -94,7 +109,7 @@ export default function ProfileManager({ currentUser, onClose, onSave }) {
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                onClick={onClose}
+                onClick={handleCancel}
                 className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center text-white hover:bg-white/30 transition-all"
               >
                 <ArrowLeft className="w-5 h-5" />
@@ -215,7 +230,7 @@ export default function ProfileManager({ currentUser, onClose, onSave }) {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={onClose}
+              onClick={handleCancel}
               className="flex-1 bg-gray-100 text-gray-700 py-4 rounded-2xl font-['Arimo'] hover:bg-gray-200 transition-all shadow-md"
             >
               Cancel
