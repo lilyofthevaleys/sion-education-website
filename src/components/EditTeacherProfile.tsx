@@ -21,7 +21,6 @@ export default function EditTeacherProfile({ navigate, teacherId }) {
   });
 
   const [showSaveModal, setShowSaveModal] = useState(false);
-  const [showCancelModal, setShowCancelModal] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -38,7 +37,6 @@ export default function EditTeacherProfile({ navigate, teacherId }) {
   };
 
   const handleCancel = () => {
-    setShowCancelModal(false);
     navigate('admin-dashboard');
   };
 
@@ -63,7 +61,7 @@ export default function EditTeacherProfile({ navigate, teacherId }) {
               <motion.button
                 whileHover={{ scale: 1.1, x: -4 }}
                 whileTap={{ scale: 0.9 }}
-                onClick={() => setShowCancelModal(true)}
+                onClick={handleCancel}
                 className="w-12 h-12 bg-white rounded-xl shadow-md hover:shadow-lg flex items-center justify-center"
               >
                 <ArrowLeft className="w-6 h-6 text-gray-700" />
@@ -78,7 +76,7 @@ export default function EditTeacherProfile({ navigate, teacherId }) {
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setShowCancelModal(true)}
+                onClick={handleCancel}
                 className="bg-white border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-xl font-['Arimo'] shadow-md hover:shadow-lg flex items-center gap-2"
               >
                 <X className="w-5 h-5" />
@@ -310,17 +308,7 @@ export default function EditTeacherProfile({ navigate, teacherId }) {
         icon={<Save className="w-6 h-6 text-white" />}
       />
 
-      {/* Cancel Modal */}
-      <ConfirmationModal
-        isOpen={showCancelModal}
-        onClose={() => setShowCancelModal(false)}
-        onConfirm={handleCancel}
-        title="Discard Changes"
-        message="Are you sure you want to cancel? All unsaved changes will be lost."
-        confirmText="Yes, Discard"
-        confirmColor="from-red-500 to-red-600"
-        icon={<X className="w-6 h-6 text-white" />}
-      />
+
     </div>
   );
 }
