@@ -315,7 +315,7 @@ export default function OnlineTest({ navigate, userRole = 'student' }) {
               <h2 className="font-['Arimo'] text-lg text-[#101828]">Questions</h2>
             </div>
 
-            <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-2 mb-6">
+            <div className="grid grid-cols-5 gap-2.5 mb-6">
               {questions.map((_, index) => {
                 const status = getQuestionStatus(index);
                 return (
@@ -323,13 +323,13 @@ export default function OnlineTest({ navigate, userRole = 'student' }) {
                     key={index}
                     onClick={() => setCurrentQuestion(index)}
                     className={`
-                      w-9 h-9 sm:w-10 sm:h-10 rounded-lg font-['Arimo'] text-sm transition-all
+                      aspect-square w-full rounded-lg font-['Arimo'] text-sm font-semibold transition-all flex items-center justify-center
                       ${currentQuestion === index 
-                        ? 'bg-gradient-to-br from-[#2563EB] to-[#4F46E5] text-white shadow-lg scale-110' 
+                        ? 'bg-gradient-to-br from-[#2563EB] to-[#4F46E5] text-white shadow-lg scale-105 ring-2 ring-blue-300' 
                         : status === 'answered'
-                          ? 'bg-[#16A34A] text-white'
+                          ? 'bg-[#16A34A] text-white hover:bg-[#15803D]'
                           : status === 'marked'
-                          ? 'bg-[#EAB308] text-white'
+                          ? 'bg-[#EAB308] text-white hover:bg-[#CA8A04]'
                           : 'bg-gray-100 text-[#4a5565] hover:bg-gray-200'
                       }
                     `}

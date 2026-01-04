@@ -1,4 +1,15 @@
 import { projectId, publicAnonKey } from './supabase/info.tsx';
+import { 
+  mockAuthApi, 
+  mockTestApi, 
+  mockAdminApi, 
+  mockMessageApi, 
+  mockDashboardApi 
+} from './mockApi';
+
+// PROTOTYPE MODE: Set to true to use mock API (no backend needed)
+// Set to false when you deploy Supabase Edge Functions
+const USE_MOCK_API = true;
 
 const API_BASE_URL = `https://${projectId}.supabase.co/functions/v1/make-server-5c52ac3e`;
 
@@ -41,20 +52,20 @@ async function apiCall(endpoint: string, options: ApiOptions = {}) {
 }
 
 // Auth APIs
-export const authApi = {
+export const authApi = USE_MOCK_API ? mockAuthApi : {
   registerStudent: (data: any) => apiCall('/auth/register-student', { method: 'POST', body: data }),
   registerTeacher: (data: any) => apiCall('/auth/register-teacher', { method: 'POST', body: data }),
   login: (email: string, password: string) => apiCall('/auth/login', { method: 'POST', body: { email, password } }),
 };
 
 // Test APIs
-export const testApi = {
+export const testApi = USE_MOCK_API ? mockTestApi : {
   getQuestions: (type: string = 'student_entry') => apiCall(`/test/questions?type=${type}`),
   submitTest: (data: any) => apiCall('/test/submit', { method: 'POST', body: data }),
 };
 
 // Admin APIs
-export const adminApi = {
+export const adminApi = USE_MOCK_API ? mockAdminApi : {
   getPendingApplications: (type: string = 'all') => apiCall(`/admin/applications/pending?type=${type}`),
   approveApplication: (applicationId: string, notes: string) => 
     apiCall(`/admin/applications/${applicationId}/approve`, { method: 'POST', body: { notes } }),
@@ -69,7 +80,7 @@ export const adminApi = {
 };
 
 // Message APIs
-export const messageApi = {
+export const messageApi = USE_MOCK_API ? mockMessageApi : {
   sendMessage: (senderId: string, receiverId: string, messageText: string) => 
     apiCall('/messages/send', { method: 'POST', body: { senderId, receiverId, messageText } }),
   getConversation: (otherUserId: string, currentUserId: string) => 
@@ -78,7 +89,7 @@ export const messageApi = {
 };
 
 // Dashboard APIs
-export const dashboardApi = {
+export const dashboardApi = USE_MOCK_API ? mockDashboardApi : {
   getStudentDashboard: (userId: string) => apiCall(`/dashboard/student/${userId}`),
   getTeacherDashboard: (userId: string) => apiCall(`/dashboard/teacher/${userId}`),
 };
