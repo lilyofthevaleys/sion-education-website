@@ -82,7 +82,10 @@ export default function ConfirmationModal({
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={onConfirm}
+                  onClick={() => {
+                    onConfirm();
+                    onClose();
+                  }}
                   className={`flex-1 bg-gradient-to-r ${confirmColor} text-white py-3 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl`}
                 >
                   {confirmText}
