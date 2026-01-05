@@ -38,23 +38,42 @@ export default function App() {
   const [pageData, setPageData] = useState(null);
   const [pendingCounts, setPendingCounts] = useState({ students: 3, teachers: 5 });
 
+  // App version for cache busting
+  const APP_VERSION = '1.0.1';
+
   // Check if user is logged in
   useEffect(() => {
+    // Check app version and clear stale data
+    const storedVersion = localStorage.getItem('sion_app_version');
+    if (storedVersion !== APP_VERSION) {
+      // Clear all stored data on version change
+      localStorage.clear();
+      localStorage.setItem('sion_app_version', APP_VERSION);
+      return;
+    }
+
     const storedUser = localStorage.getItem('sion_user');
     if (storedUser) {
       try {
         const user = JSON.parse(storedUser);
-        setCurrentUser(user);
-        // Navigate to appropriate dashboard
-        if (user.role === 'student') {
-          setCurrentPage('student-dashboard');
-        } else if (user.role === 'teacher') {
-          setCurrentPage('teacher-dashboard');
-        } else if (user.role === 'admin') {
-          setCurrentPage('admin-dashboard');
+        // Validate the user object has required fields
+        if (user && user.role && (user.email || user.username)) {
+          setCurrentUser(user);
+          // Navigate to appropriate dashboard
+          if (user.role === 'student') {
+            setCurrentPage('student-dashboard');
+          } else if (user.role === 'teacher') {
+            setCurrentPage('teacher-dashboard');
+          } else if (user.role === 'admin') {
+            setCurrentPage('admin-dashboard');
+          }
+        } else {
+          // Invalid user data, clear it
+          localStorage.removeItem('sion_user');
         }
       } catch (e) {
         console.error('Failed to parse stored user', e);
+        localStorage.removeItem('sion_user');
       }
     }
   }, []);
