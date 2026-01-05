@@ -83,6 +83,7 @@ export default function ConfirmationModal({
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => {
+                    console.log('Confirm button clicked');
                     onConfirm();
                     onClose();
                   }}
