@@ -101,9 +101,13 @@ export default function App() {
   };
 
   const handleLogout = () => {
+    // Clear all state and localStorage
     setCurrentUser(null);
     localStorage.removeItem('sion_user');
-    navigate('landing');
+    setCurrentPage('landing');
+    window.scrollTo(0, 0);
+    // Force reload to ensure clean state
+    window.location.href = '/';
   };
 
   const handleApproveStudent = () => {
