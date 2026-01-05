@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { GraduationCap, AlertCircle, ArrowLeft, Eye, EyeOff } from 'lucide-react';
-import { authApi } from '../utils/api';
 
 export default function LoginPage({ navigate, onLogin }) {
   const [email, setEmail] = useState('');

@@ -15,6 +15,11 @@ export default function LandingPage({ navigate }) {
 
   return (
     <div className="min-h-screen bg-white overflow-hidden">
+      {/* PROTOTYPE BANNER */}
+      <div className="bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 text-white text-center py-3 px-4 font-['Arimo'] font-semibold shadow-lg">
+        ⚠️ FRONTEND PROTOTYPE - FOR DEMONSTRATION PURPOSES ONLY ⚠️
+      </div>
+
       {/* Header/Navigation */}
       <motion.header 
         initial={{ y: -100 }}

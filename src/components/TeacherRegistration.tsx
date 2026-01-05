@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { GraduationCap, AlertCircle, ArrowLeft, Upload, FileText, CheckCircle, ChevronRight, ChevronLeft, User, Mail, Phone, Lock, BookOpen, Award, Calendar, Eye, EyeOff, MapPin } from 'lucide-react';
-import { authApi } from '../utils/api';
 import { motion } from 'motion/react';
 import ConfirmationModal from './ConfirmationModal';
 import InterviewScheduler from './InterviewScheduler';
@@ -114,20 +113,13 @@ export default function TeacherRegistration({ navigate, pageData }) {
 
   const proceedToTest = async () => {
     setLoading(true);
-    try {
-      const response = await authApi.registerTeacher(formData);
-      
-      if (response.success) {
-        setCurrentStep(2);
-        navigate('online-test', { userRole: 'teacher', returnTo: 'teacher-registration' });
-      } else {
-        setError(response.error || 'Registration failed');
-      }
-    } catch (err) {
-      setError(err.message || 'Registration failed. Please try again.');
-    } finally {
+    
+    // Frontend prototype - navigate directly to test
+    setTimeout(() => {
       setLoading(false);
-    }
+      setCurrentStep(2);
+      navigate('online-test', { userRole: 'teacher', returnTo: 'teacher-registration' });
+    }, 500);
   };
 
   const handleTestComplete = () => {

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { GraduationCap, AlertCircle, ArrowLeft, User, Mail, Phone, Lock, BookOpen, Users, MapPin, ChevronRight, CheckCircle, FileText, Calendar, Eye, EyeOff } from 'lucide-react';
-import { authApi } from '../utils/api';
 import { motion } from 'motion/react';
 import ConfirmationModal from './ConfirmationModal';
 
@@ -88,19 +87,11 @@ export default function StudentRegistration({ navigate }) {
     setShowSubmitModal(false);
     setLoading(true);
 
-    try {
-      const response = await authApi.registerStudent(formData);
-      
-      if (response.success) {
-        navigate('online-test', { userRole: 'student' });
-      } else {
-        setError(response.error || 'Registration failed');
-      }
-    } catch (err) {
-      setError(err.message || 'Registration failed. Please try again.');
-    } finally {
+    // Frontend prototype - navigate directly to test
+    setTimeout(() => {
       setLoading(false);
-    }
+      navigate('online-test', { userRole: 'student' });
+    }, 500);
   };
 
   return (
