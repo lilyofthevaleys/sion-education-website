@@ -92,7 +92,6 @@ export default function ConfirmationModal({
                 </motion.button>
               </div>
             </motion.div>
-          </motion.div>
         </div>
       )}
     </AnimatePresence>
