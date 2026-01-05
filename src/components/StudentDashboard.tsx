@@ -17,7 +17,7 @@ import {
   Users,
   X
 } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import ConfirmationModal from './ConfirmationModal';
 import ChatInterface from './ChatInterface';
 import ProfileManager from './ProfileManager';
