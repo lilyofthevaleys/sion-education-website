@@ -63,7 +63,6 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
 
   const handleSaveProfile = () => {
     console.log('Saving profile:', editedProfile);
-    // TODO: Save to backend
     setShowEditProfile(false);
   };
 
@@ -534,7 +533,6 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
             onClose={() => setShowProfileManager(false)}
             onSave={(profileData) => {
               console.log('Profile saved:', profileData);
-              // Here you would save to backend
               setCurrentUser({ ...currentUser, ...profileData });
             }}
           />

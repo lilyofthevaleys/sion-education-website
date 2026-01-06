@@ -67,7 +67,6 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
   const [chatFilter, setChatFilter] = useState('ALL'); // 'ALL' or 'UNREAD'
   const [showCalendar, setShowCalendar] = useState(false);
   const [dayFilter, setDayFilter] = useState('All Days'); // New state for day filter
-  const [showSaveProfileModal, setShowSaveProfileModal] = useState(false);
   const [showBanner, setShowBanner] = useState(true);
   const [showLessonDetailsModal, setShowLessonDetailsModal] = useState(false);
   const [selectedLessonDetails, setSelectedLessonDetails] = useState(null);
@@ -189,14 +188,11 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
 
   const handleSaveProfile = () => {
     console.log('Saving teacher profile:', editedProfile);
-    // TODO: Save to backend
-    setShowSaveProfileModal(false);
     setShowEditProfile(false);
   };
 
   const handleSaveNotes = () => {
     console.log('Saving lesson notes:', editedNotes);
-    // TODO: Save to backend
     setShowLessonDetailsModal(false);
   };
 
@@ -966,7 +962,6 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
             onClose={() => setShowProfileManager(false)}
             onSave={(profileData) => {
               console.log('Profile saved:', profileData);
-              // Here you would save to backend
               setCurrentUser({ ...currentUser, ...profileData });
             }}
           />
@@ -1061,7 +1056,7 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
                 Cancel
               </motion.button>
               <motion.button
-                onClick={() => setShowSaveProfileModal(true)}
+                onClick={handleSaveProfile}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="flex-1 bg-gradient-to-r from-[#2563EB] to-[#7C3AED] text-white py-3 rounded-xl font-['Arimo'] shadow-lg hover:shadow-xl transition-all"
@@ -1072,18 +1067,6 @@ export default function TeacherDashboard({ navigate, currentUser, onLogout }) {
           </motion.div>
         </div>
       )}
-
-      {/* Save Profile Confirmation Modal */}
-      <ConfirmationModal
-        isOpen={showSaveProfileModal}
-        onClose={() => setShowSaveProfileModal(false)}
-        onConfirm={handleSaveProfile}
-        title="Save Profile Changes?"
-        message="Are you sure you want to update your profile information?"
-        confirmText="Yes, Save"
-        confirmColor="from-green-500 to-green-600"
-        icon={<CheckCircle className="w-6 h-6 text-white" />}
-      />
 
       {/* Lesson Details Modal */}
       {showLessonDetailsModal && selectedLessonDetails && (

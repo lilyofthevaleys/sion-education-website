@@ -35,7 +35,6 @@ export default function EditStudentInfo({ navigate, studentId }) {
 
   const handleSave = () => {
     console.log('Saving student info:', formData);
-    // TODO: Save to backend
     setShowSaveModal(false);
     navigate('view-student-info', { id: formData.id });
   };

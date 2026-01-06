@@ -31,7 +31,6 @@ export default function EditTeacherProfile({ navigate, teacherId }) {
 
   const handleSave = () => {
     console.log('Saving teacher profile:', formData);
-    // TODO: Save to backend
     setShowSaveModal(false);
     navigate('view-teacher-profile', { id: formData.id });
   };

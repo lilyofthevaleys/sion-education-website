@@ -26,7 +26,6 @@ export default function AddNewQuestion({ navigate }) {
 
   const handleSubmit = () => {
     console.log('Saving new question:', formData);
-    // TODO: Save to backend
     setShowConfirmModal(false);
     navigate('admin-dashboard');
   };

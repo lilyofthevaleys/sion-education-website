@@ -34,7 +34,6 @@ export default function AddNewStudent({ navigate }) {
 
   const handleSubmit = () => {
     console.log('Saving new student:', formData);
-    // TODO: Save to backend
     setShowConfirmModal(false);
     navigate('admin-dashboard');
   };

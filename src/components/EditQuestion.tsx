@@ -37,7 +37,6 @@ export default function EditQuestion({ navigate, questionId }) {
 
   const handleSubmit = () => {
     console.log('Updating question:', { id: existingQuestion.id, ...formData });
-    // TODO: Update in backend
     setShowConfirmModal(false);
     navigate('admin-dashboard');
   };
