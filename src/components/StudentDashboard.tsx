@@ -118,17 +118,18 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
       </motion.header>
 
       <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        {showBanner ? (
+        {showBanner && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
             className="mb-6 sm:mb-8 bg-gradient-to-r from-[#2563EB] via-[#4F46E5] to-[#7C3AED] rounded-3xl p-6 sm:p-8 text-white shadow-2xl relative overflow-hidden"
           >
             <motion.button
               onClick={() => setShowBanner(false)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="absolute right-4 top-4 w-7 h-7 sm:w-8 sm:h-8 bg-white/20 text-white rounded-lg flex items-center justify-center shadow-md backdrop-blur-sm"
+              whileHover={{ scale: 1.1, backgroundColor: 'rgba(255, 255, 255, 0.3)' }}
+              whileTap={{ scale: 0.9 }}
+              className="absolute right-4 top-4 z-30 w-7 h-7 sm:w-8 sm:h-8 bg-white/20 hover:bg-white/30 text-white rounded-lg flex items-center justify-center shadow-md backdrop-blur-sm transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-white/50"
               aria-label="Dismiss banner"
             >
               <X className="w-4 h-4" />
@@ -152,8 +153,6 @@ export default function StudentDashboard({ navigate, currentUser, onLogout }) {
               </motion.p>
             </div>
           </motion.div>
-        ) : (
-          <div className="mb-6 sm:mb-8" />
         )}
 
         {/* Main Dashboard Card */}
